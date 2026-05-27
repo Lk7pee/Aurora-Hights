@@ -1,0 +1,16 @@
+{
+  "name": "aurora-high-visual-novel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "dev": "vite --host 0.0.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="A fita no armario">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="675">
+      <stop stop-color="#101528"/>
+      <stop offset=".48" stop-color="#1d172a"/>
+      <stop offset="1" stop-color="#09070d"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000000" flood-opacity=".42"/>
+    </filter>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <path fill="#111827" d="M0 120h1200v338H0z"/>
+  <g transform="translate(98 86)" filter="url(#shadow)">
+    <rect width="334" height="512" rx="28" fill="#253d68"/>
+    <rect x="46" y="62" width="242" height="48" rx="12" fill="#ff6e9d"/>
+    <rect x="46" y="166" width="242" height="284" rx="14" fill="#151827"/>
+    <g fill="#6d79ff" opacity=".62">
+      <rect x="76" y="206" width="184" height="10" rx="5"/>
+      <rect x="76" y="252" width="184" height="10" rx="5"/>
+      <rect x="76" y="298" width="184" height="10" rx="5"/>
+    </g>
+  </g>
+  <g filter="url(#shadow)">
+    <path fill="#70d6ff" d="M488 278c116-76 212-88 294-34l-46 86c-63-43-132-35-213 30l-35-82Z"/>
+    <path fill="#67d8e8" d="M738 284c132-34 240 0 322 94l-70 68c-62-68-134-92-231-56l-21-106Z"/>
+    <path fill="#3245a7" d="M688 214c52 36 77 104 46 152-51-35-76-104-46-152Zm-43 10c-52 34-78 100-50 150 53-33 78-100 50-150Z"/>
+    <path fill="#6d79ff" d="M628 374h264v164c-76 16-160 16-264 0V374Z"/>
+    <path fill="#eaf6ff" d="M602 356h318v162c-77 29-186 32-318 0V356Z" opacity=".92"/>
+    <path fill="#111827" d="M652 406h190v12H652zm0 38h146v12H652zm0 38h98v12h-98z" opacity=".76"/>
+  </g>
+  <g stroke="#ffd166" stroke-width="5" fill="none" opacity=".9">
+    <path d="M242 228c164-76 306-44 426 144"/>
+    <path d="M716 414c138 4 230 64 282 178"/>
+    <path d="M422 542c142-54 300-40 474 42"/>
+  </g>
+  <g fill="#ffd166">
+    <circle cx="242" cy="228" r="9"/>
+    <circle cx="668" cy="372" r="9"/>
+    <circle cx="998" cy="592" r="9"/>
+    <circle cx="422" cy="542" r="7"/>
+    <circle cx="896" cy="584" r="7"/>
+  </g>
+  <circle cx="760" cy="412" r="156" fill="#70d6ff" opacity=".08" filter="url(#glow)"/>
+</svg>

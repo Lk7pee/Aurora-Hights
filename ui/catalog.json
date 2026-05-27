@@ -1,0 +1,120 @@
+{
+  "schema": "aurora-high.catalog.v1",
+  "inventory": [
+    {
+      "id": "diario-lilas",
+      "name": "Diário lilás",
+      "type": "key",
+      "icon": "book",
+      "rarity": "inicial",
+      "description": "Capa macia, páginas quase vazias e uma fita para marcar decisões importantes."
+    },
+    {
+      "id": "fita-azul",
+      "name": "Fita azul",
+      "type": "story",
+      "icon": "ribbon",
+      "rarity": "raro",
+      "description": "Apareceu no seu armário antes de você receber a combinação."
+    },
+    {
+      "id": "passe-clube",
+      "name": "Passe provisório dos clubes",
+      "type": "access",
+      "icon": "ticket",
+      "rarity": "comum",
+      "description": "Permite entrar em áreas especiais durante eventos do episódio."
+    },
+    {
+      "id": "demo-riscada",
+      "name": "Fita demo riscada",
+      "type": "route",
+      "icon": "music",
+      "rarity": "especial",
+      "description": "Uma gravação imperfeita que Ravi finge não querer recuperar."
+    }
+  ],
+  "outfits": [
+    {
+      "id": "uniforme-aurora",
+      "name": "Uniforme Aurora",
+      "slot": "full",
+      "owned": true,
+      "style": "classico",
+      "palette": ["#fff7fb", "#ff7cab", "#4b5aa7"],
+      "preview": "uniform",
+      "sprites": {
+        "feminino": "./presaves/fardamentoP/brendaf.PNG",
+        "masculino": "./presaves/fardamentoP/filipef.PNG"
+      },
+      "description": "Uniforme inicial com blazer claro, laço coral e saia azul noite."
+    },
+    {
+      "id": "cardigan-chuva",
+      "name": "Cardigan de Chuva",
+      "slot": "full",
+      "owned": false,
+      "price": 60,
+      "style": "gentil",
+      "palette": ["#b9efd8", "#586b8c", "#fff7f0"],
+      "preview": "cardigan",
+      "sprites": {
+        "feminino": "./presaves/roupas/brenda-cardigan.png",
+        "masculino": "./presaves/roupas/filipe-cardigan.png"
+      },
+      "description": "Maciez suficiente para conversas difíceis no jardim."
+    },
+    {
+      "id": "jaqueta-constelacao",
+      "name": "Jaqueta Constelação",
+      "slot": "full",
+      "owned": false,
+      "style": "misterioso",
+      "palette": ["#1f2c64", "#a9e8ff", "#ffd166"],
+      "preview": "star-jacket",
+      "sprites": {
+        "feminino": "./presaves/Brendap.png",
+        "masculino": "./presaves/Lipep.png"
+      },
+      "description": "Desbloqueada ao terminar o episódio 1. Brilha de leve no terraço."
+    },
+    {
+      "id": "look-palco",
+      "name": "Look de Palco",
+      "slot": "full",
+      "owned": false,
+      "price": 90,
+      "style": "provocador",
+      "palette": ["#20202b", "#e85d3f", "#8de969"],
+      "preview": "stage",
+      "sprites": {
+        "feminino": "./presaves/roupas/brenda-palco.png",
+        "masculino": "./presaves/roupas/filipe-palco.png"
+      },
+      "description": "Para sobreviver a um ensaio que virou interrogatório."
+    }
+  ],
+  "cgs": [
+    {
+      "id": "blue-ribbon",
+      "title": "A fita no armário",
+      "episode": "episode-01",
+      "image": "./assets/cgs/blue-ribbon-scene.png",
+      "hint": "Responda ao bilhete sem fugir da pergunta."
+    },
+    {
+      "id": "star-rooftop",
+      "title": "Mapa de estrelas",
+      "episode": "episode-01 (replay)",
+      "image": "./assets/cgs/star-rooftop-scene.png",
+      "hint": "Aproxime-se de Noa quando o terraço estiver liberado."
+    },
+    {
+      "id": "library-note",
+      "title": "Anotação na margem",
+      "episode": "episode-01 (replay)",
+      "image": "./assets/cgs/library-note-scene.png",
+      "hint": "Não force Caio a explicar antes de ele confiar em você."
+    }
+  ]
+}

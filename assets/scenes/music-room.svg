@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Sala de Musica">
+  <defs>
+    <linearGradient id="room" x1="0" y1="0" x2="1600" y2="900">
+      <stop stop-color="#211117"/>
+      <stop offset=".54" stop-color="#17121d"/>
+      <stop offset="1" stop-color="#09070c"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="770" cy="220" r="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e85d3f" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#e85d3f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#room)"/>
+  <rect width="1600" height="900" fill="url(#spot)"/>
+  <path fill="#0d0b12" d="M0 552h1600v348H0z"/>
+  <g stroke="#302637" stroke-width="4" opacity=".52">
+    <path d="M0 640h1600M0 742h1600M0 850h1600"/>
+    <path d="M0 552 220 900M400 552l70 348M800 552v348M1200 552l-70 348M1600 552l-220 348"/>
+  </g>
+  <rect x="96" y="126" width="1408" height="402" rx="22" fill="#14121d"/>
+  <rect x="150" y="178" width="346" height="276" rx="18" fill="#231d2c"/>
+  <rect x="1104" y="178" width="346" height="276" rx="18" fill="#231d2c"/>
+  <g fill="#ff6e9d" opacity=".72">
+    <rect x="184" y="214" width="78" height="14"/><rect x="184" y="254" width="210" height="14"/><rect x="184" y="294" width="168" height="14"/>
+    <rect x="1138" y="214" width="78" height="14"/><rect x="1138" y="254" width="210" height="14"/><rect x="1138" y="294" width="168" height="14"/>
+  </g>
+  <path fill="#0b0a10" d="M574 220h452v308H574z"/>
+  <path fill="#2c2836" d="M610 258h380v236H610z"/>
+  <g stroke="#67d8e8" stroke-width="5" fill="none" opacity=".82">
+    <path d="M656 364c70-94 134-94 190 0 50 84 102 84 156 0"/>
+    <path d="M656 412h346"/>
+  </g>
+  <rect x="168" y="590" width="254" height="226" rx="18" fill="#101018"/>
+  <rect x="205" y="628" width="180" height="126" rx="12" fill="#252332"/>
+  <g fill="#67d8e8" opacity=".6">
+    <circle cx="248" cy="692" r="18"/><circle cx="302" cy="692" r="18"/><circle cx="356" cy="692" r="18"/>
+  </g>
+  <rect x="1178" y="592" width="256" height="224" rx="18" fill="#101018"/>
+  <rect x="1218" y="632" width="176" height="122" rx="12" fill="#252332"/>
+  <g stroke="#ffd166" stroke-width="6" stroke-linecap="round">
+    <path d="M734 380v320"/>
+    <path d="M868 360v340"/>
+    <path d="M658 700h300"/>
+  </g>
+  <circle cx="800" cy="716" r="96" fill="#2c1b1d"/>
+  <circle cx="800" cy="716" r="60" fill="#e85d3f" opacity=".82"/>
+  <path fill="#111018" d="M600 654c92-72 174-82 246-30l-54 76c-52-36-104-31-162 16l-30-62Z"/>
+  <path fill="#8de969" d="M492 710c90-82 174-102 252-58l-48 76c-58-28-112-16-164 34l-40-52Z"/>
+</svg>

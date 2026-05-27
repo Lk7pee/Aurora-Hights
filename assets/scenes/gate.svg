@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Entrada da Aurora High">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="900">
+      <stop stop-color="#080b18"/>
+      <stop offset=".46" stop-color="#141733"/>
+      <stop offset="1" stop-color="#241426"/>
+    </linearGradient>
+    <linearGradient id="building" x1="800" y1="156" x2="800" y2="700">
+      <stop stop-color="#30405f"/>
+      <stop offset="1" stop-color="#141923"/>
+    </linearGradient>
+    <linearGradient id="path" x1="800" y1="578" x2="800" y2="900">
+      <stop stop-color="#6a6f85"/>
+      <stop offset="1" stop-color="#222434"/>
+    </linearGradient>
+    <filter id="lampGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1280" cy="128" r="78" fill="#ffd166" opacity=".86"/>
+  <g fill="#e9f6ff" opacity=".7">
+    <circle cx="160" cy="92" r="2"/><circle cx="255" cy="166" r="2"/><circle cx="482" cy="86" r="3"/>
+    <circle cx="678" cy="148" r="2"/><circle cx="980" cy="94" r="2"/><circle cx="1142" cy="210" r="2"/>
+    <circle cx="1410" cy="244" r="3"/><circle cx="1328" cy="360" r="2"/><circle cx="356" cy="314" r="2"/>
+  </g>
+  <path fill="#0c1c1d" d="M0 650c210-78 355-54 538-24 190 31 325 20 501-29 204-57 365-45 561 38v265H0V650Z"/>
+  <path fill="#173634" d="M0 720c243-58 444-29 610 8 170 38 359 30 522-17 180-52 327-49 468 3v186H0V720Z"/>
+  <path fill="url(#path)" d="M642 568h316l246 332H396l246-332Z"/>
+  <path fill="url(#building)" d="M424 242h752v396H424z"/>
+  <path fill="#1b2230" d="M522 174h556l86 126H436l86-126Z"/>
+  <path fill="#485b8a" d="M512 300h576v34H512z"/>
+  <path fill="#1b2230" d="M684 154h232v106H684z"/>
+  <path fill="#6d79ff" d="M706 190h188v18H706zm-124 160h436v14H582z" opacity=".7"/>
+  <g fill="#ffe7a8">
+    <rect x="498" y="376" width="78" height="114" rx="10"/>
+    <rect x="626" y="376" width="78" height="114" rx="10"/>
+    <rect x="896" y="376" width="78" height="114" rx="10"/>
+    <rect x="1024" y="376" width="78" height="114" rx="10"/>
+  </g>
+  <g fill="#0f1522">
+    <rect x="750" y="392" width="100" height="246" rx="38"/>
+    <path d="M424 638h752v62H424z"/>
+  </g>
+  <g opacity=".38" fill="#fff7ce">
+    <rect x="510" y="390" width="20" height="88"/><rect x="642" y="390" width="20" height="88"/>
+    <rect x="912" y="390" width="20" height="88"/><rect x="1040" y="390" width="20" height="88"/>
+  </g>
+  <g stroke="#050812" stroke-width="10" stroke-linecap="round">
+    <path d="M205 846V462m1190 384V462"/>
+    <path d="M222 478c252-96 904-96 1156 0"/>
+  </g>
+  <g stroke="#080b18" stroke-width="6" opacity=".9">
+    <path d="M262 505v344M332 486v363M402 472v377M472 461v388M542 453v396M612 448v401M682 445v404M752 443v406M822 443v406M892 445v404M962 448v401M1032 453v396M1102 461v388M1172 472v377M1242 486v363M1312 505v344"/>
+  </g>
+  <g>
+    <circle cx="315" cy="502" r="34" fill="#ffd166" opacity=".25" filter="url(#lampGlow)"/>
+    <circle cx="1285" cy="502" r="34" fill="#ffd166" opacity=".25" filter="url(#lampGlow)"/>
+    <circle cx="315" cy="502" r="12" fill="#ffd166"/>
+    <circle cx="1285" cy="502" r="12" fill="#ffd166"/>
+  </g>
+  <path fill="#70d6ff" d="M786 510c-36 8-58 27-70 58 41-6 67-24 86-58h-16Zm29 0c36 8 58 27 70 58-41-6-67-24-86-58h16Z"/>
+  <path fill="#6d79ff" d="M780 520h42v72h-42z"/>
+</svg>

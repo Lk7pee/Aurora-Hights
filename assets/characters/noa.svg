@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 900" role="img" aria-label="Noa Valente">
+  <defs>
+    <linearGradient id="coat" x1="202" y1="424" x2="454" y2="870" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2b3e8b"/>
+      <stop offset=".55" stop-color="#172340"/>
+      <stop offset="1" stop-color="#0b1020"/>
+    </linearGradient>
+    <linearGradient id="vest" x1="268" y1="420" x2="374" y2="692" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#edf8ff"/>
+      <stop offset="1" stop-color="#9ecff6"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="218" y1="88" x2="425" y2="326" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101426"/>
+      <stop offset=".54" stop-color="#263a82"/>
+      <stop offset="1" stop-color="#82a6ff"/>
+    </linearGradient>
+    <radialGradient id="skin" cx="310" cy="252" r="188" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe2d1"/>
+      <stop offset=".66" stop-color="#f5c5ad"/>
+      <stop offset="1" stop-color="#d89686"/>
+    </radialGradient>
+    <filter id="shadow" x="-18%" y="-12%" width="136%" height="130%">
+      <feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#050714" flood-opacity=".42"/>
+    </filter>
+  </defs>
+  <ellipse cx="322" cy="836" rx="192" ry="42" fill="#050714" opacity=".38"/>
+  <g filter="url(#shadow)">
+    <path fill="url(#coat)" d="M184 458c-45 61-70 198-80 404h432c-11-205-37-342-82-404-27-37-82-62-134-62s-109 25-136 62Z"/>
+    <path fill="#0e1733" d="M221 488c-25 72-39 201-43 374h73c2-152 13-273 35-360l-65-14Zm198 14c22 87 33 208 35 360h73c-4-173-18-302-43-374l-65 14Z" opacity=".76"/>
+    <path fill="url(#vest)" d="M252 417h136l-25 256h-86l-25-256Z"/>
+    <path fill="#dceaff" d="M258 430l58 72 62-72 10 58-72 94-69-94 11-58Z"/>
+    <path fill="#8de8ff" d="M303 492h34l18 190-35 47-35-47 18-190Z"/>
+    <path fill="#ffd166" d="M315 514h10l16 118-21 29-21-29 16-118Z" opacity=".78"/>
+    <path fill="#e5ad99" d="M269 338h102v101c0 30-23 55-51 55s-51-25-51-55V338Z"/>
+    <path fill="#cc806f" d="M270 390c30 33 72 34 101 1v44c-26 39-76 39-101 0v-45Z" opacity=".36"/>
+    <path fill="url(#skin)" d="M201 211c0-82 48-145 119-145s119 63 119 145v74c0 84-52 145-119 145s-119-61-119-145v-74Z"/>
+    <path fill="#ebb09a" d="M201 248c-26 2-42 23-34 54 8 33 27 48 48 42l-6-62-8-34Zm238 0c26 2 42 23 34 54-8 33-27 48-48 42l6-62 8-34Z"/>
+    <path fill="url(#hair)" d="M210 230c-30-92 32-174 114-174 96 0 151 77 116 184-61-24-104-55-134-103-24 45-56 78-96 93Z"/>
+    <path fill="#101426" d="M199 260c6-86 43-132 119-170-16 70-55 130-119 170Zm234-1c-31-73-78-107-127-169 76 19 132 70 127 169Z"/>
+    <path fill="#344da8" d="M242 155c-15 40-19 84-12 131-27-14-46-24-61-28 27-47 48-76 73-103Zm167 112c-39-24-71-63-98-117 55 26 91 67 98 117Z" opacity=".52"/>
+    <path fill="none" stroke="#f9e0d2" stroke-width="5" stroke-linecap="round" d="M281 310c6 11 18 17 39 17s34-6 41-17"/>
+    <path fill="#1d2445" d="M263 271c17-14 42-13 58 2-18 7-39 8-58-2Zm92 2c16-15 42-16 58-2-18 10-39 9-58 2Z" opacity=".78"/>
+    <ellipse cx="286" cy="287" rx="9" ry="12" fill="#26335b"/>
+    <ellipse cx="374" cy="287" rx="9" ry="12" fill="#26335b"/>
+    <circle cx="289" cy="283" r="3" fill="#b7f0ff"/>
+    <circle cx="377" cy="283" r="3" fill="#b7f0ff"/>
+    <path fill="#c78175" d="M320 291c-7 24-13 41-5 48 5 5 15 5 22 1-12-8-11-22-17-49Z" opacity=".42"/>
+    <path d="M292 366c20 15 54 15 74 0" fill="none" stroke="#9d5967" stroke-width="6" stroke-linecap="round"/>
+    <g fill="none" stroke="#b7f0ff" stroke-linecap="round" opacity=".85">
+      <path stroke-width="4" d="M441 532c29 65 45 168 50 300"/>
+      <path stroke-width="3" d="M199 548c-22 82-34 174-36 284"/>
+      <path stroke-width="2" d="M429 618l32 26m-246-3 34-22"/>
+    </g>
+    <g fill="#ffd166">
+      <circle cx="452" cy="565" r="8"/>
+      <circle cx="209" cy="620" r="6"/>
+      <circle cx="421" cy="670" r="5"/>
+    </g>
+  </g>
+</svg>

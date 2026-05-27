@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Terraco">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="900">
+      <stop stop-color="#050713"/>
+      <stop offset=".54" stop-color="#111a34"/>
+      <stop offset="1" stop-color="#22172b"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="800" y1="536" x2="800" y2="900">
+      <stop stop-color="#2e3244"/>
+      <stop offset="1" stop-color="#11101a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1228" cy="144" r="78" fill="#dce6ef" opacity=".9"/>
+  <g fill="#dce6ef" opacity=".76">
+    <circle cx="126" cy="88" r="2"/><circle cx="286" cy="180" r="3"/><circle cx="458" cy="114" r="2"/>
+    <circle cx="620" cy="236" r="2"/><circle cx="785" cy="128" r="3"/><circle cx="1010" cy="234" r="2"/>
+    <circle cx="1398" cy="272" r="3"/><circle cx="1464" cy="112" r="2"/><circle cx="1124" cy="386" r="2"/>
+  </g>
+  <g stroke="#67d8e8" stroke-width="2" opacity=".34">
+    <path d="M286 180 458 114 620 236 785 128 1010 234"/>
+    <path d="M1124 386 1398 272 1464 112"/>
+  </g>
+  <path fill="#060812" d="M0 500c184-70 320-54 468-20 170 39 319 35 492-20 214-68 412-56 640 35v405H0V500Z"/>
+  <path fill="url(#floor)" d="M0 536h1600v364H0z"/>
+  <g stroke="#565b70" stroke-width="3" opacity=".4">
+    <path d="M0 620h1600M0 728h1600M0 848h1600"/>
+    <path d="M0 536 262 900M352 536l132 364M704 536l28 364M1056 536l-80 364M1408 536l-192 364"/>
+  </g>
+  <rect x="0" y="492" width="1600" height="64" fill="#10131f"/>
+  <g stroke="#0a0c14" stroke-width="14" stroke-linecap="round">
+    <path d="M80 520h1440"/>
+    <path d="M150 520V382m170 138V382m170 138V382m170 138V382m170 138V382m170 138V382m170 138V382m170 138V382"/>
+  </g>
+  <path fill="#e6edf6" opacity=".9" d="M558 604h470l84 192H476l82-192Z"/>
+  <path fill="#21304b" d="M614 642h356l32 78H582l32-78Z"/>
+  <g stroke="#ffd166" stroke-width="5" fill="none" opacity=".85">
+    <path d="M650 688c66-44 132-42 200 6 40-36 82-44 126-26"/>
+    <path d="M700 718c62 34 132 34 210 0"/>
+  </g>
+  <g fill="#ffd166">
+    <circle cx="650" cy="688" r="8"/><circle cx="850" cy="694" r="8"/><circle cx="976" cy="668" r="8"/>
+    <circle cx="700" cy="718" r="7"/><circle cx="910" cy="718" r="7"/>
+  </g>
+  <path fill="#70d6ff" d="M918 612c-50 10-84 34-102 74 55-3 92-25 118-68l-16-6Z"/>
+  <path fill="#6d79ff" d="M910 656h48v112h-48z"/>
+</svg>

@@ -1,0 +1,43 @@
+{
+  "schema": "aurora-high.episodes.v1",
+  "episodes": [
+    {
+      "id": "episode-01",
+      "number": 1,
+      "title": "A Fita Azul no Corredor",
+      "subtitle": "Um bilhete sem assinatura muda seu primeiro dia na Aurora High.",
+      "status": "available",
+      "dialogue": "./dialogues/episode-01.json",
+      "cover": "./assets/cgs/blue-ribbon-scene.png",
+      "startNode": "ep01_intro_01",
+      "minimumStartAp": 24,
+      "reward": {
+        "ap": 8,
+        "coins": 80,
+        "wardrobe": ["jaqueta-constelacao"]
+      }
+    },
+    {
+      "id": "episode-02",
+      "number": 2,
+      "title": "O Clube Que Não Existe",
+      "subtitle": "Portas fechadas, música no subsolo e um nome riscado em todos os murais.",
+      "status": "locked",
+      "requiresCompleted": ["episode-01"],
+      "dialogue": "./dialogues/episode-02.json",
+      "cover": "./assets/cgs/star-rooftop-scene.png",
+      "startNode": "ep02_intro_01"
+    },
+    {
+      "id": "episode-03",
+      "number": 3,
+      "title": "Festival de Luzes Falsas",
+      "subtitle": "A primeira ilustração especial depende de quem você escolheu proteger.",
+      "status": "future",
+      "requiresCompleted": ["episode-02"],
+      "dialogue": "./dialogues/episode-03.json",
+      "cover": "./assets/cgs/library-note-scene.png",
+      "startNode": "ep03_intro_01"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Corredor dos Armarios">
+  <defs>
+    <linearGradient id="hall" x1="800" y1="0" x2="800" y2="900">
+      <stop stop-color="#202840"/>
+      <stop offset=".58" stop-color="#11121e"/>
+      <stop offset="1" stop-color="#08070d"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="800" y1="520" x2="800" y2="900">
+      <stop stop-color="#3b3547"/>
+      <stop offset="1" stop-color="#111018"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#hall)"/>
+  <path fill="#0e1320" d="M0 128h1600v430H0z"/>
+  <path fill="#151e30" d="M80 170h1440v338H80z"/>
+  <g transform="translate(96 190)">
+    <g fill="#2d4a72">
+      <rect x="0" y="0" width="146" height="330" rx="12"/>
+      <rect x="166" y="0" width="146" height="330" rx="12"/>
+      <rect x="332" y="0" width="146" height="330" rx="12"/>
+      <rect x="498" y="0" width="146" height="330" rx="12"/>
+      <rect x="928" y="0" width="146" height="330" rx="12"/>
+      <rect x="1094" y="0" width="146" height="330" rx="12"/>
+      <rect x="1260" y="0" width="146" height="330" rx="12"/>
+    </g>
+    <g fill="#6d79ff" opacity=".55">
+      <rect x="22" y="38" width="100" height="12" rx="6"/><rect x="22" y="74" width="100" height="12" rx="6"/>
+      <rect x="188" y="38" width="100" height="12" rx="6"/><rect x="188" y="74" width="100" height="12" rx="6"/>
+      <rect x="354" y="38" width="100" height="12" rx="6"/><rect x="354" y="74" width="100" height="12" rx="6"/>
+      <rect x="520" y="38" width="100" height="12" rx="6"/><rect x="520" y="74" width="100" height="12" rx="6"/>
+      <rect x="950" y="38" width="100" height="12" rx="6"/><rect x="950" y="74" width="100" height="12" rx="6"/>
+      <rect x="1116" y="38" width="100" height="12" rx="6"/><rect x="1116" y="74" width="100" height="12" rx="6"/>
+      <rect x="1282" y="38" width="100" height="12" rx="6"/><rect x="1282" y="74" width="100" height="12" rx="6"/>
+    </g>
+    <g fill="#0d1320" opacity=".78">
+      <rect x="126" y="0" width="8" height="330"/><rect x="292" y="0" width="8" height="330"/>
+      <rect x="458" y="0" width="8" height="330"/><rect x="624" y="0" width="8" height="330"/>
+      <rect x="1054" y="0" width="8" height="330"/><rect x="1220" y="0" width="8" height="330"/>
+    </g>
+  </g>
+  <rect x="688" y="206" width="224" height="270" rx="18" fill="#261e2c"/>
+  <rect x="716" y="232" width="168" height="214" rx="10" fill="#f7efe6"/>
+  <path fill="#ff6e9d" d="M742 258h116v22H742zm0 42h96v14h-96zm0 30h122v14H742zm0 30h72v14h-72z"/>
+  <path fill="url(#floor)" d="M0 540h1600v360H0z"/>
+  <g stroke="#534e63" stroke-width="3" opacity=".38">
+    <path d="M0 610h1600M0 700h1600M0 820h1600"/>
+    <path d="M800 540 620 900M800 540l180 360"/>
+  </g>
+  <rect x="512" y="492" width="576" height="44" fill="#0a0910"/>
+  <path fill="#70d6ff" d="M955 344c-48 4-82 24-103 61 55 1 92-17 119-59l-16-2Zm28 5c41 16 65 45 71 87-48-12-78-38-88-82l17-5Z"/>
+  <path fill="#6d79ff" d="M934 390h54v118h-54z"/>
+  <path fill="#ffd166" d="M940 452h42v10h-42zm0 22h32v8h-32z"/>
+  <g fill="#050506" opacity=".55">
+    <path d="M1350 614c21 0 38 17 38 38v122h-76V652c0-21 17-38 38-38Z"/>
+    <path d="M248 646c18 0 32 14 32 32v98h-64v-98c0-18 14-32 32-32Z"/>
+  </g>
+</svg>
