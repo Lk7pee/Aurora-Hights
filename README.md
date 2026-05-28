@@ -1,6 +1,6 @@
 # Aurora High: Ecos no Jardim
 
-Visual novel web estática, modular e pronta para GitHub Pages. O projeto é inspirado em convenções de dating sims escolares: episódios, afinidade, AP, mapa, inventário, roupas, encontros, saves locais e CGs desbloqueáveis.
+Visual novel web estática, modular e pronta para GitHub Pages. O projeto é inspirado em convenções de dating sims escolares: episódios, afinidade, AP, mapa, inventário, roupas, loja de AP, conquistas, encontros, saves locais e CGs desbloqueáveis.
 
 Este projeto não usa assets, diálogos, personagens, textos ou interface proprietária de jogos existentes. A estrutura de gameplay é familiar ao gênero, mas a identidade visual, narrativa e dados são originais.
 
@@ -40,17 +40,19 @@ https://SEU-USUARIO.github.io/aurora-high-ecos-no-jardim/
 
 - `characters/characters.json`: personagens, arquétipos, perfis e sprites.
 - `episodes/episodes.json`: lista, bloqueios e progresso de episódios.
-- `dialogues/episode-01.json`: roteiro, escolhas, afinidade, flags, AP e CGs.
+- `dialogues/episode-XX.json`: roteiros, escolhas, afinidade, flags, AP, conquistas e CGs.
 - `scenes/scenes.json`: cenários, mapa e músicas.
 - `routes/routes.json`: encontros românticos e requisitos.
-- `ui/catalog.json`: inventário, roupas e galeria.
+- `ui/catalog.json`: inventário, roupas, pacotes de AP, conquistas e galeria.
 - `music/manifest.json`: perfis da trilha sintética e suporte futuro a arquivos.
 
 ## Arquitetura
 
 - `src/systems`: save, engine, preload, áudio e carregamento.
 - `src/ui`: renderização componentizada.
-- `assets`: imagens SVG originais.
+- `assets`: imagens finais do jogo, incluindo cenários, roupas, CGs e UI.
 - `save`: documentação do formato local.
+- `systems/ASSET_GENERATION_RULES.md`: regra fixa para gerar cenários, roupas, personagens e CGs com base nos presaves.
 
 Os diálogos são editáveis em JSON e aceitam personagem, expressão, fundo, música, escolhas, efeitos, flags, troca de roupa e desbloqueio de CG.
+# Aurora-Hights
