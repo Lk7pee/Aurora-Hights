@@ -1,0 +1,830 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-02",
+  "title": "O Clube Que Não Existe",
+  "startNode": "ep02_intro_01",
+  "nodes": {
+    "ep02_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "A fita azul passa a noite em cima do seu diário, imóvel como uma pergunta que decidiu não dormir.",
+      "next": "ep02_intro_02"
+    },
+    "ep02_intro_02": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "No celular, o mapa da Aurora High acende sozinho. Um ponto sem nome pisca acima do terraço, onde o desenho antigo do observatório deveria estar.",
+      "next": "ep02_davi_message"
+    },
+    "ep02_davi_message": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "dorm",
+      "music": "room",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Mensagem urgente do seu repórter favorito: achei seis menções ao Clube Aurora. Oficialmente, ele nunca existiu. Extraoficialmente, alguém teve muito trabalho para apagar.",
+      "next": "ep02_prepare_choice"
+    },
+    "ep02_prepare_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "Antes de sair, você decide como responder ao medo que cresceu junto com a curiosidade.",
+      "choices": [
+        {
+          "label": "Chamar Davi e dividir o que sente sem fazer piada.",
+          "next": "ep02_prepare_davi",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 3 },
+            "flags": { "ep02_called_davi": true }
+          }
+        },
+        {
+          "label": "Guardar a fita por baixo do uniforme e seguir sozinha.",
+          "next": "ep02_prepare_solo",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 2, "caio": 1 },
+            "flags": { "ep02_kept_fear_private": true }
+          }
+        },
+        {
+          "label": "Mandar uma resposta provocando: se o clube não existe, ninguém vai notar.",
+          "next": "ep02_prepare_spark",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 2, "davi": 1 },
+            "flags": { "ep02_teased_the_mystery": true }
+          }
+        }
+      ]
+    },
+    "ep02_prepare_davi": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "dorm",
+      "music": "room",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Então eu vou sem manchete pronta. Só eu, você e a regra básica: se a escola tentar te engolir, eu puxo pelo capuz.",
+      "next": "ep02_corridor_01"
+    },
+    "ep02_prepare_solo": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "Você dobra a fita com cuidado. Não é coragem fingir que não treme; coragem talvez seja sair mesmo percebendo.",
+      "next": "ep02_corridor_01"
+    },
+    "ep02_prepare_spark": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "dorm",
+      "music": "room",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Se ninguém notar, eu fico ofendido. Mistério bom merece plateia, mas hoje eu aceito bastidor.",
+      "next": "ep02_corridor_01"
+    },
+    "ep02_corridor_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "school",
+      "text": "Na manhã seguinte, o corredor leste parece normal demais. Essa é a parte inquietante: tudo que foi apagado aprendeu a se vestir de rotina.",
+      "next": "ep02_lavinia_01"
+    },
+    "ep02_lavinia_01": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Você está melhor? Ontem foi intenso. Às vezes, a melhor forma de pertencer a uma escola é aceitar que nem toda porta precisa abrir.",
+      "next": "ep02_lavinia_choice"
+    },
+    "ep02_lavinia_choice": {
+      "type": "choice",
+      "speaker": "lavinia",
+      "expression": "cortante",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "cortante" }],
+      "text": "Ela ajeita o brasão do próprio blazer. A gentileza é polida, mas não quente.",
+      "choices": [
+        {
+          "label": "Perguntar por que o observatório virou uma porta proibida.",
+          "next": "ep02_lavinia_confront",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 1, "theo": 1 },
+            "flags": { "ep02_questioned_lavinia": true }
+          }
+        },
+        {
+          "label": "Agradecer o conselho e observar para onde ela olha.",
+          "next": "ep02_lavinia_observe",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 2 },
+            "flags": { "ep02_observed_lavinia": true }
+          }
+        },
+        {
+          "label": "Dizer que portas fechadas costumam guardar ótimas histórias.",
+          "next": "ep02_lavinia_provoke",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 2, "davi": 1 },
+            "flags": { "ep02_provoked_lavinia": true }
+          }
+        }
+      ]
+    },
+    "ep02_lavinia_confront": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "irritada",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "irritada" }],
+      "text": "Porque uma escola também é responsável pelas pessoas que se machucam nela. Às vezes, fechar uma porta é impedir que outras caiam.",
+      "next": "ep02_noa_entrance"
+    },
+    "ep02_lavinia_observe": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Lavínia olha para a escada norte antes de sorrir. O gesto dura menos que uma piscada, mas o mapa do celular entende e marca o caminho.",
+      "next": "ep02_noa_entrance"
+    },
+    "ep02_lavinia_provoke": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "cortante",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "cortante" }],
+      "text": "Histórias também podem destruir reputações de pessoas que você ainda nem aprendeu a amar. Cuidado com o que chama de ótimo.",
+      "next": "ep02_noa_entrance"
+    },
+    "ep02_noa_entrance": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Ela sempre fala como se a verdade fosse um móvel pesado: perigoso de mover, melhor deixar onde está.",
+      "next": "ep02_noa_02"
+    },
+    "ep02_noa_02": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "curioso",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "Se quer entender o Clube Aurora, não procure uma sala. Procure as pessoas que ficaram com pedaços diferentes da mesma culpa.",
+      "next": "ep02_map_round"
+    },
+    "ep02_map_round": {
+      "type": "map",
+      "background": "atrium",
+      "music": "mystery",
+      "title": "Rastro do clube invisível",
+      "text": "Investigue os lugares ligados ao Clube Aurora. Cada deslocamento consome AP e revela uma reação diferente dos seus aliados.",
+      "events": [
+        {
+          "location": "archive",
+          "label": "Procurar atas rasuradas com Caio",
+          "next": "ep02_archive_01",
+          "revisitNext": "ep02_archive_return",
+          "apCost": 2,
+          "onceFlag": "ep02_found_minutes"
+        },
+        {
+          "location": "observatory",
+          "label": "Subir até o observatório antigo",
+          "next": "ep02_observatory_01",
+          "revisitNext": "ep02_observatory_return",
+          "apCost": 2,
+          "onceFlag": "ep02_opened_observatory"
+        },
+        {
+          "location": "music-room",
+          "label": "Ouvir a demo riscada com Ravi",
+          "next": "ep02_music_01",
+          "revisitNext": "ep02_music_return",
+          "apCost": 2,
+          "onceFlag": "ep02_decoded_audio"
+        },
+        {
+          "location": "garden",
+          "label": "Perguntar sobre a flor protegida",
+          "next": "ep02_garden_01",
+          "revisitNext": "ep02_garden_return",
+          "apCost": 2,
+          "onceFlag": "ep02_followed_roots"
+        },
+        {
+          "location": "courtyard",
+          "label": "Checar a montagem do festival com Theo",
+          "next": "ep02_courtyard_01",
+          "revisitNext": "ep02_courtyard_return",
+          "apCost": 2,
+          "onceFlag": "ep02_saw_vote"
+        }
+      ],
+      "doneWhenFlags": [
+        "ep02_found_minutes",
+        "ep02_opened_observatory",
+        "ep02_decoded_audio",
+        "ep02_followed_roots",
+        "ep02_saw_vote"
+      ],
+      "doneNext": "ep02_after_map_01"
+    },
+    "ep02_archive_01": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "O arquivo morto não é morto. Só finge. Caixas trocadas, etiquetas reescritas, assinaturas removidas com lâmina fina.",
+      "next": "ep02_archive_choice"
+    },
+    "ep02_archive_choice": {
+      "type": "choice",
+      "speaker": "caio",
+      "expression": "impaciente",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "impaciente" }],
+      "text": "Ele encontra uma ata com três linhas raspadas. Seu nome não está ali, mas a fita azul aparece desenhada na margem.",
+      "choices": [
+        {
+          "label": "Pedir para Caio explicar no ritmo dele.",
+          "next": "ep02_archive_respect",
+          "effects": {
+            "affinity": { "caio": 3 },
+            "inventoryAdd": ["ata-observatorio"],
+            "flags": { "ep02_found_minutes": true, "ep02_respected_caio_method": true }
+          }
+        },
+        {
+          "label": "Fotografar a ata antes que alguém feche a gaveta.",
+          "next": "ep02_archive_photo",
+          "effects": {
+            "affinity": { "davi": 2, "caio": 1 },
+            "inventoryAdd": ["ata-observatorio"],
+            "flags": { "ep02_found_minutes": true, "ep02_saved_minutes_photo": true }
+          }
+        },
+        {
+          "label": "Perguntar quem foi protegido pela rasura.",
+          "next": "ep02_archive_question",
+          "effects": {
+            "affinity": { "caio": 2, "lavinia": 1 },
+            "inventoryAdd": ["ata-observatorio"],
+            "flags": { "ep02_found_minutes": true, "ep02_saw_lavinia_in_minutes": true }
+          }
+        }
+      ]
+    },
+    "ep02_archive_respect": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Obrigado. A maioria quer a conclusão antes da prova. A ata não acusa Lavínia; acusa quem ensinou Lavínia a chamar medo de responsabilidade.",
+      "next": "ep02_map_round"
+    },
+    "ep02_archive_photo": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Boa. Se o papel sumir, a foto vira testemunha. E, pela primeira vez na minha vida, prometo não usar manchete dramática antes de checar a fonte.",
+      "next": "ep02_map_round"
+    },
+    "ep02_archive_question": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "preocupado",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "preocupado" }],
+      "text": "O nome raspado começa com Vilar, mas a assinatura não parece de Lavínia. Alguém colocou uma coroa pesada demais na cabeça dela.",
+      "next": "ep02_map_round"
+    },
+    "ep02_archive_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "quiet",
+      "text": "As gavetas continuam no mesmo lugar, mas agora parecem observar você de volta.",
+      "next": "ep02_map_round"
+    },
+    "ep02_observatory_01": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "observatory",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "A porta não abre com força. Só com memória. Foi o que a última pessoa do clube escreveu antes de desaparecer dos registros.",
+      "next": "ep02_observatory_choice"
+    },
+    "ep02_observatory_choice": {
+      "type": "choice",
+      "speaker": "noa",
+      "expression": "curioso",
+      "background": "observatory",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "Uma chave de latão presa por fita azul está no chão, exatamente como se tivesse sido deixada para a sua mão.",
+      "choices": [
+        {
+          "label": "Entregar a chave para Noa abrir a porta.",
+          "next": "ep02_observatory_trust",
+          "effects": {
+            "affinity": { "noa": 3 },
+            "inventoryAdd": ["chave-observatorio"],
+            "flags": { "ep02_opened_observatory": true, "ep02_trusted_noa_key": true }
+          }
+        },
+        {
+          "label": "Abrir você mesma, mesmo com as mãos tremendo.",
+          "next": "ep02_observatory_self",
+          "effects": {
+            "affinity": { "theo": 1, "noa": 2 },
+            "inventoryAdd": ["chave-observatorio"],
+            "flags": { "ep02_opened_observatory": true, "ep02_opened_door_self": true }
+          }
+        },
+        {
+          "label": "Perguntar quem deixou a chave antes de tocar nela.",
+          "next": "ep02_observatory_ask",
+          "effects": {
+            "affinity": { "caio": 1, "noa": 2 },
+            "inventoryAdd": ["chave-observatorio"],
+            "flags": { "ep02_opened_observatory": true, "ep02_questioned_key_origin": true }
+          }
+        }
+      ]
+    },
+    "ep02_observatory_trust": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "raro_sorriso",
+      "background": "observatory",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "raro_sorriso" }],
+      "text": "Você não precisava confiar em mim. Vou lembrar disso quando for a minha vez de contar a parte que eu escondi.",
+      "next": "ep02_map_round"
+    },
+    "ep02_observatory_self": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "A fechadura cede. Noa olha para você como se tivesse acabado de ver alguém escolher entrar na própria história.",
+      "next": "ep02_map_round"
+    },
+    "ep02_observatory_ask": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "observatory",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "A pessoa que caiu. Ou alguém que quer que a gente pense isso. Aqui, até presente pode ser armadilha.",
+      "next": "ep02_map_round"
+    },
+    "ep02_observatory_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "music": "mystery",
+      "text": "A cúpula respira poeira e luz azul. A porta aberta já não parece vitória; parece convite.",
+      "next": "ep02_map_round"
+    },
+    "ep02_music_01": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "A demo tem ruído demais para quem quer ouvir só música. Mas no fundo dá para escutar uma reunião. E alguém chorando sem querer ser ouvido.",
+      "next": "ep02_music_choice"
+    },
+    "ep02_music_choice": {
+      "type": "choice",
+      "speaker": "ravi",
+      "expression": "ferido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "ferido" }],
+      "text": "Ravi pausa o áudio antes do trecho mais claro. Pela primeira vez, a provocação não chega para defender o rosto dele.",
+      "choices": [
+        {
+          "label": "Dizer que ele não precisa tocar se doer demais.",
+          "next": "ep02_music_care",
+          "effects": {
+            "affinity": { "ravi": 3 },
+            "flags": { "ep02_decoded_audio": true, "ep02_protected_ravi_feelings": true }
+          }
+        },
+        {
+          "label": "Pedir para ouvir o trecho, mas ficar ao lado dele.",
+          "next": "ep02_music_listen",
+          "effects": {
+            "affinity": { "ravi": 2, "davi": 1 },
+            "flags": { "ep02_decoded_audio": true, "ep02_listened_full_demo": true }
+          }
+        },
+        {
+          "label": "Provocar baixinho para ele não fugir da própria coragem.",
+          "next": "ep02_music_push",
+          "effects": {
+            "affinity": { "ravi": 2, "theo": 1 },
+            "flags": { "ep02_decoded_audio": true, "ep02_challenged_ravi": true }
+          }
+        }
+      ]
+    },
+    "ep02_music_care": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "ferido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "ferido" }],
+      "text": "Eu odeio quando alguém percebe o limite antes de eu transformar em piada. Mas... obrigado. O áudio diz: 'não foi acidente'.",
+      "next": "ep02_map_round"
+    },
+    "ep02_music_listen": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Então fica. Se a voz quebrar, finge que foi distorção. O trecho diz que alguém trancou a cúpula por fora.",
+      "next": "ep02_map_round"
+    },
+    "ep02_music_push": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Baixo golpe. Funcionou. Minha coragem quer reclamar com a gerência, mas antes ela informa: a demo prova que o clube estava reunido na noite da queda.",
+      "next": "ep02_map_round"
+    },
+    "ep02_music_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "music-room",
+      "music": "band",
+      "text": "A caixa de som range em silêncio, como se o trecho apagado ainda estivesse tentando atravessar o ruído.",
+      "next": "ep02_map_round"
+    },
+    "ep02_garden_01": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "triste",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "triste" }],
+      "text": "A flor de vidro foi plantada por uma aluna do Clube Aurora. Ninguém fala o nome dela aqui. As plantas, às vezes, parecem falar por todos.",
+      "next": "ep02_garden_choice"
+    },
+    "ep02_garden_choice": {
+      "type": "choice",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "Ele oferece um frasco vazio. O vidro está frio, mesmo sob o sol da estufa.",
+      "choices": [
+        {
+          "label": "Ajudar a recolher orvalho antes de perguntar qualquer coisa.",
+          "next": "ep02_garden_help",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "inventoryAdd": ["frasco-orvalho"],
+            "flags": { "ep02_followed_roots": true, "ep02_helped_with_dew": true }
+          }
+        },
+        {
+          "label": "Perguntar o nome da aluna esquecida.",
+          "next": "ep02_garden_name",
+          "effects": {
+            "affinity": { "miguel": 2, "noa": 1 },
+            "inventoryAdd": ["frasco-orvalho"],
+            "flags": { "ep02_followed_roots": true, "ep02_asked_lost_student_name": true }
+          }
+        },
+        {
+          "label": "Prometer que a flor não vai virar prova de acusação barata.",
+          "next": "ep02_garden_promise",
+          "effects": {
+            "affinity": { "miguel": 2, "caio": 1 },
+            "inventoryAdd": ["frasco-orvalho"],
+            "flags": { "ep02_followed_roots": true, "ep02_promised_flower_care": true }
+          }
+        }
+      ]
+    },
+    "ep02_garden_help": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Você sempre começa cuidando. Isso muda o jeito como uma verdade chega. O nome dela era Helena. Ela fundou o clube com Lavínia.",
+      "next": "ep02_map_round"
+    },
+    "ep02_garden_name": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "triste",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "triste" }],
+      "text": "Helena. Quando digo em voz alta, a estufa parece respirar. Talvez fosse isso que todo mundo precisava ter feito antes.",
+      "next": "ep02_map_round"
+    },
+    "ep02_garden_promise": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "Obrigado. Algumas pessoas tratam memória como faca. Eu queria que alguém tratasse como semente.",
+      "next": "ep02_map_round"
+    },
+    "ep02_garden_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "music": "garden",
+      "text": "A flor ainda não abriu. Mesmo assim, o sino de vidro parece guardar uma luz que não estava ali antes.",
+      "next": "ep02_map_round"
+    },
+    "ep02_courtyard_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "O conselho mudou a programação do festival. Incluíram uma 'votação de segurança'. Sem pauta, sem autor, sem coragem de assinar.",
+      "next": "ep02_courtyard_choice"
+    },
+    "ep02_courtyard_choice": {
+      "type": "choice",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Theo segura uma prancheta cheia de tarefas. Ele tenta parecer calmo, mas os dedos apertam o papel demais.",
+      "choices": [
+        {
+          "label": "Dizer que ele não precisa carregar a escola inteira sozinho.",
+          "next": "ep02_courtyard_care",
+          "effects": {
+            "affinity": { "theo": 3 },
+            "flags": { "ep02_saw_vote": true, "ep02_supported_theo": true }
+          }
+        },
+        {
+          "label": "Pedir acesso ao palco para investigar a pauta.",
+          "next": "ep02_courtyard_access",
+          "effects": {
+            "affinity": { "theo": 2, "davi": 1 },
+            "inventoryAdd": ["passe-clube"],
+            "flags": { "ep02_saw_vote": true, "ep02_got_stage_access": true }
+          }
+        },
+        {
+          "label": "Perguntar se ele está com medo de desagradar Lavínia.",
+          "next": "ep02_courtyard_fear",
+          "effects": {
+            "affinity": { "theo": 1, "ravi": 1 },
+            "flags": { "ep02_saw_vote": true, "ep02_named_theo_fear": true }
+          }
+        }
+      ]
+    },
+    "ep02_courtyard_care": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "encabulado",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "encabulado" }],
+      "text": "Eu sei. Quer dizer, eu tento saber. Obrigado por falar como se eu fosse pessoa antes de função.",
+      "next": "ep02_map_round"
+    },
+    "ep02_courtyard_access": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Pega meu passe reserva. Se alguém perguntar, você está revisando luzes. Tecnicamente, investigar sombras é quase isso.",
+      "next": "ep02_map_round"
+    },
+    "ep02_courtyard_fear": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Estou com medo de desagradar todo mundo e descobrir que ainda assim ninguém ficou protegido. Mas sim, Lavínia sabe usar isso.",
+      "next": "ep02_map_round"
+    },
+    "ep02_courtyard_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "school",
+      "text": "As luzes do festival balançam sem vento. Por um momento, cada lâmpada parece um olho pequeno demais para piscar.",
+      "next": "ep02_map_round"
+    },
+    "ep02_after_map_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Quando todas as pistas se encontram, a porta do observatório deixa de ser lugar. Vira decisão.",
+      "next": "ep02_group_01"
+    },
+    "ep02_group_01": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "atento" },
+        { "id": "caio", "position": "right", "expression": "preocupado" }
+      ],
+      "text": "Resumo do desastre: uma ata raspada, uma demo dizendo que não foi acidente, uma flor com nome de pessoa e um festival prestes a votar no escuro.",
+      "next": "ep02_group_02"
+    },
+    "ep02_group_02": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Helena não caiu porque quis saber demais. Ela caiu porque todos nós acreditamos que alguém adulto viria impedir o pior. Ninguém veio.",
+      "next": "ep02_lavinia_final_choice"
+    },
+    "ep02_lavinia_final_choice": {
+      "type": "choice",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavínia olha para a chave no chão. A rival perfeita parece muito jovem quando para de mandar.",
+      "choices": [
+        {
+          "label": "Dizer que proteger Helena agora exige contar a verdade.",
+          "next": "ep02_final_truth",
+          "effects": {
+            "ap": -1,
+            "affinity": { "lavinia": 2, "noa": 1 },
+            "flags": { "ep02_chose_truth_over_silence": true }
+          }
+        },
+        {
+          "label": "Prometer que ninguém vai transformar Helena em espetáculo.",
+          "next": "ep02_final_care",
+          "effects": {
+            "ap": -1,
+            "affinity": { "miguel": 2, "lavinia": 1 },
+            "flags": { "ep02_chose_careful_truth": true }
+          }
+        },
+        {
+          "label": "Responder que o clube existe enquanto alguém lembrar.",
+          "next": "ep02_final_club",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 1, "ravi": 1, "theo": 1 },
+            "flags": { "ep02_named_invisible_club": true }
+          }
+        }
+      ]
+    },
+    "ep02_final_truth": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Eu queria discordar. Seria mais fácil continuar sendo a vilã organizada da sua história. Mas talvez eu esteja cansada de proteger uma mentira que nunca protegeu Helena.",
+      "next": "ep02_cg_observatory"
+    },
+    "ep02_final_care": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Então a gente conta como quem segura vidro quebrado: sem apertar, sem largar, sem fingir que não corta.",
+      "next": "ep02_cg_observatory"
+    },
+    "ep02_final_club": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Ótimo. Entramos para um clube que não existe e já temos crise institucional. Finalmente uma atividade extracurricular honesta.",
+      "next": "ep02_cg_observatory"
+    },
+    "ep02_cg_observatory": {
+      "type": "cg",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "observatory-door",
+      "title": "Memória desbloqueada",
+      "text": "A chave, a fita e o observatório formam a primeira imagem completa do Clube Aurora: não um segredo bonito, mas uma promessa interrompida.",
+      "effects": {
+        "galleryAdd": ["observatory-door"],
+        "flags": { "unlocked_observatory_memory": true }
+      },
+      "next": "ep02_reward_01"
+    },
+    "ep02_reward_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "De volta ao quarto, uma sacola do jornal estudantil aparece perto da cama: moletom macio, bolso fundo e um bilhete de Davi dizendo que todo investigador merece capuz dramático.",
+      "effects": {
+        "wardrobeAdd": ["moletom-jornal"],
+        "coins": 95,
+        "gems": 2,
+        "ap": 7
+      },
+      "next": "ep02_end_01"
+    },
+    "ep02_end_01": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "title": "Episódio concluído",
+      "text": "O Clube Que Não Existe foi concluído. A votação do festival se aproxima, e a flor de vidro começou a reagir ao seu nome.",
+      "effects": {
+        "completeEpisode": "episode-02",
+        "flags": { "episode_02_complete": true }
+      }
+    }
+  }
+}

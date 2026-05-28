@@ -17,6 +17,8 @@ const viewTitles = {
   profile: "Perfil",
   inventory: "Inventário",
   wardrobe: "Guarda-roupa",
+  apShop: "Loja de AP",
+  achievements: "Conquistas",
   gallery: "Galeria",
   settings: "Configurações",
   saves: "Saves",
@@ -503,6 +505,8 @@ function renderMainNav(activeView) {
     ["profile", "Perfil", "user"],
     ["inventory", "Inventário", "bag"],
     ["wardrobe", "Roupas", "shirt"],
+    ["apShop", "Loja AP", "bolt"],
+    ["achievements", "Conquistas", "trophy"],
     ["minigames", "Minigames", "star"],
     ["gallery", "CGs", "image"],
     ["saves", "Saves", "save"],
@@ -532,6 +536,8 @@ function renderView(view, state, data, runtime) {
   if (view === "character") return renderCharacterSelection(state, data);
   if (view === "inventory") return renderInventory(state, data);
   if (view === "wardrobe") return renderWardrobe(state, data);
+  if (view === "apShop") return renderApShop(state, data);
+  if (view === "achievements") return renderAchievements(state, data);
   if (view === "minigames") return renderMinigames(state);
   if (view === "gallery") return renderGallery(state, data);
   if (view === "settings") return renderSettings(state);
@@ -564,6 +570,8 @@ function renderMainMenu(state, data) {
       <section class="quick-grid">
         <button class="quick-card" data-action="go" data-view="episodes">${icon("book")}<strong>Episódios</strong><span>${completed} concluído(s)</span></button>
         <button class="quick-card" data-action="go" data-view="wardrobe">${icon("shirt")}<strong>Roupas</strong><span>${state.wardrobe.length} liberada(s)</span></button>
+        <button class="quick-card" data-action="go" data-view="apShop">${icon("bolt")}<strong>Loja AP</strong><span>${state.stats.gems} diamante(s)</span></button>
+        <button class="quick-card" data-action="go" data-view="achievements">${icon("trophy")}<strong>Conquistas</strong><span>${state.achievements?.length ?? 0}/${data.catalog.achievements?.length ?? 0}</span></button>
         <button class="quick-card" data-action="go" data-view="gallery">${icon("image")}<strong>CGs</strong><span>${state.gallery.length}/${data.catalog.cgs.length}</span></button>
         <button class="quick-card" data-action="go" data-view="minigames">${icon("star")}<strong>Minigames</strong><span>Recupere AP</span></button>
         <button class="quick-card" data-action="quick-save">${icon("save")}<strong>Save rápido</strong><span>Slot automático</span></button>
@@ -607,9 +615,10 @@ function renderEpisodes(state, data) {
             <article class="episode-card ${locked ? "locked" : ""}">
               ${assetImg(episode.cover)}
               <div>
-                <span>Episódio ${episode.number}</span>
+                <span>Capítulo ${episode.chapter ?? 1} · Episódio ${episode.number}${episode.durationMinutes ? ` · ${episode.durationMinutes}+ min` : ""}</span>
                 <h2>${escapeHtml(episode.title)}</h2>
                 <p>${escapeHtml(episode.subtitle)}</p>
+                ${episode.preview ? `<p class="episode-preview">${escapeHtml(episode.preview)}</p>` : ""}
                 <footer>
                   <small>${completed ? "Concluído" : locked ? hasDialogue ? "Bloqueado" : "Em breve" : "Disponível"}</small>
                   <button class="btn ${locked ? "ghost" : "primary"}" data-action="start-episode" data-episode-id="${episode.id}" ${locked ? "disabled" : ""}>
@@ -640,7 +649,9 @@ function renderProfile(state, data) {
           <div><dt>Personagem</dt><dd>${escapeHtml(preset.label)}</dd></div>
           <div><dt>AP</dt><dd>${state.stats.ap}/${state.stats.maxAp}</dd></div>
           <div><dt>Moedas</dt><dd>${state.stats.coins}</dd></div>
+          <div><dt>Diamantes</dt><dd>${state.stats.gems}</dd></div>
           <div><dt>CGs</dt><dd>${state.gallery.length}/${data.catalog.cgs.length}</dd></div>
+          <div><dt>Conquistas</dt><dd>${state.achievements?.length ?? 0}/${data.catalog.achievements?.length ?? 0}</dd></div>
         </dl>
         <button class="btn secondary" data-action="go" data-view="character">${icon("user")}<span>Trocar personagem</span></button>
       </section>
@@ -745,6 +756,62 @@ function renderWardrobe(state, data) {
                   ? `<button class="btn ${equipped ? "secondary" : "primary"}" data-action="equip-outfit" data-outfit-id="${outfit.id}" ${equipped ? "disabled" : ""}>${icon("shirt")}<span>${equipped ? "Equipada" : "Equipar"}</span></button>`
                   : `<button class="btn primary" data-action="buy-outfit" data-outfit-id="${outfit.id}">${icon("coin")}<span>${outfit.price ?? 0}</span></button>`}
               </footer>
+            </article>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+}
+
+function renderApShop(state, data) {
+  const packs = data.catalog.apPacks ?? [];
+  return `
+    ${renderPanelHeader(state, "Loja de AP", "Troque diamantes por energia sem encher tudo de graça entre episódios.")}
+    <section class="ap-shop-summary">
+      <div>${icon("bolt")}<span>AP atual</span><strong>${state.stats.ap}/${state.stats.maxAp}</strong></div>
+      <div>${icon("gem")}<span>Diamantes</span><strong>${state.stats.gems}</strong></div>
+      <button class="btn secondary" data-action="go" data-view="minigames">${icon("star")}<span>Ganhar AP nos minigames</span></button>
+    </section>
+    <div class="ap-pack-grid">
+      ${packs
+        .map((pack) => {
+          const disabled = state.stats.ap >= state.stats.maxAp || state.stats.gems < pack.gems;
+          return `
+            <article class="ap-pack-card">
+              <div class="ap-pack-icon">${icon("bolt")}</div>
+              <strong>${escapeHtml(pack.name)}</strong>
+              <p>${escapeHtml(pack.description)}</p>
+              <dl>
+                <div><dt>Recebe</dt><dd>+${pack.ap} AP</dd></div>
+                <div><dt>Custa</dt><dd>${pack.gems} diamante(s)</dd></div>
+              </dl>
+              <button class="btn ${disabled ? "ghost" : "primary"}" data-action="buy-ap-pack" data-pack-id="${pack.id}" ${disabled ? "disabled" : ""}>
+                ${icon(disabled ? "lock" : "gem")}
+                <span>${state.stats.ap >= state.stats.maxAp ? "AP cheio" : state.stats.gems < pack.gems ? "Sem diamantes" : "Comprar"}</span>
+              </button>
+            </article>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+}
+
+function renderAchievements(state, data) {
+  const unlocked = new Set(state.achievements ?? []);
+  return `
+    ${renderPanelHeader(state, "Conquistas", "Objetivos desbloqueados por história, exploração, roupas, loja e minigames.")}
+    <div class="achievement-grid">
+      ${(data.catalog.achievements ?? [])
+        .map((achievement) => {
+          const owned = unlocked.has(achievement.id);
+          return `
+            <article class="achievement-card ${owned ? "unlocked" : "locked"}">
+              <div class="achievement-icon">${icon(owned ? "trophy" : "lock")}</div>
+              <strong>${escapeHtml(owned ? achievement.title : "Conquista oculta")}</strong>
+              <span>${escapeHtml(achievement.category)}</span>
+              <p>${escapeHtml(owned ? achievement.description : achievement.hint)}</p>
             </article>
           `;
         })

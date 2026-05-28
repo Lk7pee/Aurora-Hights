@@ -13,6 +13,7 @@ import {
   setActiveSlot
 } from "./systems/saveSystem.js";
 import {
+  buyApPack,
   buyOutfit,
   chooseOption,
   continueNode,
@@ -151,8 +152,10 @@ function normalizeLoadedSave(save, view = null) {
   loaded.minigames = {
     cooldowns: { ...(loaded.minigames?.cooldowns ?? {}) },
     lastSequences: { ...(loaded.minigames?.lastSequences ?? {}) },
+    wins: loaded.minigames?.wins ?? 0,
     session: null
   };
+  loaded.achievements = loaded.achievements ?? [];
   const targetView = view ?? (loaded.view === "start" || loaded.view === "login" ? "menu" : loaded.view || "menu");
   loaded.view = targetView === "customize" ? "character" : targetView;
   loaded.ui = {
@@ -312,6 +315,9 @@ function handleAction(button) {
       return;
     case "buy-outfit":
       setState((current) => buyOutfit(current, button.dataset.outfitId, data), { sfx: "coin" });
+      return;
+    case "buy-ap-pack":
+      setState((current) => buyApPack(current, button.dataset.packId, data), { sfx: "coin" });
       return;
     case "start-minigame":
       setState((current) => startMiniGame(current, button.dataset.gameId), { sfx: "page" });

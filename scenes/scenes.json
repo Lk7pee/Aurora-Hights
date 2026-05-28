@@ -78,6 +78,39 @@
       "description": "Instrumentos emprestados, cabos enrolados e uma bateria que sempre parece culpada."
     },
     {
+      "id": "archive",
+      "name": "Arquivo Morto",
+      "type": "map-location",
+      "image": "./assets/scenes/archive.png",
+      "dayImage": "./assets/scenes/archive.png",
+      "nightImage": "./assets/scenes/archive.png",
+      "music": "quiet",
+      "mapPosition": { "x": 86, "y": 45 },
+      "description": "Prateleiras estreitas, caixas lacradas e atas que mudam de lugar quando ninguém olha."
+    },
+    {
+      "id": "observatory",
+      "name": "Observatório Antigo",
+      "type": "map-location",
+      "image": "./assets/scenes/observatory.png",
+      "dayImage": "./assets/scenes/observatory.png",
+      "nightImage": "./assets/scenes/observatory.png",
+      "music": "mystery",
+      "mapPosition": { "x": 49, "y": 7 },
+      "description": "A cúpula fechada desde o acidente. Por baixo da poeira, ainda há estrelas projetadas no piso."
+    },
+    {
+      "id": "courtyard",
+      "name": "Pátio das Luzes",
+      "type": "map-location",
+      "image": "./assets/scenes/courtyard.png",
+      "dayImage": "./assets/scenes/courtyard.png",
+      "nightImage": "./assets/scenes/courtyard.png",
+      "music": "school",
+      "mapPosition": { "x": 39, "y": 77 },
+      "description": "O pátio central onde o festival transforma sombras em vitrine e segredos em espetáculo."
+    },
+    {
       "id": "boutique",
       "name": "Boutique Lunar",
       "type": "shop",

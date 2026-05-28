@@ -129,9 +129,11 @@ export function createInitialState(profileName, characterIds) {
     inventory: ["diario-lilas"],
     wardrobe: ["uniforme-aurora"],
     gallery: [],
+    achievements: [],
     minigames: {
       cooldowns: {},
       lastSequences: {},
+      wins: 0,
       session: null
     },
     completedEpisodes: [],

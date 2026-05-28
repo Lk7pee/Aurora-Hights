@@ -43,6 +43,7 @@ Efeitos aceitos:
 - `inventoryAdd`
 - `wardrobeAdd`
 - `galleryAdd`
+- `achievementAdd`
 - `outfit`
 - `completeEpisode`
 

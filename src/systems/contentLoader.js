@@ -4,8 +4,7 @@ const jsonFiles = {
   scenes: "../../scenes/scenes.json",
   catalog: "../../ui/catalog.json",
   routes: "../../routes/routes.json",
-  music: "../../music/manifest.json",
-  episodeOne: "../../dialogues/episode-01.json"
+  music: "../../music/manifest.json"
 };
 
 async function fetchJson(relativePath) {
@@ -17,16 +16,27 @@ async function fetchJson(relativePath) {
   return response.json();
 }
 
+function projectJsonPath(path = "") {
+  return `../../${path.replace(/^\.\//, "")}`;
+}
+
 export async function loadGameData() {
-  const [characters, episodes, scenes, catalog, routes, music, episodeOne] = await Promise.all([
+  const [characters, episodes, scenes, catalog, routes, music] = await Promise.all([
     fetchJson(jsonFiles.characters),
     fetchJson(jsonFiles.episodes),
     fetchJson(jsonFiles.scenes),
     fetchJson(jsonFiles.catalog),
     fetchJson(jsonFiles.routes),
-    fetchJson(jsonFiles.music),
-    fetchJson(jsonFiles.episodeOne)
+    fetchJson(jsonFiles.music)
   ]);
+  const dialogueEntries = await Promise.all(
+    episodes.episodes
+      .filter((episode) => episode.dialogue)
+      .map(async (episode) => {
+        const dialogue = await fetchJson(projectJsonPath(episode.dialogue));
+        return [dialogue.id, dialogue];
+      })
+  );
 
   return {
     characters: characters.characters,
@@ -35,9 +45,7 @@ export async function loadGameData() {
     catalog,
     routes: routes.routes,
     music: music.tracks,
-    dialogues: {
-      [episodeOne.id]: episodeOne
-    }
+    dialogues: Object.fromEntries(dialogueEntries)
   };
 }
 
@@ -54,6 +62,8 @@ export function createDataIndexes(data) {
     inventory: indexById(data.catalog.inventory),
     outfits: indexById(data.catalog.outfits),
     cgs: indexById(data.catalog.cgs),
+    apPacks: indexById(data.catalog.apPacks ?? []),
+    achievements: indexById(data.catalog.achievements ?? []),
     routes: Object.fromEntries(data.routes.map((route) => [route.characterId, route]))
   };
 }

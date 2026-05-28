@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 720" role="img" aria-label="Roupa masculina do jornal">
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#2f2842"/><stop offset="1" stop-color="#161225"/></linearGradient></defs>
+  <rect width="420" height="720" fill="url(#bg)"/>
+  <ellipse cx="210" cy="674" rx="112" ry="18" fill="#07060d" opacity=".38"/>
+  <path d="M139 121c-20 42-23 91-8 147l18 58h122l19-58c15-56 12-105-8-147-29-31-114-31-143 0Z" fill="#241b35"/>
+  <path d="M166 268h88v74h-88z" fill="#d79a7f"/>
+  <path d="M102 646c8-120 24-220 60-304h96c36 84 52 184 60 304H102Z" fill="#302743"/>
+  <path d="M150 352h120l-7 146H157l-7-146Z" fill="#f2f5ff"/>
+  <path d="M166 374h88v121h-88z" fill="#ffd166"/>
+  <path d="M112 352c-36 60-49 112-40 156l50 10 36-176-46 10Zm196 0c36 60 49 112 40 156l-50 10-36-176 46 10Z" fill="#302743"/>
+  <path d="M150 505h120l18 141H132l18-141Z" fill="#252033"/>
+  <circle cx="210" cy="167" r="66" fill="#d99d80"/>
+  <path d="M138 158c7-55 39-88 86-88 43 0 74 29 81 79-37 10-79 4-126-26-9 18-22 29-41 35Z" fill="#2a2345"/>
+  <path d="M176 190c20 12 49 12 68 0" fill="none" stroke="#934b62" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="186" cy="164" r="8" fill="#1e3a5f"/><circle cx="234" cy="164" r="8" fill="#1e3a5f"/>
+  <path d="M132 575h156" stroke="#70d6ff" stroke-width="10" stroke-dasharray="18 14"/>
+</svg>

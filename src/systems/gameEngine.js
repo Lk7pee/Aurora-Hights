@@ -1,5 +1,15 @@
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const ENCOUNTER_AP_COST = 2;
+const ACHIEVEMENT_RULES = [
+  { id: "primeiro-sinal", test: (state) => state.completedEpisodes?.includes("episode-01") },
+  { id: "clube-invisivel", test: (state) => state.completedEpisodes?.includes("episode-02") },
+  { id: "flor-de-vidro", test: (state) => state.completedEpisodes?.includes("episode-03") },
+  { id: "confianca-do-grupo", test: (state) => ["route_focus_noa", "route_focus_theo", "route_focus_ravi", "route_focus_caio", "route_focus_miguel", "route_focus_davi"].some((flag) => state.flags?.[flag]) },
+  { id: "memorias-acesas", test: (state) => (state.gallery?.length ?? 0) >= 4 },
+  { id: "estilista-lunar", test: (state) => (state.wardrobe?.length ?? 0) >= 4 },
+  { id: "energia-extra", test: (state) => Boolean(state.flags?.bought_ap_pack) },
+  { id: "duas-rodadas", test: (state) => (state.minigames?.wins ?? 0) >= 2 }
+];
 export const MINIGAMES = {
   constellation: {
     id: "constellation",
@@ -71,6 +81,25 @@ function addToast(state, message, tone = "info") {
   state.ui.toasts = [toast, ...(state.ui.toasts ?? [])].slice(0, 4);
 }
 
+function unlockAchievements(state, data) {
+  const achievementIndex = data?.indexes?.achievements ?? {};
+  const unlocked = new Set(state.achievements ?? []);
+  let changed = false;
+
+  for (const rule of ACHIEVEMENT_RULES) {
+    const achievement = achievementIndex[rule.id];
+    if (!achievement || unlocked.has(rule.id) || !rule.test(state)) continue;
+    unlocked.add(rule.id);
+    changed = true;
+    addToast(state, `Conquista: ${achievement.title}`, "success");
+  }
+
+  if (changed || !Array.isArray(state.achievements)) {
+    state.achievements = [...unlocked];
+  }
+  return state;
+}
+
 function storyEffectsForState(state, effects = {}) {
   const replayLocksAffinity = state.activeEpisodeId === "episode-01" && state.flags?.replaying_episode_01;
   if (!replayLocksAffinity || !effects.affinity) return effects;
@@ -117,6 +146,7 @@ export function canPlayEpisode(state, episode) {
 export function applyEffects(state, effects = {}, data) {
   const next = cloneState(state);
   if (!effects || Object.keys(effects).length === 0) return next;
+  next.achievements = next.achievements ?? [];
 
   if (Number.isFinite(effects.ap)) {
     const previous = next.stats.ap;
@@ -163,6 +193,13 @@ export function applyEffects(state, effects = {}, data) {
       addToast(next, `CG desbloqueada: ${cg?.title ?? cgId}`, "cg");
     }
   }
+  if (effects.achievementAdd?.length) {
+    next.achievements = uniquePush(next.achievements, effects.achievementAdd);
+    for (const achievementId of effects.achievementAdd) {
+      const achievement = data.indexes.achievements[achievementId];
+      addToast(next, `Conquista: ${achievement?.title ?? achievementId}`, "success");
+    }
+  }
   if (effects.outfit && next.wardrobe.includes(effects.outfit)) {
     next.profile.outfit = effects.outfit;
     addToast(next, "Roupa atualizada", "item");
@@ -178,7 +215,7 @@ export function applyEffects(state, effects = {}, data) {
     addToast(next, "Episódio concluído", "success");
   }
 
-  return next;
+  return unlockAchievements(next, data);
 }
 
 function pushHistory(state, node) {
@@ -298,6 +335,7 @@ export function playMiniGameMove(state, move, data) {
   const previousAp = next.stats.ap;
   let rewarded = applyEffects(next, { ap: game.ap }, data);
   const gained = rewarded.stats.ap - previousAp;
+  rewarded.minigames.wins = (rewarded.minigames.wins ?? 0) + 1;
   rewarded.minigames.cooldowns[game.id] = Date.now() + game.cooldownMs;
   rewarded.minigames.session = {
     ...rewarded.minigames.session,
@@ -305,6 +343,7 @@ export function playMiniGameMove(state, move, data) {
     gained,
     completedAt: Date.now()
   };
+  rewarded = unlockAchievements(rewarded, data);
   addToast(rewarded, gained > 0 ? `${game.name} completo: +${gained} AP` : "Minigame completo: AP já estava cheio", gained > 0 ? "success" : "info");
   return rewarded;
 }
@@ -391,6 +430,33 @@ export function buyOutfit(state, outfitId, data) {
   let next = applyEffects(state, { coins: -outfit.price, wardrobeAdd: [outfitId] }, data);
   next.profile.outfit = outfitId;
   return next;
+}
+
+export function buyApPack(state, packId, data) {
+  const pack = data.indexes.apPacks[packId];
+  if (!pack) return state;
+
+  if (state.stats.ap >= state.stats.maxAp) {
+    const next = cloneState(state);
+    addToast(next, "AP já está cheio", "info");
+    return next;
+  }
+
+  if ((pack.gems ?? 0) > state.stats.gems) {
+    const next = cloneState(state);
+    addToast(next, "Diamantes insuficientes", "warning");
+    return next;
+  }
+
+  return applyEffects(
+    state,
+    {
+      gems: -pack.gems,
+      ap: pack.ap,
+      flags: { bought_ap_pack: true }
+    },
+    data
+  );
 }
 
 export function playEncounter(state, characterId, data) {
