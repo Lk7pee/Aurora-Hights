@@ -4,6 +4,18 @@ const ACTIVE_SLOT_KEY = "aurora-high.active-slot";
 export const slotIds = ["auto", "slot-1", "slot-2", "slot-3"];
 export const DEFAULT_START_AP = 60;
 export const DEFAULT_MAX_AP = 60;
+export const DEFAULT_SETTINGS = {
+  theme: "claro",
+  music: true,
+  sfx: true,
+  muted: false,
+  musicVolume: 0.32,
+  sfxVolume: 0.45,
+  ambienceVolume: 0.2,
+  textSpeed: "normal",
+  textAnimation: true,
+  reducedMotion: false
+};
 export const DEFAULT_PROFILE_APPEARANCE = {
   presentation: "feminino",
   pronouns: "ela/dela",
@@ -154,15 +166,7 @@ export function createInitialState(profileName, characterIds) {
       transition: false,
       mapPulse: null
     },
-    settings: {
-      theme: "claro",
-      music: true,
-      sfx: true,
-      musicVolume: 0.32,
-      sfxVolume: 0.45,
-      textSpeed: "normal",
-      reducedMotion: false
-    },
+    settings: { ...DEFAULT_SETTINGS },
     activeSlot: "auto"
   };
 }

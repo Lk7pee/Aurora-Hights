@@ -26,6 +26,22 @@ const sceneIds = new Set(scenes.scenes.map((scene) => scene.id));
 const cgIds = new Set(catalog.cgs.map((cg) => cg.id));
 const outfitIds = new Set(catalog.outfits.map((outfit) => outfit.id));
 const inventoryIds = new Set(catalog.inventory.map((item) => item.id));
+const achievementIds = new Set((catalog.achievements ?? []).map((achievement) => achievement.id));
+
+function validateEffects(effects = {}, context) {
+  for (const outfitId of effects.wardrobeAdd ?? []) {
+    if (!outfitIds.has(outfitId)) throw new Error(`${context} libera roupa ausente: ${outfitId}`);
+  }
+  for (const itemId of effects.inventoryAdd ?? []) {
+    if (!inventoryIds.has(itemId)) throw new Error(`${context} libera item ausente: ${itemId}`);
+  }
+  for (const cgId of effects.galleryAdd ?? []) {
+    if (!cgIds.has(cgId)) throw new Error(`${context} libera CG ausente: ${cgId}`);
+  }
+  for (const achievementId of effects.achievementAdd ?? []) {
+    if (!achievementIds.has(achievementId)) throw new Error(`${context} libera conquista ausente: ${achievementId}`);
+  }
+}
 
 for (const episode of episodes.episodes) {
   if (!episode.id || !episode.title) throw new Error("Episódio sem id/título.");
@@ -55,12 +71,7 @@ for (const [episodeId, dialogue] of Object.entries(dialogues)) {
     }
     for (const choice of node.choices ?? []) {
       if (!nodeIds.has(choice.next)) throw new Error(`Escolha em ${episodeId}/${id} aponta para ${choice.next}`);
-      for (const outfitId of choice.effects?.wardrobeAdd ?? []) {
-        if (!outfitIds.has(outfitId)) throw new Error(`Escolha em ${episodeId}/${id} libera roupa ausente: ${outfitId}`);
-      }
-      for (const itemId of choice.effects?.inventoryAdd ?? []) {
-        if (!inventoryIds.has(itemId)) throw new Error(`Escolha em ${episodeId}/${id} libera item ausente: ${itemId}`);
-      }
+      validateEffects(choice.effects, `Escolha em ${episodeId}/${id}`);
     }
     for (const event of node.events ?? []) {
       if (!nodeIds.has(event.next)) throw new Error(`Evento de mapa em ${episodeId}/${id} aponta para ${event.next}`);
@@ -70,17 +81,14 @@ for (const [episodeId, dialogue] of Object.entries(dialogues)) {
     if (node.doneNext && !nodeIds.has(node.doneNext)) {
       throw new Error(`Mapa ${episodeId}/${id} tem doneNext ausente: ${node.doneNext}`);
     }
-    for (const outfitId of node.effects?.wardrobeAdd ?? []) {
-      if (!outfitIds.has(outfitId)) throw new Error(`${episodeId}/${id} libera roupa ausente: ${outfitId}`);
-    }
-    for (const itemId of node.effects?.inventoryAdd ?? []) {
-      if (!inventoryIds.has(itemId)) throw new Error(`${episodeId}/${id} libera item ausente: ${itemId}`);
-    }
+    validateEffects(node.effects, `${episodeId}/${id}`);
   }
 }
 
 for (const route of routes.routes) {
   if (!ids.has(route.characterId)) throw new Error(`Rota ausente: ${route.characterId}`);
+  if (route.rewardCg && !cgIds.has(route.rewardCg)) throw new Error(`Rota ${route.characterId} recompensa CG ausente: ${route.rewardCg}`);
+  if (route.rewardItem && !inventoryIds.has(route.rewardItem)) throw new Error(`Rota ${route.characterId} recompensa item ausente: ${route.rewardItem}`);
 }
 
 console.log(`Smoke test OK: ${episodes.episodes.length} episódios, ${Object.keys(dialogues).length} roteiros e referências principais consistentes.`);

@@ -58,6 +58,34 @@
       "description": "Tema calmo para menus pessoais.",
       "chords": [233.08, 293.66, 349.23],
       "tempo": 60
+    },
+    {
+      "id": "romance",
+      "name": "Entre Olhares",
+      "description": "Música romântica suave para cenas de aproximação.",
+      "chords": [261.63, 329.63, 440.0],
+      "tempo": 66
+    },
+    {
+      "id": "exploration",
+      "name": "Mapa em Azul",
+      "description": "Tema neutro de exploração para mapas, pistas e deslocamento.",
+      "chords": [246.94, 311.13, 392.0],
+      "tempo": 78
+    },
+    {
+      "id": "rain",
+      "name": "Chuva no Jardim",
+      "description": "Ambiente de chuva preparado para cenas externas.",
+      "chords": [196.0, 261.63, 329.63],
+      "tempo": 52
+    },
+    {
+      "id": "bell",
+      "name": "Sinal da Aurora",
+      "description": "Tema curto para transições de turno e sinal escolar.",
+      "chords": [523.25, 659.25, 783.99],
+      "tempo": 92
     }
   ]
 }

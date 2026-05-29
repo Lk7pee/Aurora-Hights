@@ -3,6 +3,7 @@ import { collectAssetUrls, preloadImages } from "./systems/preloadSystem.js";
 import {
   createInitialState,
   DEFAULT_PROFILE_APPEARANCE,
+  DEFAULT_SETTINGS,
   DEFAULT_MAX_AP,
   deleteSave,
   getActiveSlot,
@@ -10,6 +11,7 @@ import {
   hasAnySave,
   loadGame,
   saveGame,
+  slotIds,
   setActiveSlot
 } from "./systems/saveSystem.js";
 import {
@@ -38,7 +40,7 @@ let data = null;
 let state = null;
 let autoTimer = null;
 const toastTimers = new Map();
-const TOAST_LIFETIME_MS = 3000;
+const TOAST_LIFETIME_MS = 3600;
 const PLAYER_PRESETS = {
   feminino: { avatar: "Brendap", pronouns: "ela/dela" },
   masculino: { avatar: "Lipep", pronouns: "ele/dele" }
@@ -146,7 +148,7 @@ function normalizeLoadedSave(save, view = null) {
     : "feminino";
   loaded.profile = applyPlayerPreset(loaded.profile, gender);
   loaded.settings = {
-    theme: "claro",
+    ...DEFAULT_SETTINGS,
     ...(loaded.settings ?? {})
   };
   loaded.minigames = {
@@ -159,15 +161,29 @@ function normalizeLoadedSave(save, view = null) {
   const targetView = view ?? (loaded.view === "start" || loaded.view === "login" ? "menu" : loaded.view || "menu");
   loaded.view = targetView === "customize" ? "character" : targetView;
   loaded.ui = {
+    ...(loaded.ui ?? {}),
     previousView: loaded.view,
     auto: false,
     toasts: [],
     loading: false,
     transition: false,
     mapPulse: null,
-    ...(loaded.ui ?? {})
+    galleryPreview: null,
+    confirmReset: false
   };
   return loaded;
+}
+
+function getAmbienceForState(currentState) {
+  if (!currentState || currentState.view === "start") return "school-night";
+  if (["menu", "episodes", "gallery", "achievements", "settings", "credits"].includes(currentState.view)) return "school-hall";
+
+  const sceneId = currentState.currentBackground;
+  if (sceneId === "terrace" || sceneId === "observatory") return "wind";
+  if (sceneId === "library" || sceneId === "archive") return "library";
+  if (sceneId === "garden" || sceneId === "courtyard") return "rain";
+  if (sceneId === "gate" || sceneId === "corridor" || sceneId === "atrium") return "school-hall";
+  return null;
 }
 
 function syncToastTimers() {
@@ -200,18 +216,25 @@ function render() {
   const trackId = state?.currentMusic ?? (state?.view === "menu" ? "room" : "morning");
   const track = data?.indexes?.tracks?.[trackId];
   if (track) audio.playMusic(track);
+  audio.playAmbience(getAmbienceForState(state));
 
   clearTimeout(autoTimer);
   const node = data && state ? getCurrentNode(state, data) : null;
   if (state?.ui?.auto && node?.type === "dialogue") {
+    const autoDelay = {
+      slow: 3400,
+      normal: 2200,
+      fast: 1300
+    }[state.settings.textSpeed] ?? 2200;
     autoTimer = window.setTimeout(() => {
       setState((current) => continueNode(current, data), { sfx: "page" });
-    }, state.settings.textSpeed === "fast" ? 1300 : 2200);
+    }, autoDelay);
   }
   syncToastTimers();
 }
 
 function updateSetting(input) {
+  audio.unlock(state?.settings);
   const key = input.dataset.setting;
   const value = input.type === "checkbox" ? input.checked : input.type === "range" ? Number(input.value) : input.value;
   setState((current) => ({
@@ -261,7 +284,7 @@ function handleAction(button) {
     case "new-game":
       setState(() => {
         const next = createInitialState("Brenda", data.characters.map((character) => character.id));
-        next.settings.theme = state.settings.theme;
+        next.settings = { ...DEFAULT_SETTINGS, ...(state.settings ?? {}) };
         next.view = "login";
         return next;
       }, { persist: false, sfx: "page" });
@@ -273,7 +296,7 @@ function handleAction(button) {
       const save = findBestSave();
       if (!save) return;
       const loaded = normalizeLoadedSave(save);
-      loaded.settings.theme = state.settings.theme;
+      loaded.settings = { ...DEFAULT_SETTINGS, ...(loaded.settings ?? {}), theme: state.settings.theme };
       setState(loaded, { sfx: "success" });
       return;
     }
@@ -285,6 +308,63 @@ function handleAction(button) {
     }
     case "go":
       goToView(button.dataset.view || "menu");
+      return;
+    case "open-cg":
+      setState((current) => ({
+        ...current,
+        ui: {
+          ...current.ui,
+          galleryPreview: button.dataset.cgId
+        }
+      }), { persist: false, sfx: "page" });
+      return;
+    case "close-modal":
+      setState((current) => ({
+        ...current,
+        ui: {
+          ...current.ui,
+          galleryPreview: null,
+          confirmReset: false
+        }
+      }), { persist: false, sfx: "click" });
+      return;
+    case "toggle-fullscreen":
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.();
+      } else {
+        document.exitFullscreen?.();
+      }
+      setState((current) => addToast(current, "Modo tela cheia alternado", "info"), { persist: false, sfx: "menu" });
+      return;
+    case "confirm-reset-progress":
+      setState((current) => ({
+        ...current,
+        ui: {
+          ...current.ui,
+          confirmReset: true
+        }
+      }), { persist: false, sfx: "warning" });
+      return;
+    case "cancel-reset-progress":
+      setState((current) => ({
+        ...current,
+        ui: {
+          ...current.ui,
+          confirmReset: false
+        }
+      }), { persist: false, sfx: "click" });
+      return;
+    case "reset-progress":
+      for (const slotId of slotIds) deleteSave(slotId);
+      setActiveSlot("auto");
+      setState((current) => {
+        const next = createInitialState(current.profile?.name ?? "Brenda", data.characters.map((character) => character.id));
+        next.settings = { ...DEFAULT_SETTINGS, ...(current.settings ?? {}) };
+        next.profile = applyPlayerPreset(next.profile, current.profile?.gender ?? "feminino");
+        next.view = "start";
+        next.ui.toasts = [];
+        return addToast(next, "Progresso local reiniciado", "success");
+      }, { persist: false, sfx: "success" });
       return;
     case "quick-save":
       setState((current) => addToast(current, "Progresso salvo no slot automático", "success"), { sfx: "success" });
@@ -418,7 +498,7 @@ root.addEventListener("submit", (event) => {
   const formData = new FormData(form);
   const name = String(formData.get("profileName") || "Brenda");
   const next = createInitialState(name, data.characters.map((character) => character.id));
-  next.settings.theme = state.settings.theme;
+  next.settings = { ...DEFAULT_SETTINGS, ...(state.settings ?? {}) };
   next.view = "character";
   next.activeSlot = "auto";
   setActiveSlot("auto");

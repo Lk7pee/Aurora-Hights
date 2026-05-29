@@ -312,7 +312,7 @@
       "music": "quiet",
       "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
       "text": "Obrigado. A maioria quer a conclusão antes da prova. A ata não acusa Lavínia; acusa quem ensinou Lavínia a chamar medo de responsabilidade.",
-      "next": "ep02_map_round"
+      "next": "ep02_cg_archive"
     },
     "ep02_archive_photo": {
       "type": "dialogue",
@@ -322,7 +322,7 @@
       "music": "quiet",
       "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
       "text": "Boa. Se o papel sumir, a foto vira testemunha. E, pela primeira vez na minha vida, prometo não usar manchete dramática antes de checar a fonte.",
-      "next": "ep02_map_round"
+      "next": "ep02_cg_archive"
     },
     "ep02_archive_question": {
       "type": "dialogue",
@@ -332,6 +332,19 @@
       "music": "quiet",
       "characters": [{ "id": "caio", "position": "right", "expression": "preocupado" }],
       "text": "O nome raspado começa com Vilar, mas a assinatura não parece de Lavínia. Alguém colocou uma coroa pesada demais na cabeça dela.",
+      "next": "ep02_cg_archive"
+    },
+    "ep02_cg_archive": {
+      "type": "cg",
+      "background": "archive",
+      "music": "quiet",
+      "cg": "archive-minutes",
+      "title": "Memória desbloqueada",
+      "text": "A ata rasurada transforma o arquivo morto em testemunha: linhas apagadas, fita azul e uma verdade que alguém tentou ensinar o papel a esquecer.",
+      "effects": {
+        "galleryAdd": ["archive-minutes"],
+        "flags": { "unlocked_archive_minutes_memory": true }
+      },
       "next": "ep02_map_round"
     },
     "ep02_archive_return": {
@@ -480,7 +493,7 @@
       "music": "band",
       "characters": [{ "id": "ravi", "position": "right", "expression": "ferido" }],
       "text": "Eu odeio quando alguém percebe o limite antes de eu transformar em piada. Mas... obrigado. O áudio diz: 'não foi acidente'.",
-      "next": "ep02_map_round"
+      "next": "ep02_cg_demo"
     },
     "ep02_music_listen": {
       "type": "dialogue",
@@ -490,7 +503,7 @@
       "music": "band",
       "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
       "text": "Então fica. Se a voz quebrar, finge que foi distorção. O trecho diz que alguém trancou a cúpula por fora.",
-      "next": "ep02_map_round"
+      "next": "ep02_cg_demo"
     },
     "ep02_music_push": {
       "type": "dialogue",
@@ -500,6 +513,19 @@
       "music": "band",
       "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
       "text": "Baixo golpe. Funcionou. Minha coragem quer reclamar com a gerência, mas antes ela informa: a demo prova que o clube estava reunido na noite da queda.",
+      "next": "ep02_cg_demo"
+    },
+    "ep02_cg_demo": {
+      "type": "cg",
+      "background": "music-room",
+      "music": "band",
+      "cg": "demo-tape",
+      "title": "Memória desbloqueada",
+      "text": "A demo riscada deixa de ser ruído: fone, fita, luz azul e a prova de que o Clube Aurora ainda ecoa no que tentaram apagar.",
+      "effects": {
+        "galleryAdd": ["demo-tape"],
+        "flags": { "unlocked_demo_tape_memory": true }
+      },
       "next": "ep02_map_round"
     },
     "ep02_music_return": {
@@ -687,6 +713,16 @@
       "timeOfDay": "night",
       "music": "mystery",
       "text": "Quando todas as pistas se encontram, a porta do observatório deixa de ser lugar. Vira decisão.",
+      "variants": [
+        {
+          "when": { "flags": ["ep02_called_davi"] },
+          "text": "Quando todas as pistas se encontram, Davi já está com a câmera pronta porque você confiou nele desde a primeira mensagem. A porta do observatório deixa de ser lugar. Vira decisão."
+        },
+        {
+          "when": { "flags": ["ep02_kept_fear_private"] },
+          "text": "Quando todas as pistas se encontram, a decisão de guardar o medo para você mesma pesa junto com a chave. A porta do observatório deixa de ser lugar. Vira decisão."
+        }
+      ],
       "next": "ep02_group_01"
     },
     "ep02_group_01": {

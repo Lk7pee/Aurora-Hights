@@ -48,11 +48,14 @@ https://SEU-USUARIO.github.io/aurora-high-ecos-no-jardim/
 
 ## Arquitetura
 
-- `src/systems`: save, engine, preload, áudio e carregamento.
+- `src/systems`: save, engine, preload, áudio, feedback de escolhas e carregamento.
 - `src/ui`: renderização componentizada.
 - `assets`: imagens finais do jogo, incluindo cenários, roupas, CGs e UI.
 - `save`: documentação do formato local.
 - `systems/ASSET_GENERATION_RULES.md`: regra fixa para gerar cenários, roupas, personagens e CGs com base nos presaves.
 
-Os diálogos são editáveis em JSON e aceitam personagem, expressão, fundo, música, escolhas, efeitos, flags, troca de roupa e desbloqueio de CG.
-# Aurora-Hights
+Os diálogos são editáveis em JSON e aceitam personagem, expressão, fundo, música, escolhas, efeitos, flags, variações condicionais, troca de roupa e desbloqueio de CG.
+
+## Nome oficial
+
+Use sempre **Aurora High: Ecos no Jardim** em telas, documentação e materiais de publicação.

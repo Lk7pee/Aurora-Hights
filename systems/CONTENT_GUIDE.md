@@ -47,6 +47,19 @@ Efeitos aceitos:
 - `outfit`
 - `completeEpisode`
 
+Para fazer escolhas antigas influenciarem falas futuras, use `variants` no node:
+
+```json
+"variants": [
+  {
+    "when": { "flags": ["trusted_davi"] },
+    "text": "Davi percebe que você confiou nele antes e baixa a voz antes de contar a pista."
+  }
+]
+```
+
+Cada episódio jogável deve ter pelo menos 3 CGs desbloqueáveis em `ui/catalog.json` e no roteiro.
+
 Nodes aceitos:
 
 - `dialogue`

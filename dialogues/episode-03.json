@@ -369,7 +369,7 @@
       "music": "school",
       "characters": [{ "id": "theo", "position": "right", "expression": "encabulado" }],
       "text": "Eu deveria dizer que está tudo sob controle. Mas com você perto, parece mais honesto dizer: talvez fique.",
-      "next": "ep03_map_round"
+      "next": "ep03_cg_false_lights"
     },
     "ep03_courtyard_team": {
       "type": "dialogue",
@@ -379,7 +379,7 @@
       "music": "school",
       "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
       "text": "Certo. Pânico estraga festival e investigação. Vou chamar de revisão técnica, que é uma mentira socialmente aceita.",
-      "next": "ep03_map_round"
+      "next": "ep03_cg_false_lights"
     },
     "ep03_courtyard_trap": {
       "type": "dialogue",
@@ -389,6 +389,20 @@
       "music": "school",
       "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
       "text": "Isso é arriscado. Também é exatamente o tipo de risco que talvez impeça alguém de mentir no microfone.",
+      "next": "ep03_cg_false_lights"
+    },
+    "ep03_cg_false_lights": {
+      "type": "cg",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "false-lights",
+      "title": "Memória desbloqueada",
+      "text": "As luzes falsas revelam o truque no reflexo: beleza suficiente para distrair, azul suficiente para apontar o caminho.",
+      "effects": {
+        "galleryAdd": ["false-lights"],
+        "flags": { "unlocked_false_lights_memory": true }
+      },
       "next": "ep03_map_round"
     },
     "ep03_courtyard_return": {
@@ -452,7 +466,7 @@
       "music": "quiet",
       "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
       "text": "Você escolheu a pessoa antes do caso. Isso é uma falha metodológica que eu gostaria de aprender.",
-      "next": "ep03_map_round"
+      "next": "ep03_cg_letters"
     },
     "ep03_library_timeline": {
       "type": "dialogue",
@@ -462,7 +476,7 @@
       "music": "quiet",
       "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
       "text": "Linha do tempo concluída: a queda, o apagão e a primeira votação foram preparados com antecedência. Medo raramente é tão organizado sozinho.",
-      "next": "ep03_map_round"
+      "next": "ep03_cg_letters"
     },
     "ep03_library_protect": {
       "type": "dialogue",
@@ -472,6 +486,20 @@
       "music": "quiet",
       "characters": [{ "id": "caio", "position": "right", "expression": "preocupado" }],
       "text": "Sim. Você. O que é inconveniente, porque proteção emocional não entra direito em planilhas.",
+      "next": "ep03_cg_letters"
+    },
+    "ep03_cg_letters": {
+      "type": "cg",
+      "background": "library",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "cg": "helena-letters",
+      "title": "Memória desbloqueada",
+      "text": "As cartas de Helena não pedem vingança. Pedem que alguém leia devagar o bastante para lembrar que ela existiu antes do acidente.",
+      "effects": {
+        "galleryAdd": ["helena-letters"],
+        "flags": { "unlocked_helena_letters_memory": true }
+      },
       "next": "ep03_map_round"
     },
     "ep03_library_return": {
@@ -661,6 +689,20 @@
       "timeOfDay": "night",
       "music": "mystery",
       "text": "Às oito e doze, as luzes falsas falham. O pátio inteiro prende a respiração no mesmo segundo.",
+      "variants": [
+        {
+          "when": { "flags": ["ep03_checked_wires_with_theo"] },
+          "text": "Às oito e doze, as luzes falsas falham exatamente onde você e Theo tinham previsto. O pátio inteiro prende a respiração no mesmo segundo."
+        },
+        {
+          "when": { "flags": ["ep03_read_helena_letters"] },
+          "text": "Às oito e doze, as luzes falsas falham. As cartas de Helena fazem o pátio parecer menos palco e mais promessa."
+        },
+        {
+          "when": { "flags": ["ep03_planned_light_trap"] },
+          "text": "Às oito e doze, as luzes falsas falham dentro da armadilha que você aceitou montar. O pátio inteiro prende a respiração no mesmo segundo."
+        }
+      ],
       "next": "ep03_stage_01"
     },
     "ep03_stage_01": {

@@ -11,6 +11,9 @@ import {
 } from "../systems/gameEngine.js";
 import { DEFAULT_PROFILE_APPEARANCE } from "../systems/saveSystem.js";
 
+const GAME_TITLE = "Aurora High: Ecos no Jardim";
+const DEMO_NOTICE = "Esta é uma versão em desenvolvimento de Aurora High: Ecos no Jardim. Novos episódios, rotas e segredos serão adicionados em futuras atualizações.";
+
 const viewTitles = {
   menu: "Menu principal",
   episodes: "Episódios",
@@ -21,6 +24,7 @@ const viewTitles = {
   achievements: "Conquistas",
   gallery: "Galeria",
   settings: "Configurações",
+  credits: "Créditos",
   saves: "Saves",
   encounters: "Encontros",
   character: "Personagem",
@@ -214,7 +218,7 @@ function percent(value, max) {
   return Math.max(0, Math.min(100, Math.round((value / max) * 100)));
 }
 
-const ASSET_VERSION = "chapter-one-20260527c";
+const ASSET_VERSION = "aurora-polish-20260528a";
 
 function assetUrl(src = "") {
   if (!src || /^(?:https?:|data:|blob:)/.test(src) || src.includes("?")) return src;
@@ -313,9 +317,65 @@ function adaptStoryText(value, state, node = null) {
   return text;
 }
 
+function conditionMatches(condition = {}, state = {}) {
+  const flags = condition.flags ?? [];
+  const missingFlags = condition.missingFlags ?? [];
+  const inventory = condition.inventory ?? [];
+  const affinity = condition.affinity ?? {};
+
+  return flags.every((flag) => state.flags?.[flag])
+    && missingFlags.every((flag) => !state.flags?.[flag])
+    && inventory.every((itemId) => state.inventory?.includes(itemId))
+    && Object.entries(affinity).every(([characterId, value]) => (state.affinity?.[characterId] ?? 0) >= value);
+}
+
+function resolveNodeText(node, state) {
+  const variant = (node?.variants ?? []).find((entry) => conditionMatches(entry.when, state));
+  return variant?.text ?? node?.text ?? "";
+}
+
+function renderStoryText(value, state, node = null) {
+  const importantTerms = [
+    "fita azul",
+    "observatório",
+    "Clube Aurora",
+    "conselho",
+    "memória",
+    "Helena",
+    "Lavínia",
+    "flor de vidro"
+  ];
+  let text = escapeHtml(adaptStoryText(value, state, node));
+  for (const term of importantTerms) {
+    const escapedTerm = escapeHtml(term);
+    const pattern = new RegExp(`(${escapedTerm})`, "gi");
+    text = text.replace(pattern, "<mark>$1</mark>");
+  }
+  return text;
+}
+
+function getNarrativeTone(node, state) {
+  const text = adaptStoryText(resolveNodeText(node, state), state, node).toLowerCase();
+  if (/fita azul|observat[oó]rio|mem[oó]ria|helena|lav[ií]nia|clube aurora/.test(text)) return "mystery";
+  if (/m[aã]o encosta|perto|cora[cç][aã]o|sorr/.test(text)) return "romance";
+  return "neutral";
+}
+
+function renderMysteryCue(node, state) {
+  const text = adaptStoryText(resolveNodeText(node, state), state, node).toLowerCase();
+  let cue = "";
+  if (text.includes("fita azul")) cue = "A fita azul parece responder ao que foi dito.";
+  else if (text.includes("observatório")) cue = "O observatório pesa no silêncio da escola.";
+  else if (text.includes("helena")) cue = "O nome de Helena deixa a cena mais fria.";
+  else if (text.includes("memória")) cue = "Uma memória antiga tenta atravessar a superfície.";
+  else if (text.includes("conselho")) cue = "O conselho ainda está presente, mesmo quando ninguém olha.";
+  if (!cue) return "";
+  return `<div class="mystery-cue">${icon("star")}<span>${escapeHtml(cue)}</span></div>`;
+}
+
 function appFrame(content, state, { showToasts = true } = {}) {
   return `
-    <main class="app-shell theme-${escapeHtml(state.settings?.theme ?? "claro")} ${state.settings?.reducedMotion ? "reduce-motion" : ""}">
+    <main class="app-shell theme-${escapeHtml(state.settings?.theme ?? "claro")} ${state.settings?.reducedMotion ? "reduce-motion" : ""} ${state.settings?.textAnimation === false ? "no-text-animation" : "text-animation"} screen-${escapeHtml(state.view ?? "boot")}">
       ${content}
       ${showToasts ? renderToasts(state) : ""}
       <div class="transition-veil" aria-hidden="true"></div>
@@ -349,7 +409,8 @@ function renderToasts(state) {
         .map(
           (toast) => `
             <button class="toast ${toast.tone}" data-action="dismiss-toast" data-toast-id="${toast.id}">
-              ${escapeHtml(toast.message)}
+              ${icon(toast.tone === "warning" ? "lock" : toast.tone === "success" ? "check" : toast.tone === "cg" ? "image" : toast.tone === "affinity" ? "heart" : "star")}
+              <span>${escapeHtml(toast.message)}</span>
             </button>
           `
         )
@@ -369,7 +430,7 @@ function renderHud(state, data, compact = false) {
           <small>${escapeHtml(outfit?.name ?? "Uniforme")}</small>
         </span>
       </button>
-      <div class="hud-stat ap-stat" title="Action Points">
+      <div class="hud-stat ap-stat" title="AP: energia usada para investigar locais e escolhas importantes">
         ${icon("bolt")}
         <span>AP</span>
         <strong>${state.stats.ap}/${state.stats.maxAp}</strong>
@@ -389,9 +450,10 @@ function renderHud(state, data, compact = false) {
 }
 
 function renderPanelHeader(state, title, subtitle = "") {
+  const cameFromStart = state.ui?.previousView === "start";
   return `
     <header class="panel-header">
-      <button class="icon-btn" data-action="go" data-view="menu" title="Voltar ao menu" aria-label="Voltar ao menu">
+      <button class="icon-btn" data-action="${cameFromStart ? "back-start" : "go"}" ${cameFromStart ? "" : 'data-view="menu"'} title="Voltar ao menu" aria-label="Voltar ao menu">
         ${icon("back")}
       </button>
       <div>
@@ -445,27 +507,37 @@ export function renderApp(state, data, runtime = {}) {
 }
 
 function renderStart(state, runtime) {
+  const hasSave = Boolean(runtime.hasSave);
   return appFrame(
     `
       <section class="start-screen">
         <div class="start-backdrop"></div>
         <div class="start-content">
-          <img src="./assets/ui/logo.svg" alt="Aurora High: Ecos no Jardim" class="title-logo" />
-          <div class="start-actions">
-            ${actionButton("continue-save", "Continuar", "play", "primary", runtime.hasSave ? "" : "disabled")}
-            ${actionButton("new-game", "Novo jogo", "star", "secondary")}
-            ${actionButton("go-start-load", "Carregar", "save", "ghost", runtime.hasSave ? "" : "disabled")}
+          <span class="demo-pill">Demo em desenvolvimento</span>
+          <img src="./assets/ui/logo.svg" alt="${GAME_TITLE}" class="title-logo" />
+          <h1>${GAME_TITLE}</h1>
+          <p class="start-tagline">Na Aurora High, algumas memórias foram apagadas. Outras estão esperando você encontrar.</p>
+          <div class="start-actions primary-actions">
+            ${actionButton("new-game", "Novo Jogo", "star", "primary")}
+            ${actionButton("continue-save", "Continuar", "play", "secondary", hasSave ? "" : "disabled")}
+          </div>
+          <div class="start-actions secondary-actions">
+            ${actionButton("go", "Galeria", "image", "ghost", 'data-view="gallery"')}
+            ${actionButton("go", "Conquistas", "trophy", "ghost", 'data-view="achievements"')}
+            ${actionButton("go", "Créditos", "book", "ghost", 'data-view="credits"')}
+            ${actionButton("go", "Configurações", "settings", "ghost", 'data-view="settings"')}
           </div>
           <div class="start-theme" aria-label="Tema da interface">
             <span>Interface</span>
             <button class="${state.settings?.theme !== "escuro" ? "active" : ""}" data-action="set-theme" data-theme="claro">Claro</button>
             <button class="${state.settings?.theme === "escuro" ? "active" : ""}" data-action="set-theme" data-theme="escuro">Escuro</button>
           </div>
+          <p class="demo-copy">${DEMO_NOTICE}</p>
         </div>
         <div class="start-footer">
-          <span>Visual novel escolar original</span>
-          <span>Save local</span>
-          <span>Web estático</span>
+          <span>Visual novel escolar misteriosa</span>
+          <span>Save local preservado</span>
+          <span>Capítulo 1 em expansão</span>
         </div>
       </section>
     `,
@@ -509,8 +581,9 @@ function renderMainNav(activeView) {
     ["achievements", "Conquistas", "trophy"],
     ["minigames", "Minigames", "star"],
     ["gallery", "CGs", "image"],
+    ["credits", "Créditos", "book"],
     ["saves", "Saves", "save"],
-    ["settings", "Opções", "settings"]
+    ["settings", "Configurações", "settings"]
   ];
 
   return `
@@ -540,10 +613,35 @@ function renderView(view, state, data, runtime) {
   if (view === "achievements") return renderAchievements(state, data);
   if (view === "minigames") return renderMinigames(state);
   if (view === "gallery") return renderGallery(state, data);
+  if (view === "credits") return renderCredits(state, data);
   if (view === "settings") return renderSettings(state);
   if (view === "saves") return renderSaves(state, runtime.saves ?? {});
   if (view === "encounters") return renderEncounters(state, data);
   return renderMainMenu(state, data);
+}
+
+function renderPhoneTips(state) {
+  const tips = [
+    ["AP", "AP é sua energia para investigar locais, abrir cenas de mapa e insistir em respostas difíceis."],
+    ["Escolhas", "Algumas respostas mudam afinidade, pistas e lembranças que podem voltar depois."],
+    ["Itens", "Pistas no inventário podem destravar cenas, CGs e rotas conforme a história avançar."],
+    ["Atalhos", "Mapa, roupas, galeria e conquistas ficam no menu superior sempre que você não estiver em uma cena."]
+  ];
+
+  return `
+    <section class="phone-tips" aria-label="Mensagens no celular">
+      <header>
+        ${icon("message")}
+        <div>
+          <strong>Celular</strong>
+          <span>${escapeHtml(state.profile.name)}, novas notas de orientação</span>
+        </div>
+      </header>
+      <div>
+        ${tips.map(([title, text]) => `<article><strong>${escapeHtml(title)}</strong><p>${escapeHtml(text)}</p></article>`).join("")}
+      </div>
+    </section>
+  `;
 }
 
 function renderMainMenu(state, data) {
@@ -557,9 +655,9 @@ function renderMainMenu(state, data) {
     <div class="dashboard">
       <section class="dashboard-hero">
         <div>
-          <span class="eyebrow">Aurora High</span>
+          <span class="eyebrow">${GAME_TITLE}</span>
           <h1>${escapeHtml(state.profile.name)}, seu mapa está piscando.</h1>
-          <p>Continue o episódio, visite o mapa, ajuste sua rota e desbloqueie memórias especiais.</p>
+          <p>A fita azul já entrou na sua história. Agora cada pista, escolha e rota pode aproximar você da verdade que a Aurora High tentou apagar.</p>
           <div class="hero-actions">
             ${actionButton("go", hasActiveScene ? "Continuar cena" : "Jogar episódio", "play", "primary", `data-view="${hasActiveScene ? "game" : "episodes"}"`)}
             ${actionButton("go", "Ver encontros", "heart", "secondary", 'data-view="encounters"')}
@@ -567,6 +665,7 @@ function renderMainMenu(state, data) {
         </div>
         ${assetImg("./assets/cgs/blue-ribbon-scene.png")}
       </section>
+      ${renderPhoneTips(state)}
       <section class="quick-grid">
         <button class="quick-card" data-action="go" data-view="episodes">${icon("book")}<strong>Episódios</strong><span>${completed} concluído(s)</span></button>
         <button class="quick-card" data-action="go" data-view="wardrobe">${icon("shirt")}<strong>Roupas</strong><span>${state.wardrobe.length} liberada(s)</span></button>
@@ -604,6 +703,10 @@ function renderMiniAffinity(character, state) {
 function renderEpisodes(state, data) {
   return `
     ${renderPanelHeader(state, "Episódios", "Escolha um capítulo liberado e acompanhe sua progressão.")}
+    <section class="demo-note">
+      ${icon("star")}
+      <p>${DEMO_NOTICE}</p>
+    </section>
     <div class="episode-grid">
       ${data.episodes
         .map((episode) => {
@@ -800,8 +903,16 @@ function renderApShop(state, data) {
 
 function renderAchievements(state, data) {
   const unlocked = new Set(state.achievements ?? []);
+  const total = data.catalog.achievements?.length ?? 0;
   return `
     ${renderPanelHeader(state, "Conquistas", "Objetivos desbloqueados por história, exploração, roupas, loja e minigames.")}
+    <section class="achievement-summary">
+      ${icon("trophy")}
+      <div>
+        <strong>${unlocked.size}/${total}</strong>
+        <span>conquistas desbloqueadas</span>
+      </div>
+    </section>
     <div class="achievement-grid">
       ${(data.catalog.achievements ?? [])
         .map((achievement) => {
@@ -821,17 +932,24 @@ function renderAchievements(state, data) {
 }
 
 function renderGallery(state, data) {
+  const preview = data.indexes.cgs[state.ui?.galleryPreview];
+  const previewUnlocked = preview && state.gallery.includes(preview.id);
   return `
     ${renderPanelHeader(state, "Galeria de CGs", "Ilustrações especiais desbloqueadas por escolhas e encontros.")}
+    <section class="gallery-summary">
+      ${icon("image")}
+      <strong>${state.gallery.length}/${data.catalog.cgs.length}</strong>
+      <span>memórias registradas</span>
+    </section>
     <div class="gallery-grid">
       ${data.catalog.cgs
         .map((cg) => {
           const unlocked = state.gallery.includes(cg.id);
           return `
             <article class="cg-card ${unlocked ? "unlocked" : "locked"}">
-              <div class="cg-frame">
+              <button class="cg-frame" data-action="open-cg" data-cg-id="${escapeHtml(cg.id)}" ${unlocked ? "" : "disabled"}>
                 ${unlocked ? assetImg(cg.image, cg.title) : `<div>${icon("lock")}<span>Bloqueada</span></div>`}
-              </div>
+              </button>
               <strong>${escapeHtml(unlocked ? cg.title : "Memória oculta")}</strong>
               <p>${escapeHtml(unlocked ? `Episódio: ${cg.episode}` : cg.hint)}</p>
             </article>
@@ -839,6 +957,57 @@ function renderGallery(state, data) {
         })
         .join("")}
     </div>
+    ${previewUnlocked ? `
+      <section class="modal-backdrop" role="dialog" aria-modal="true" aria-label="${escapeHtml(preview.title)}">
+        <div class="cg-modal">
+          <button class="icon-btn modal-close" data-action="close-modal" aria-label="Fechar">${icon("x")}</button>
+          ${assetImg(preview.image, preview.title)}
+          <footer>
+            <strong>${escapeHtml(preview.title)}</strong>
+            <span>${escapeHtml(preview.episode)}</span>
+          </footer>
+        </div>
+      </section>
+    ` : ""}
+  `;
+}
+
+function renderCredits(state, data) {
+  return `
+    ${renderPanelHeader(state, "Créditos", "Informações da versão atual da demo.")}
+    <section class="credits-screen">
+      <div class="credits-hero">
+        <img src="./assets/ui/logo.svg" alt="${GAME_TITLE}" />
+        <h1>${GAME_TITLE}</h1>
+        <p>${DEMO_NOTICE}</p>
+      </div>
+      <div class="credits-grid">
+        <article>
+          ${icon("star")}
+          <strong>Criação e direção</strong>
+          <p>Projeto local de visual novel, roteiro, sistemas e interface para a demo de Aurora High.</p>
+        </article>
+        <article>
+          ${icon("image")}
+          <strong>Arte e presaves</strong>
+          <p>Assets visuais gerados e organizados a partir dos presaves aprovados do projeto.</p>
+        </article>
+        <article>
+          ${icon("volume")}
+          <strong>Áudio</strong>
+          <p>Sistema Web Audio sintético preparado para música, ambiente e efeitos de interface.</p>
+        </article>
+        <article>
+          ${icon("book")}
+          <strong>Versão</strong>
+          <p>Demo local v0.1.0 · Capítulo 1 em desenvolvimento · ${data.episodes.filter((episode) => data.dialogues[episode.id]).length} episódio(s) jogável(is).</p>
+        </article>
+      </div>
+      <div class="credits-actions">
+        ${actionButton("back-start", "Voltar ao menu inicial", "home", "primary")}
+        ${actionButton("go", "Configurações", "settings", "ghost", 'data-view="settings"')}
+      </div>
+    </section>
   `;
 }
 
@@ -935,36 +1104,67 @@ function renderMiniGameSession(state, session) {
 }
 
 function renderSettings(state) {
+  const settings = state.settings ?? {};
   return `
-    ${renderPanelHeader(state, "Configurações", "Preferências locais de interface, áudio, leitura e movimento.")}
-    <div class="settings-list">
-      <label class="setting-row">
-        <span>${icon("star")} Tema da interface</span>
-        <select data-setting="theme">
-          <option value="claro" ${state.settings.theme !== "escuro" ? "selected" : ""}>Claro</option>
-          <option value="escuro" ${state.settings.theme === "escuro" ? "selected" : ""}>Escuro</option>
-        </select>
-      </label>
-      <label class="setting-row">
-        <span>${icon(state.settings.music ? "volume" : "mute")} Música ambiente</span>
-        <input type="checkbox" data-setting="music" ${state.settings.music ? "checked" : ""} />
-      </label>
-      <label class="setting-row">
-        <span>${icon("star")} Efeitos sonoros</span>
-        <input type="checkbox" data-setting="sfx" ${state.settings.sfx ? "checked" : ""} />
-      </label>
-      <label class="setting-row">
-        <span>Volume da música</span>
-        <input type="range" min="0" max="1" step="0.05" data-setting="musicVolume" value="${state.settings.musicVolume}" />
-      </label>
-      <label class="setting-row">
-        <span>Volume dos efeitos</span>
-        <input type="range" min="0" max="1" step="0.05" data-setting="sfxVolume" value="${state.settings.sfxVolume}" />
-      </label>
-      <label class="setting-row">
-        <span>Reduzir animações</span>
-        <input type="checkbox" data-setting="reducedMotion" ${state.settings.reducedMotion ? "checked" : ""} />
-      </label>
+    ${renderPanelHeader(state, "Configurações", "Preferências locais de interface, áudio, leitura e progresso.")}
+    <div class="settings-layout">
+      <section class="settings-list">
+        <label class="setting-row">
+          <span>${icon("star")} Tema da interface</span>
+          <select data-setting="theme">
+            <option value="claro" ${settings.theme !== "escuro" ? "selected" : ""}>Claro</option>
+            <option value="escuro" ${settings.theme === "escuro" ? "selected" : ""}>Escuro</option>
+          </select>
+        </label>
+        <label class="setting-row">
+          <span>${icon(settings.muted ? "mute" : "volume")} Mutar tudo</span>
+          <input type="checkbox" data-setting="muted" ${settings.muted ? "checked" : ""} />
+        </label>
+        <label class="setting-row">
+          <span>${icon(settings.music ? "volume" : "mute")} Música e ambiente</span>
+          <input type="checkbox" data-setting="music" ${settings.music ? "checked" : ""} />
+        </label>
+        <label class="setting-row">
+          <span>${icon("star")} Efeitos sonoros</span>
+          <input type="checkbox" data-setting="sfx" ${settings.sfx ? "checked" : ""} />
+        </label>
+        <label class="setting-row">
+          <span>Volume da música</span>
+          <input type="range" min="0" max="1" step="0.05" data-setting="musicVolume" value="${settings.musicVolume ?? 0.32}" />
+        </label>
+        <label class="setting-row">
+          <span>Volume dos efeitos</span>
+          <input type="range" min="0" max="1" step="0.05" data-setting="sfxVolume" value="${settings.sfxVolume ?? 0.45}" />
+        </label>
+        <label class="setting-row">
+          <span>Velocidade do texto</span>
+          <select data-setting="textSpeed">
+            <option value="slow" ${settings.textSpeed === "slow" ? "selected" : ""}>Lenta</option>
+            <option value="normal" ${settings.textSpeed !== "fast" && settings.textSpeed !== "slow" ? "selected" : ""}>Normal</option>
+            <option value="fast" ${settings.textSpeed === "fast" ? "selected" : ""}>Rápida</option>
+          </select>
+        </label>
+        <label class="setting-row">
+          <span>Animação de texto</span>
+          <input type="checkbox" data-setting="textAnimation" ${settings.textAnimation === false ? "" : "checked"} />
+        </label>
+        <label class="setting-row">
+          <span>Reduzir animações</span>
+          <input type="checkbox" data-setting="reducedMotion" ${settings.reducedMotion ? "checked" : ""} />
+        </label>
+      </section>
+      <aside class="settings-actions-panel">
+        <button class="btn secondary" data-action="toggle-fullscreen">${icon("maximize")}<span>Modo tela cheia</span></button>
+        <button class="btn ghost" data-action="back-start">${icon("home")}<span>Voltar ao menu inicial</span></button>
+        ${state.ui?.confirmReset
+          ? `<div class="reset-confirm">
+              <strong>Resetar progresso local?</strong>
+              <p>Isso limpa todos os slots salvos neste navegador, mas mantém os arquivos do jogo.</p>
+              <button class="btn primary" data-action="reset-progress">${icon("trash")}<span>Confirmar reset</span></button>
+              <button class="btn ghost" data-action="cancel-reset-progress">${icon("back")}<span>Cancelar</span></button>
+            </div>`
+          : `<button class="btn danger" data-action="confirm-reset-progress">${icon("trash")}<span>Resetar progresso</span></button>`}
+      </aside>
     </div>
   `;
 }
@@ -1068,10 +1268,12 @@ function renderDialogueScene(state, data, node) {
   const expression = node.expression ?? speaker?.defaultExpression ?? "";
   const hasChoices = node.type === "choice";
   const continueLabel = node.type === "end" ? "Voltar ao menu" : "Continuar";
+  const tone = getNarrativeTone(node, state);
+  const storyText = resolveNodeText(node, state);
 
   return appFrame(
     `
-      <section class="game-screen">
+      <section class="game-screen tone-${tone}">
         ${sceneBackdrop(scene, node.timeOfDay)}
         ${renderHud(state, data, true)}
         <div class="scene-toolbar">
@@ -1083,15 +1285,16 @@ function renderDialogueScene(state, data, node) {
         <div class="scene-stage">
           ${renderStageCharacters(state, node, data)}
         </div>
-        <section class="dialogue-box ${hasChoices ? "with-choices" : ""}">
+        <section class="dialogue-box ${hasChoices ? "with-choices" : ""} tone-${tone}">
           ${renderToasts(state)}
           <header>
             ${renderDialoguePlayerPortrait(state, data, sceneId)}
             <strong>${escapeHtml(title)}</strong>
             ${expression ? `<span>${escapeHtml(expression.replace(/_/g, " "))}</span>` : ""}
           </header>
-          <p>${escapeHtml(adaptStoryText(node.text, state, node))}</p>
-          ${hasChoices ? `<small class="choice-hint">Algumas respostas podem aproximar ou afastar as pessoas.</small>` : ""}
+          <p class="dialogue-text">${renderStoryText(storyText, state, node)}</p>
+          ${renderMysteryCue(node, state)}
+          ${hasChoices ? `<small class="choice-hint">Algumas respostas podem aproximar ou afastar pessoas, abrir pistas ou ser lembradas depois.</small>` : ""}
           ${hasChoices
             ? `<div class="choice-list">${node.choices
                 .map(
@@ -1125,7 +1328,7 @@ function renderCgScene(state, data, node) {
           <aside>
             <span>${escapeHtml(node.title ?? "CG desbloqueada")}</span>
             <h1>${escapeHtml(cg.title)}</h1>
-            <p>${escapeHtml(adaptStoryText(node.text, state, node))}</p>
+            <p>${renderStoryText(resolveNodeText(node, state), state, node)}</p>
             <button class="btn primary" data-action="continue-dialogue">${icon("image")}<span>Registrar memória</span></button>
           </aside>
         </div>
@@ -1139,6 +1342,7 @@ function renderMapScene(state, data, node) {
   const eventsByLocation = Object.fromEntries((node.events ?? []).map((event, index) => [event.location, { ...event, index }]));
   const finishReady = canFinishMap(state, node);
   const scene = getScene(data, node.background ?? state.currentBackground);
+  const mapScenes = data.scenes.filter((scene) => scene.mapPosition);
   return appFrame(
     `
       <section class="map-screen">
@@ -1148,7 +1352,11 @@ function renderMapScene(state, data, node) {
           <aside class="map-panel">
             <span class="eyebrow">Destinos do capítulo</span>
             <h1>${escapeHtml(node.title)}</h1>
-            <p>${escapeHtml(adaptStoryText(node.text, state, node))}</p>
+            <p>${renderStoryText(resolveNodeText(node, state), state, node)}</p>
+            <div class="ap-brief">
+              ${icon("bolt")}
+              <span>AP é a energia usada para investigar. Cada local consome AP; minigames e a loja ajudam quando ele acaba.</span>
+            </div>
             ${state.flags.replaying_episode_01
               ? `<p class="replay-hint">Replay ativo: revisite a biblioteca e o terraço para desbloquear as memórias ocultas.</p>`
               : ""}
@@ -1161,16 +1369,17 @@ function renderMapScene(state, data, node) {
             ${assetImg("./assets/maps/campus-navigation.png", "", "campus-map-art")}
             <div class="campus-map-overlay" aria-hidden="true"></div>
             <strong class="campus-map-title">Destinos disponíveis</strong>
-            ${data.scenes
-              .filter((scene) => scene.mapPosition && eventsByLocation[scene.id])
+            ${mapScenes
               .map((scene) => {
                 const event = eventsByLocation[scene.id];
                 const visited = event?.onceFlag && state.flags[event.onceFlag];
+                const noAp = event && state.stats.ap < event.apCost;
                 return `
-                  <button class="map-pin ${event ? "available" : ""} ${visited ? "visited" : ""}" style="--x:${scene.mapPosition.x}%;--y:${scene.mapPosition.y}%"
+                  <button class="map-pin ${event ? "available" : "locked"} ${visited ? "visited" : ""} ${noAp ? "no-ap" : ""}" style="--x:${scene.mapPosition.x}%;--y:${scene.mapPosition.y}%"
                     data-action="${event ? "map-event" : "noop"}" data-event-index="${event?.index ?? ""}" ${event ? "" : "disabled"}>
-                    ${icon(visited ? "check" : event ? "star" : "lock")}
+                    ${icon(visited ? "check" : event ? noAp ? "bolt" : "star" : "lock")}
                     <span>${escapeHtml(scene.name)}</span>
+                    ${event ? `<small>${event.apCost} AP</small>` : `<small>Bloqueado</small>`}
                   </button>
                 `;
               })
@@ -1184,10 +1393,10 @@ function renderMapScene(state, data, node) {
                 return `
                   <article class="map-event ${visited ? "done" : ""}">
                     <strong>${escapeHtml(event.label)}</strong>
-                    <span>${escapeHtml(scene?.name ?? event.location)} - ${event.apCost} AP</span>
-                    <button class="btn ${visited ? "secondary" : "primary"}" data-action="map-event" data-event-index="${index}">
-                      ${icon(visited ? "check" : "map")}
-                      <span>${visited ? "Visitar novamente" : "Ir"}</span>
+                    <span>${escapeHtml(scene?.name ?? event.location)} - ${event.apCost} AP${state.stats.ap < event.apCost ? " - AP insuficiente" : ""}</span>
+                    <button class="btn ${visited ? "secondary" : state.stats.ap < event.apCost ? "ghost" : "primary"}" data-action="map-event" data-event-index="${index}">
+                      ${icon(visited ? "check" : state.stats.ap < event.apCost ? "bolt" : "map")}
+                      <span>${visited ? "Visitar novamente" : state.stats.ap < event.apCost ? "Sem AP" : "Ir"}</span>
                     </button>
                   </article>
                 `;

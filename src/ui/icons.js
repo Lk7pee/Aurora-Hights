@@ -21,6 +21,9 @@ const paths = {
   trophy: "M7 4h10v3h4a5 5 0 0 1-5 5h-.4A6 6 0 0 1 13 15.9V19h3v2H8v-2h3v-3.1A6 6 0 0 1 8.4 12H8a5 5 0 0 1-5-5h4V4Zm0 5V7H5a3 3 0 0 0 2 2Zm10 0a3 3 0 0 0 2-2h-2v2Z",
   volume: "M4 9v6h4l5 4V5L8 9H4Zm12-1a5 5 0 0 1 0 8m2-11a9 9 0 0 1 0 14",
   mute: "M4 9v6h4l5 4V5L8 9H4Zm13 1 4 4m0-4-4 4",
+  message: "M4 5h16v11H8l-4 4V5Zm4 4h8M8 12h5",
+  maximize: "M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5",
+  x: "M6 6l12 12M18 6 6 18",
   chevron: "M9 18l6-6-6-6",
   trash: "M4 7h16M10 11v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3"
 };

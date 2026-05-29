@@ -1,4 +1,4 @@
-const ASSET_VERSION = "chapter-one-20260527";
+const ASSET_VERSION = "aurora-polish-20260528a";
 
 function assetUrl(src = "") {
   if (!src || /^(?:https?:|data:|blob:)/.test(src) || src.includes("?")) return src;

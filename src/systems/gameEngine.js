@@ -143,6 +143,10 @@ export function canPlayEpisode(state, episode) {
   return (episode.requiresCompleted ?? []).every((id) => state.completedEpisodes.includes(id));
 }
 
+function isMeaningfulChoiceFlag(flag) {
+  return !/^episode_/.test(flag) && !/^unlocked_/.test(flag) && !/^bought_/.test(flag);
+}
+
 export function applyEffects(state, effects = {}, data) {
   const next = cloneState(state);
   if (!effects || Object.keys(effects).length === 0) return next;
@@ -151,7 +155,9 @@ export function applyEffects(state, effects = {}, data) {
   if (Number.isFinite(effects.ap)) {
     const previous = next.stats.ap;
     next.stats.ap = clamp(next.stats.ap + effects.ap, 0, next.stats.maxAp);
-    if (effects.ap !== 0) addToast(next, `${effects.ap > 0 ? "+" : ""}${next.stats.ap - previous} AP`, "ap");
+    const delta = next.stats.ap - previous;
+    if (delta < 0) addToast(next, `Você gastou ${Math.abs(delta)} AP investigando.`, "ap");
+    if (delta > 0) addToast(next, `Você recuperou ${delta} AP.`, "ap");
   }
   if (Number.isFinite(effects.coins)) {
     next.stats.coins = Math.max(0, next.stats.coins + effects.coins);
@@ -159,24 +165,30 @@ export function applyEffects(state, effects = {}, data) {
   }
   if (Number.isFinite(effects.gems)) {
     next.stats.gems = Math.max(0, next.stats.gems + effects.gems);
-    addToast(next, `${effects.gems > 0 ? "+" : ""}${effects.gems} gemas`, "coins");
+    addToast(next, `${effects.gems > 0 ? "+" : ""}${effects.gems} diamante(s)`, "coins");
   }
   if (effects.affinity) {
     for (const [characterId, delta] of Object.entries(effects.affinity)) {
       next.affinity[characterId] = (next.affinity[characterId] ?? 0) + delta;
       const character = getCharacter(data, characterId, next);
       const label = character ? character.name : characterId;
-      addToast(next, `${label}: ${delta > 0 ? "+" : ""}${delta} afinidade`, delta >= 0 ? "affinity" : "warning");
+      const message = delta >= 0
+        ? `${label} gostou disso. Afinidade +${delta}.`
+        : `${label} ficou em dúvida. Afinidade ${delta}.`;
+      addToast(next, message, delta >= 0 ? "affinity" : "warning");
     }
   }
   if (effects.flags) {
+    const remembered = Object.keys(effects.flags)
+      .filter((flag) => effects.flags[flag] && !next.flags?.[flag] && isMeaningfulChoiceFlag(flag));
     next.flags = { ...next.flags, ...effects.flags };
+    if (remembered.length) addToast(next, "Essa decisão pode ser lembrada depois.", "info");
   }
   if (effects.inventoryAdd?.length) {
     next.inventory = uniquePush(next.inventory, effects.inventoryAdd);
     for (const itemId of effects.inventoryAdd) {
       const item = data.indexes.inventory[itemId];
-      addToast(next, `${item?.name ?? itemId} adicionado ao inventário`, "item");
+      addToast(next, `Pista desbloqueada: ${item?.name ?? itemId}`, "item");
     }
   }
   if (effects.wardrobeAdd?.length) {
@@ -190,7 +202,7 @@ export function applyEffects(state, effects = {}, data) {
     next.gallery = uniquePush(next.gallery, effects.galleryAdd);
     for (const cgId of effects.galleryAdd) {
       const cg = data.indexes.cgs[cgId];
-      addToast(next, `CG desbloqueada: ${cg?.title ?? cgId}`, "cg");
+      addToast(next, `Memória desbloqueada: ${cg?.title ?? cgId}`, "cg");
     }
   }
   if (effects.achievementAdd?.length) {
@@ -387,7 +399,7 @@ export function travelToMapEvent(state, eventIndex, data) {
 
   if (state.stats.ap < event.apCost) {
     const next = cloneState(state);
-    addToast(next, "AP insuficiente para se deslocar", "warning");
+    addToast(next, "AP insuficiente. Jogue minigames ou visite a Loja de AP para continuar investigando.", "warning");
     return next;
   }
 
