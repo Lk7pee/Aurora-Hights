@@ -1,0 +1,1032 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-01",
+  "title": "A Fita Azul no Corredor",
+  "startNode": "ep01_intro_01",
+  "nodes": {
+    "ep01_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "gate",
+      "music": "morning",
+      "text": "O portão da Aurora High se abre com um rangido discreto, como se a escola tivesse decidido comentar sua chegada.",
+      "next": "ep01_intro_02"
+    },
+    "ep01_intro_02": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "gate",
+      "music": "morning",
+      "text": "No seu bolso, a carta de transferência ainda está dobrada demais. No peito, a sensação de que todo mundo já sabe onde ficar, menos você.",
+      "next": "ep01_davi_01"
+    },
+    "ep01_davi_01": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "brincalhao",
+      "background": "gate",
+      "music": "morning",
+      "characters": [{ "id": "davi", "position": "right", "expression": "brincalhao" }],
+      "text": "Transferida detectada. Mochila nova, olhar de mapa quebrado e energia de quem ainda acredita que secretaria resolve alguma coisa.",
+      "next": "ep01_davi_choice"
+    },
+    "ep01_davi_choice": {
+      "type": "choice",
+      "speaker": "davi",
+      "expression": "brincalhao",
+      "background": "gate",
+      "music": "morning",
+      "characters": [{ "id": "davi", "position": "right", "expression": "brincalhao" }],
+      "text": "Ele aponta para um crachá torto no próprio peito: Davi Leme, jornal estudantil. Abaixo, escrito à mão: emergência social ambulante.",
+      "choices": [
+        {
+          "label": "Dizer que emergência social parece útil hoje.",
+          "next": "ep01_davi_after_warm",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 3 },
+            "flags": { "trusted_davi": true }
+          }
+        },
+        {
+          "label": "Perguntar onde fica a secretaria, sem entrar na piada.",
+          "next": "ep01_davi_after_plain",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 1, "davi": -1 },
+            "flags": { "kept_distance_davi": true }
+          }
+        },
+        {
+          "label": "Responder que ele narra tudo assim ou só estreias.",
+          "next": "ep01_davi_after_spark",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 2, "ravi": 1 },
+            "flags": { "plays_along": true }
+          }
+        }
+      ]
+    },
+    "ep01_davi_after_warm": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "gate",
+      "music": "morning",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Útil, dramática e com fontes confiáveis. Vem comigo. Prometo apresentar a escola em ordem de perigo emocional.",
+      "next": "ep01_atrium_01"
+    },
+    "ep01_davi_after_plain": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "dramatico",
+      "background": "gate",
+      "music": "morning",
+      "characters": [{ "id": "davi", "position": "right", "expression": "dramatico" }],
+      "text": "Secretaria. Direto ao ponto. Respeito. Sofro, mas respeito. Vou te deixar viva até lá.",
+      "next": "ep01_atrium_01"
+    },
+    "ep01_davi_after_spark": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "brincalhao",
+      "background": "gate",
+      "music": "morning",
+      "characters": [{ "id": "davi", "position": "right", "expression": "brincalhao" }],
+      "text": "Só estreias e desastres. Como hoje promete os dois, você acabou de ganhar cobertura completa.",
+      "next": "ep01_atrium_01"
+    },
+    "ep01_atrium_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "terrace",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "left", "expression": "brincalhao" }],
+      "text": "Davi leva você ao terraço de recepção, aberto para a vista da cidade e cheio de cartazes do festival. Perto das flores, um garoto distribui pulseiras como se comandasse a maré.",
+      "next": "ep01_theo_01"
+    },
+    "ep01_theo_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "confiante",
+      "background": "terrace",
+      "music": "school",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "brincalhao" },
+        { "id": "theo", "position": "right", "expression": "confiante" }
+      ],
+      "text": "Davi, você sequestrou a aluna nova antes da recepção oficial?",
+      "next": "ep01_theo_02"
+    },
+    "ep01_theo_02": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "dramatico",
+      "background": "terrace",
+      "music": "school",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "dramatico" },
+        { "id": "theo", "position": "right", "expression": "confiante" }
+      ],
+      "text": "Eu prefiro o termo adoção jornalística temporária.",
+      "next": "ep01_theo_choice"
+    },
+    "ep01_theo_choice": {
+      "type": "choice",
+      "speaker": "theo",
+      "expression": "confiante",
+      "background": "terrace",
+      "music": "school",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "brincalhao" },
+        { "id": "theo", "position": "right", "expression": "confiante" }
+      ],
+      "text": "Theo sorri para você com a facilidade de quem já praticou recepcionar o mundo inteiro.",
+      "choices": [
+        {
+          "label": "Aceitar a ajuda dele com o mural dos clubes.",
+          "next": "ep01_theo_after_help",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 3 },
+            "flags": { "helped_theo": true }
+          }
+        },
+        {
+          "label": "Brincar que ele deve ter uma fila de resgates.",
+          "next": "ep01_theo_after_joke",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 1, "davi": 1 },
+            "flags": { "teased_theo": true }
+          }
+        },
+        {
+          "label": "Agradecer, mas dizer que prefere se localizar sozinha.",
+          "next": "ep01_theo_after_space",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 1, "noa": 1, "theo": -1 },
+            "flags": { "values_independence": true }
+          }
+        }
+      ]
+    },
+    "ep01_theo_after_help": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "terrace",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Então eu começo pelo aviso importante: metade dos clubes parece normal até a primeira reunião. A outra metade nem tenta.",
+      "next": "ep01_locker_01"
+    },
+    "ep01_theo_after_joke": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "encabulado",
+      "background": "terrace",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "encabulado" }],
+      "text": "Fila não. Lista de espera, talvez. Mas posso abrir exceção para quem chega com resposta rápida.",
+      "next": "ep01_locker_01"
+    },
+    "ep01_theo_after_space": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "terrace",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Justo. Só não confia no corredor leste depois do segundo sinal. Ele muda de humor.",
+      "next": "ep01_locker_01"
+    },
+    "ep01_locker_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "school",
+      "text": "Seu armário fica no corredor leste. A combinação funciona de primeira. O estranho é o laço azul amarrado no puxador por dentro.",
+      "effects": {
+        "inventoryAdd": ["fita-azul"],
+        "flags": { "found_blue_ribbon": true }
+      },
+      "next": "ep01_locker_02"
+    },
+    "ep01_locker_02": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "mystery",
+      "text": "Há um bilhete preso à fita: Quando o mapa mentir, escolha quem não pediu para ser encontrado.",
+      "next": "ep01_ribbon_choice"
+    },
+    "ep01_ribbon_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "mystery",
+      "text": "O papel cheira a poeira, tinta fresca e chuva distante.",
+      "choices": [
+        {
+          "label": "Guardar a fita antes que alguém veja.",
+          "next": "ep01_ribbon_hide_response",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 2 },
+            "flags": { "kept_ribbon_private": true }
+          }
+        },
+        {
+          "label": "Mostrar o bilhete para Davi.",
+          "next": "ep01_ribbon_share_response",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 2 },
+            "flags": { "trusted_davi": true, "shared_ribbon_with_davi": true }
+          }
+        },
+        {
+          "label": "Investigar sozinha antes de contar a alguém.",
+          "next": "ep01_ribbon_solo_response",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 1, "ravi": 1 },
+            "flags": { "investigates_alone": true }
+          }
+        }
+      ]
+    },
+    "ep01_ribbon_hide_response": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "mystery",
+      "text": "Você fecha a mão sobre a fita. Do outro lado do corredor, alguém de uniforme impecável percebe o gesto e anota alguma coisa numa pasta escura.",
+      "next": "ep01_before_map"
+    },
+    "ep01_ribbon_share_response": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Isso não é brincadeira de recepção. Eu já vi esse brasão apagado numa matéria que o conselho impediu de publicar.",
+      "next": "ep01_before_map"
+    },
+    "ep01_ribbon_solo_response": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "mystery",
+      "text": "Você fotografa o bilhete e compara a tinta com os cartazes. Uma assinatura raspada aparece contra a luz: L. Vilar.",
+      "next": "ep01_before_map"
+    },
+    "ep01_before_map": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "school",
+      "text": "O sinal toca. No visor do seu celular, o mapa da escola pisca e reorganiza os nomes dos lugares por um segundo.",
+      "next": "ep01_map_round"
+    },
+    "ep01_map_round": {
+      "type": "map",
+      "background": "corridor",
+      "music": "school",
+      "title": "Intervalo investigativo",
+      "text": "Escolha os lugares para procurar pistas sobre a fita azul. Cada deslocamento consome AP.",
+      "events": [
+        {
+          "location": "corridor",
+          "label": "Rever o corredor dos armários",
+          "next": "ep01_event_corridor_01",
+          "apCost": 2,
+          "onceFlag": "checked_corridor"
+        },
+        {
+          "location": "library",
+          "label": "Pesquisar registros antigos",
+          "next": "ep01_event_library_01",
+          "apCost": 2,
+          "onceFlag": "respected_caio_space"
+        },
+        {
+          "location": "garden",
+          "label": "Seguir pegadas até a estufa",
+          "next": "ep01_event_garden_01",
+          "apCost": 2,
+          "onceFlag": "watered_greenhouse"
+        },
+        {
+          "location": "music-room",
+          "label": "Investigar a sala de música",
+          "next": "ep01_event_music_01",
+          "apCost": 2,
+          "onceFlag": "answered_ravi_back"
+        },
+        {
+          "location": "terrace",
+          "label": "Subir ao terraço",
+          "next": "ep01_event_terrace_01",
+          "revisitNext": "ep01_event_terrace_return",
+          "apCost": 2,
+          "onceFlag": "saw_rooftop_shadow"
+        }
+      ],
+      "doneWhenFlags": [
+        "checked_corridor",
+        "respected_caio_space",
+        "watered_greenhouse",
+        "answered_ravi_back",
+        "saw_rooftop_shadow"
+      ],
+      "doneNext": "ep01_after_map_01"
+    },
+    "ep01_event_corridor_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Você também viu o mapa piscar? Ótimo. Achei que era meu sono tentando se aposentar.",
+      "next": "ep01_event_corridor_choice"
+    },
+    "ep01_event_corridor_choice": {
+      "type": "choice",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Theo segura um cartaz caído. No verso, alguém escreveu seu número de armário antes mesmo de você receber a matrícula.",
+      "choices": [
+        {
+          "label": "Pedir ajuda sem fingir que está tudo bem.",
+          "next": "ep01_event_corridor_help_response",
+          "effects": {
+            "affinity": { "theo": 3 },
+            "flags": { "checked_corridor": true, "asked_theo_help": true }
+          }
+        },
+        {
+          "label": "Dizer que ele sabe demais para alguém só popular.",
+          "next": "ep01_event_corridor_challenge_response",
+          "effects": {
+            "affinity": { "theo": 1, "ravi": 1 },
+            "flags": { "checked_corridor": true, "challenged_theo": true }
+          }
+        },
+        {
+          "label": "Anotar tudo e agradecer de forma objetiva.",
+          "next": "ep01_event_corridor_notes_response",
+          "effects": {
+            "affinity": { "caio": 1 },
+            "flags": { "checked_corridor": true, "kept_notes": true }
+          }
+        }
+      ]
+    },
+    "ep01_event_corridor_help_response": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Valeu por não fingir. Vou comparar os cartazes da recepção e te aviso se alguém mexer no seu armário outra vez.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_corridor_challenge_response": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "encabulado",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "encabulado" }],
+      "text": "Popular não significa desatento. A presidente do conselho recolheu um cartaz igual antes de você chegar. Isso ajuda ou só piora?",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_corridor_notes_response": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Objetiva, então: assinatura arrancada, tinta azul, horário 10h12. E um conselho não solicitado: guarde cópia fora do armário.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_library_01": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "Antes que pergunte: sim, há registros de alunos recebendo fitas. Não, não pretendo entregar uma pasta inteira para alguém que acabou de chegar.",
+      "next": "ep01_event_library_choice"
+    },
+    "ep01_event_library_choice": {
+      "type": "choice",
+      "speaker": "caio",
+      "expression": "impaciente",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "impaciente" }],
+      "text": "Ele fecha o livro com dois dedos, mas deixa um marcador azul visível entre as páginas.",
+      "choices": [
+        {
+          "label": "Respeitar o espaço dele e pedir só uma direção.",
+          "next": "ep01_event_library_respect_response",
+          "effects": {
+            "affinity": { "caio": 3 },
+            "flags": { "respected_caio_space": true }
+          }
+        },
+        {
+          "label": "Provocar: a pasta é secreta ou ele gosta de suspense?",
+          "next": "ep01_event_library_push_response",
+          "effects": {
+            "affinity": { "ravi": 1, "caio": -1 },
+            "flags": { "respected_caio_space": true, "pushed_caio": true }
+          }
+        },
+        {
+          "label": "Observar o marcador em silêncio.",
+          "next": "ep01_event_library_observe_response",
+          "effects": {
+            "affinity": { "caio": 2, "noa": 1 },
+            "flags": { "respected_caio_space": true, "noticed_blue_marker": true }
+          }
+        }
+      ]
+    },
+    "ep01_event_library_respect_response": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Arquivo morto. Última porta do corredor administrativo. Você pediu uma direção, não um segredo; consigo respeitar isso.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_library_push_response": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "impaciente",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "impaciente" }],
+      "text": "Gosto de provas, não de espetáculo. Se pretende provocar o conselho, faça isso sem usar meu arquivo como isca.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_library_observe_response": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Você notou o marcador. Leve-o: ele pertence a uma ata assinada por Lavínia Vilar, três dias antes de a ata desaparecer.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_garden_01": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "Cuidado com o degrau. A estufa recebe melhor quem chega devagar.",
+      "next": "ep01_event_garden_choice"
+    },
+    "ep01_event_garden_choice": {
+      "type": "choice",
+      "speaker": "miguel",
+      "expression": "timido",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "timido" }],
+      "text": "Uma trilha de terra úmida passa pelo banco e termina perto de uma flor coberta por vidro.",
+      "choices": [
+        {
+          "label": "Ajudar Miguel a regar antes de fazer perguntas.",
+          "next": "ep01_event_garden_help_response",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "flags": { "watered_greenhouse": true }
+          }
+        },
+        {
+          "label": "Perguntar se ele viu alguém com fita azul.",
+          "next": "ep01_event_garden_direct_response",
+          "effects": {
+            "affinity": { "miguel": 1 },
+            "flags": { "watered_greenhouse": true, "asked_miguel_directly": true }
+          }
+        },
+        {
+          "label": "Dizer que a estufa parece esconder uma cena de romance.",
+          "next": "ep01_event_garden_flirt_response",
+          "effects": {
+            "affinity": { "miguel": 2, "davi": 1 },
+            "flags": { "watered_greenhouse": true, "romantic_greenhouse_comment": true }
+          }
+        }
+      ]
+    },
+    "ep01_event_garden_help_response": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Valeu por cuidar primeiro. Vi Lavínia levando uma caixa de fitas para o terraço; ela parecia triste, não satisfeita.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_garden_direct_response": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Vi. A presidente do conselho usava a mesma fita para lacrar um envelope. Posso indicar por onde ela saiu, mas não quero que vá sem companhia.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_garden_flirt_response": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "timido",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "timido" }],
+      "text": "Se fosse romance, eu teria preparado flores melhores. Ainda assim... a sombra no terraço talvez esteja esperando exatamente você.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_music_01": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "atrevido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "atrevido" }],
+      "text": "A aluna nova chegou até a sala proibida no primeiro dia. Ou você é corajosa, ou o senso de direção desistiu de você.",
+      "next": "ep01_event_music_choice"
+    },
+    "ep01_event_music_choice": {
+      "type": "choice",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Ravi gira uma palheta entre os dedos. Em cima do amplificador, há um pedaço da mesma fita azul.",
+      "choices": [
+        {
+          "label": "Responder que ele parece guardar troféus de todos que provoca.",
+          "next": "ep01_event_music_tease_response",
+          "effects": {
+            "affinity": { "ravi": 3 },
+            "flags": { "answered_ravi_back": true }
+          }
+        },
+        {
+          "label": "Pedir a fita sem alimentar a provocação.",
+          "next": "ep01_event_music_calm_response",
+          "effects": {
+            "affinity": { "caio": 1, "ravi": 1 },
+            "flags": { "answered_ravi_back": true, "stayed_calm_with_ravi": true }
+          }
+        },
+        {
+          "label": "Perguntar se ele escreveu o bilhete.",
+          "next": "ep01_event_music_suspect_response",
+          "effects": {
+            "affinity": { "ravi": 1, "noa": 1 },
+            "flags": { "answered_ravi_back": true, "suspected_ravi": true }
+          }
+        }
+      ]
+    },
+    "ep01_event_music_tease_response": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Finalmente alguém com resposta. Fica com a fita e com esta demo; a presidente tentou confiscar as duas, então devem ser ótimas lembranças.",
+      "effects": { "inventoryAdd": ["demo-riscada"] },
+      "next": "ep01_map_round"
+    },
+    "ep01_event_music_calm_response": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "ferido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "ferido" }],
+      "text": "Certo, sem palco. Leva a fita e a minha demo riscada. Lavínia disse que apagaria qualquer gravação ligada ao terraço.",
+      "effects": { "inventoryAdd": ["demo-riscada"] },
+      "next": "ep01_map_round"
+    },
+    "ep01_event_music_suspect_response": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Eu assino meus problemas. Este bilhete veio do conselho. Escuta a demo: no final há uma discussão no terraço, antes de Lavínia tomar a fita.",
+      "effects": { "inventoryAdd": ["demo-riscada"] },
+      "next": "ep01_map_round"
+    },
+    "ep01_event_terrace_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "mystery",
+      "text": "O terraço está vazio, exceto por um mapa antigo preso ao chão por pedrinhas brancas. Ele não mostra salas. Mostra constelações.",
+      "next": "ep01_event_terrace_02"
+    },
+    "ep01_event_terrace_02": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "reservado",
+      "background": "terrace",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "reservado" }],
+      "text": "Você demorou menos do que eu esperava.",
+      "next": "ep01_event_terrace_choice"
+    },
+    "ep01_event_terrace_choice": {
+      "type": "choice",
+      "speaker": "noa",
+      "expression": "curioso",
+      "background": "terrace",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "Noa não se aproxima. Mesmo assim, a presença dele ocupa o espaço entre vocês como uma pergunta que aprendeu a esperar.",
+      "choices": [
+        {
+          "label": "Perguntar se a fita foi um convite.",
+          "next": "ep01_event_terrace_invite_response",
+          "effects": {
+            "affinity": { "noa": 3 },
+            "flags": { "saw_rooftop_shadow": true, "asked_noa_invite": true }
+          }
+        },
+        {
+          "label": "Dizer que ele precisa melhorar o jeito de receber pessoas.",
+          "next": "ep01_event_terrace_challenge_response",
+          "effects": {
+            "affinity": { "noa": 1, "ravi": 1 },
+            "flags": { "saw_rooftop_shadow": true, "challenged_noa": true }
+          }
+        },
+        {
+          "label": "Ficar em silêncio e observar o mapa.",
+          "next": "ep01_event_terrace_silence_response",
+          "effects": {
+            "affinity": { "noa": 2, "caio": 1 },
+            "flags": { "saw_rooftop_shadow": true, "read_star_map": true }
+          }
+        }
+      ]
+    },
+    "ep01_event_terrace_invite_response": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "terrace",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Foi um aviso. Lavínia usa as fitas para escolher quem pode saber do acidente no antigo observatório. Eu queria que você tivesse escolha.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_terrace_challenge_response": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "raro_sorriso",
+      "background": "terrace",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "raro_sorriso" }],
+      "text": "Justo. Da próxima vez envio convite com horário. Por enquanto: não entregue a fita a Lavínia, por mais educada que ela pareça.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_terrace_silence_response": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "terrace",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Você enxergou a estrela apagada. Era o observatório. O conselho cobriu a queda de alguém dali, e Lavínia herdou esse silêncio.",
+      "next": "ep01_map_round"
+    },
+    "ep01_event_terrace_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "terrace",
+      "music": "mystery",
+      "text": "Ao voltar ao terraço, o desenho do mapa já desapareceu. Restam as flores, a cidade ao longe e a impressão de que uma pista ainda espera por você.",
+      "next": "ep01_map_round"
+    },
+    "ep01_after_map_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "O último sinal já passou quando o mapa do celular abre sozinho. Uma rota azul conduz você de volta ao terraço, agora coberto pelas luzes da noite.",
+      "next": "ep01_lavinia_01"
+    },
+    "ep01_lavinia_01": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Você percorreu bastante terreno por uma fita que não lhe pertence. Lavínia Vilar, conselho estudantil. Entregue-a e seu primeiro dia poderá acabar sem escândalo.",
+      "next": "ep01_lavinia_choice"
+    },
+    "ep01_lavinia_choice": {
+      "type": "choice",
+      "speaker": "lavinia",
+      "expression": "cortante",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "cortante" }],
+      "text": "A pasta contra seu peito traz o mesmo brasão do bilhete. Por um segundo, a segurança dela vacila ao ouvir a palavra observatório.",
+      "choices": [
+        {
+          "label": "Recusar e perguntar quem se machucou no observatório.",
+          "next": "ep01_lavinia_confront_response",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 2 },
+            "flags": { "confronted_lavinia": true }
+          }
+        },
+        {
+          "label": "Oferecer silêncio apenas se ela contar uma verdade.",
+          "next": "ep01_lavinia_bargain_response",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 1, "theo": -1 },
+            "flags": { "bargained_lavinia": true }
+          }
+        },
+        {
+          "label": "Esconder a fita no diário e chamar seus novos aliados.",
+          "next": "ep01_lavinia_allies_response",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 2, "miguel": 1 },
+            "flags": { "called_allies_against_lavinia": true }
+          }
+        }
+      ]
+    },
+    "ep01_lavinia_confront_response": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "irritada",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "irritada" }],
+      "text": "Uma aluna caiu, e meu conselho impediu que outra família perdesse esta escola junto com ela. Não transforme uma tragédia em entretenimento.",
+      "next": "ep01_group_01"
+    },
+    "ep01_lavinia_bargain_response": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Uma verdade: as fitas não começaram comigo. Eu só recolho as que surgem, antes que alguém repita a noite em que o observatório foi fechado.",
+      "next": "ep01_group_01"
+    },
+    "ep01_lavinia_allies_response": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "cortante",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "cortante" }],
+      "text": "Colecionar aliados no primeiro dia é impressionante. Mantê-los seguros quando a verdade custar algo será o seu verdadeiro teste.",
+      "next": "ep01_group_01"
+    },
+    "ep01_group_01": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "atento" },
+        { "id": "theo", "position": "right", "expression": "protetor" }
+      ],
+      "text": "Boa notícia: ninguém entrega sua fita para a presidente em noite de ameaça educada. Má notícia: agora temos uma rival com pasta e recursos.",
+      "next": "ep01_group_02"
+    },
+    "ep01_group_02": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "atrevido",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "ravi", "position": "left", "expression": "atrevido" },
+        { "id": "caio", "position": "right", "expression": "analitico" }
+      ],
+      "text": "Se isso virar reunião de clube secreto contra o conselho, eu exijo que nossa primeira decisão seja em quem confiar.",
+      "next": "ep01_route_choice"
+    },
+    "ep01_route_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "miguel", "position": "left", "expression": "acolhedor" },
+        { "id": "noa", "position": "right", "expression": "reservado" }
+      ],
+      "text": "Todos parecem guardar uma parte da resposta. Por impulso, seu olhar procura primeiro...",
+      "choices": [
+        {
+          "label": "Noa, porque ele sabe mais do que diz.",
+          "next": "ep01_focus_noa_response",
+          "effects": {
+            "affinity": { "noa": 3 },
+            "flags": { "route_focus_noa": true }
+          }
+        },
+        {
+          "label": "Theo, porque ele tenta proteger todo mundo.",
+          "next": "ep01_focus_theo_response",
+          "effects": {
+            "affinity": { "theo": 3 },
+            "flags": { "route_focus_theo": true }
+          }
+        },
+        {
+          "label": "Ravi, porque uma provocação pode esconder medo.",
+          "next": "ep01_focus_ravi_response",
+          "effects": {
+            "affinity": { "ravi": 3 },
+            "flags": { "route_focus_ravi": true }
+          }
+        },
+        {
+          "label": "Caio, porque ele entrega pistas sem admitir.",
+          "next": "ep01_focus_caio_response",
+          "effects": {
+            "affinity": { "caio": 3 },
+            "flags": { "route_focus_caio": true }
+          }
+        },
+        {
+          "label": "Miguel, porque ele percebe quando algo está ferido.",
+          "next": "ep01_focus_miguel_response",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "flags": { "route_focus_miguel": true }
+          }
+        },
+        {
+          "label": "Davi, porque rir com medo ainda é estar junto.",
+          "next": "ep01_focus_davi_response",
+          "effects": {
+            "affinity": { "davi": 3 },
+            "flags": { "route_focus_davi": true }
+          }
+        }
+      ]
+    },
+    "ep01_focus_noa_response": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "raro_sorriso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "raro_sorriso" }],
+      "text": "Então começo dizendo o que Lavínia não disse: a fita escolheu você antes de eu descobrir seu nome. Amanhã eu mostro o observatório.",
+      "next": "ep01_cg_blue_ribbon"
+    },
+    "ep01_focus_theo_response": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Eu posso parecer parte da fachada perfeita daqui, mas não vou deixar o conselho decidir o que você merece saber. Vamos juntos.",
+      "next": "ep01_cg_blue_ribbon"
+    },
+    "ep01_focus_ravi_response": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Ótima escolha. Minha demo tem o som que Lavínia queria apagar. Só não reclama quando a verdade vier alta demais.",
+      "next": "ep01_cg_blue_ribbon"
+    },
+    "ep01_focus_caio_response": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Tenho cópias das atas removidas. Não as ofereci antes porque confiança exige evidência. Você acabou de apresentar a sua.",
+      "next": "ep01_cg_blue_ribbon"
+    },
+    "ep01_focus_miguel_response": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "A estufa guarda uma flor plantada por quem caiu no observatório. Amanhã ela abre; talvez seja hora de alguém ouvir sua história.",
+      "next": "ep01_cg_blue_ribbon"
+    },
+    "ep01_focus_davi_response": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Eu prometo uma coisa sem piada: nenhuma matéria vale mais do que sua segurança. Ainda assim, quando você quiser a verdade, eu vou investigar ao seu lado.",
+      "next": "ep01_cg_blue_ribbon"
+    },
+    "ep01_cg_blue_ribbon": {
+      "type": "cg",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "blue-ribbon",
+      "title": "Ilustração especial desbloqueada",
+      "text": "A lembrança do armário volta em detalhes: fita, bilhete e uma linha luminosa desenhando no corredor a rota que Lavínia tentou apagar.",
+      "effects": {
+        "galleryAdd": ["blue-ribbon"],
+        "flags": { "unlocked_blue_ribbon_cg": true }
+      },
+      "next": "ep01_reward_01"
+    },
+    "ep01_reward_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "No fim do dia, uma sacola da Boutique Lunar aparece na porta do seu quarto: uma jaqueta azul com pequenas constelações bordadas.",
+      "effects": {
+        "wardrobeAdd": ["jaqueta-constelacao"],
+        "coins": 80,
+        "ap": 8
+      },
+      "next": "ep01_end_01"
+    },
+    "ep01_end_01": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "title": "Episódio concluído",
+      "text": "A Fita Azul no Corredor foi concluído. Novas rotas, encontros e roupas estão disponíveis no menu principal.",
+      "effects": {
+        "completeEpisode": "episode-01",
+        "flags": { "episode_01_complete": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,635 @@
+{
+  "schema": "aurora-high.catalog.v1",
+  "inventory": [
+    {
+      "id": "diario-lilas",
+      "name": "Diário lilás",
+      "type": "key",
+      "icon": "book",
+      "rarity": "inicial",
+      "description": "Capa macia, páginas quase vazias e uma fita para marcar decisões importantes."
+    },
+    {
+      "id": "fita-azul",
+      "name": "Fita azul",
+      "type": "story",
+      "icon": "ribbon",
+      "rarity": "raro",
+      "description": "Apareceu no seu armário antes de você receber a combinação."
+    },
+    {
+      "id": "passe-clube",
+      "name": "Passe provisório dos clubes",
+      "type": "access",
+      "icon": "ticket",
+      "rarity": "comum",
+      "description": "Permite entrar em áreas especiais durante eventos do episódio."
+    },
+    {
+      "id": "demo-riscada",
+      "name": "Fita demo riscada",
+      "type": "route",
+      "icon": "music",
+      "rarity": "especial",
+      "description": "Uma gravação imperfeita que Ravi finge não querer recuperar."
+    },
+    {
+      "id": "chave-observatorio",
+      "name": "Chave do observatório",
+      "type": "story",
+      "icon": "key",
+      "rarity": "raro",
+      "description": "Estava presa à fita azul na porta do observatório antigo, esperando alguém que não aceitasse a versão oficial."
+    },
+    {
+      "id": "ata-observatorio",
+      "name": "Ata rasurada do conselho",
+      "type": "story",
+      "icon": "book",
+      "rarity": "secreto",
+      "description": "Uma cópia incompleta da reunião que fechou o observatório e transformou um acidente em silêncio."
+    },
+    {
+      "id": "frasco-orvalho",
+      "name": "Frasco de orvalho da estufa",
+      "type": "route",
+      "icon": "ribbon",
+      "rarity": "especial",
+      "description": "Miguel diz que a flor de vidro só reage a água recolhida antes do primeiro sinal."
+    },
+    {
+      "id": "convite-conselho",
+      "name": "Convite do conselho",
+      "type": "story",
+      "icon": "ticket",
+      "rarity": "raro",
+      "description": "Um convite sem assinatura para uma votação que ninguém assume ter marcado."
+    },
+    {
+      "id": "selo-rasurado",
+      "name": "Selo rasurado da Aurora",
+      "type": "story",
+      "icon": "book",
+      "rarity": "secreto",
+      "description": "O brasão antigo da escola aparece raspado, como se alguém tivesse apagado uma turma inteira."
+    },
+    {
+      "id": "programa-luzes",
+      "name": "Programa das Luzes",
+      "type": "access",
+      "icon": "ticket",
+      "rarity": "comum",
+      "description": "A ordem oficial do evento escolar, com horários que não combinam com o que aconteceu no pátio."
+    },
+    {
+      "id": "nota-palco",
+      "name": "Nota dobrada do palco",
+      "type": "route",
+      "icon": "music",
+      "rarity": "especial",
+      "description": "Um bilhete escondido entre cabos de som: 'o eco começa quando todos aplaudem'."
+    },
+    {
+      "id": "mapa-servico",
+      "name": "Mapa de serviço da Aurora",
+      "type": "story",
+      "icon": "book",
+      "rarity": "raro",
+      "description": "Mostra corredores de manutenção que não aparecem no mapa dos alunos."
+    },
+    {
+      "id": "foto-clube-aurora",
+      "name": "Foto antiga do Clube Aurora",
+      "type": "story",
+      "icon": "book",
+      "rarity": "secreto",
+      "description": "Helena aparece ao fundo, segurando uma fita azul igual à sua."
+    },
+    {
+      "id": "carta-nao-enviada",
+      "name": "Carta não enviada",
+      "type": "route",
+      "icon": "book",
+      "rarity": "especial",
+      "description": "Uma carta de Helena interrompida no meio de uma promessa."
+    },
+    {
+      "id": "bilhete-vigiado",
+      "name": "Bilhete vigiado",
+      "type": "story",
+      "icon": "book",
+      "rarity": "raro",
+      "description": "Alguém deixou no seu armário a prova de que sua investigação está sendo acompanhada."
+    },
+    {
+      "id": "fragmento-fita",
+      "name": "Fragmento da fita azul",
+      "type": "story",
+      "icon": "ribbon",
+      "rarity": "secreto",
+      "description": "Um pedaço antigo da mesma fita, encontrado onde o observatório toca o jardim."
+    },
+    {
+      "id": "registro-transferencia",
+      "name": "Registro de transferência",
+      "type": "story",
+      "icon": "book",
+      "rarity": "secreto",
+      "description": "Seu nome aparece em um registro feito antes de você chegar à Aurora High."
+    },
+    {
+      "id": "ordem-conselho",
+      "name": "Ordem do conselho",
+      "type": "story",
+      "icon": "ticket",
+      "rarity": "raro",
+      "description": "A autorização para fechar o observatório tem uma assinatura que Lavínia não queria reconhecer."
+    },
+    {
+      "id": "chave-cupula-partida",
+      "name": "Chave partida da cúpula",
+      "type": "story",
+      "icon": "key",
+      "rarity": "secreto",
+      "description": "Metade de uma chave antiga. A outra metade ainda está em algum lugar da escola."
+    },
+    {
+      "id": "promessa-jardim",
+      "name": "Promessa do jardim",
+      "type": "story",
+      "icon": "ribbon",
+      "rarity": "secreto",
+      "description": "Uma promessa feita sob a flor de vidro: lembrar sem destruir quem ainda pode escolher diferente."
+    },
+    {
+      "id": "mapa-capitulo-2",
+      "name": "Mapa para o Capítulo 2",
+      "type": "key",
+      "icon": "book",
+      "rarity": "secreto",
+      "description": "Um desenho incompleto aponta para uma área da Aurora High que ainda não foi aberta."
+    }
+  ],
+  "outfits": [
+    {
+      "id": "uniforme-aurora",
+      "name": "Uniforme Aurora",
+      "slot": "full",
+      "owned": true,
+      "style": "clássico",
+      "palette": ["#fff7fb", "#ff7cab", "#4b5aa7"],
+      "preview": "uniform",
+      "sprites": {
+        "feminino": "./presaves/fardamentoP/brendaf.PNG",
+        "masculino": "./presaves/fardamentoP/filipef.PNG"
+      },
+      "description": "Uniforme inicial com blazer claro, laço coral e saia azul noite."
+    },
+    {
+      "id": "cardigan-chuva",
+      "name": "Cardigan de Chuva",
+      "slot": "full",
+      "owned": false,
+      "price": 60,
+      "style": "gentil",
+      "palette": ["#b9efd8", "#586b8c", "#fff7f0"],
+      "preview": "cardigan",
+      "sprites": {
+        "feminino": "./presaves/roupas/brenda-cardigan.png",
+        "masculino": "./presaves/roupas/filipe-cardigan.png"
+      },
+      "description": "Maciez suficiente para conversas difíceis no jardim."
+    },
+    {
+      "id": "jaqueta-constelacao",
+      "name": "Jaqueta Constelação",
+      "slot": "full",
+      "owned": false,
+      "style": "misterioso",
+      "palette": ["#1f2c64", "#a9e8ff", "#ffd166"],
+      "preview": "star-jacket",
+      "sprites": {
+        "feminino": "./presaves/Brendap.png",
+        "masculino": "./presaves/Lipep.png"
+      },
+      "description": "Desbloqueada ao terminar o episódio 1. Brilha de leve no terraço."
+    },
+    {
+      "id": "look-palco",
+      "name": "Look de Palco",
+      "slot": "full",
+      "owned": false,
+      "price": 90,
+      "style": "provocador",
+      "palette": ["#20202b", "#e85d3f", "#8de969"],
+      "preview": "stage",
+      "sprites": {
+        "feminino": "./presaves/roupas/brenda-palco.png",
+        "masculino": "./presaves/roupas/filipe-palco.png"
+      },
+      "description": "Para sobreviver a um ensaio que virou interrogatório."
+    },
+    {
+      "id": "moletom-jornal",
+      "name": "Moletom do Jornal",
+      "slot": "full",
+      "owned": false,
+      "price": 75,
+      "style": "casual",
+      "palette": ["#2f2842", "#70d6ff", "#ffd166"],
+      "preview": "journal",
+      "sprites": {
+        "feminino": "./assets/outfits/brenda-jornal.png",
+        "masculino": "./assets/outfits/filipe-jornal.png"
+      },
+      "description": "Confortável para investigar tarde, revisar manchetes e fingir que café resolve coragem."
+    },
+    {
+      "id": "trench-observatorio",
+      "name": "Trench do Observatório",
+      "slot": "full",
+      "owned": false,
+      "price": 110,
+      "style": "mistério",
+      "palette": ["#18233f", "#b7f0ff", "#e8c47a"],
+      "preview": "observatory",
+      "sprites": {
+        "feminino": "./assets/outfits/brenda-observatorio.png",
+        "masculino": "./assets/outfits/filipe-observatorio.png"
+      },
+      "description": "Casaco azul profundo com detalhes de latão para noites no terraço e portas antigas."
+    },
+    {
+      "id": "conjunto-estufa",
+      "name": "Conjunto da Estufa",
+      "slot": "full",
+      "owned": false,
+      "price": 95,
+      "style": "botânico",
+      "palette": ["#214f3d", "#b9efd8", "#f7c76d"],
+      "preview": "greenhouse",
+      "sprites": {
+        "feminino": "./assets/outfits/brenda-estufa.png",
+        "masculino": "./assets/outfits/filipe-estufa.png"
+      },
+      "description": "Feito para bolsos cheios de sementes, bilhetes honestos e pequenos planos de fuga."
+    },
+    {
+      "id": "blazer-conselho",
+      "name": "Blazer do Conselho",
+      "slot": "full",
+      "owned": false,
+      "price": 130,
+      "style": "formal",
+      "palette": ["#501d33", "#e8c47a", "#dce6ef"],
+      "preview": "council",
+      "sprites": {
+        "feminino": "./assets/outfits/brenda-conselho.png",
+        "masculino": "./assets/outfits/filipe-conselho.png"
+      },
+      "description": "Elegante demais para parecer inocente. Perfeito para entrar em lugares onde ninguém esperava você."
+    }
+  ],
+  "cgs": [
+    {
+      "id": "blue-ribbon",
+      "title": "A fita no armário",
+      "episode": "episode-01",
+      "image": "./assets/cgs/blue-ribbon-scene.png",
+      "hint": "Responda ao bilhete sem fugir da pergunta."
+    },
+    {
+      "id": "star-rooftop",
+      "title": "Mapa de estrelas",
+      "episode": "episode-01 (replay)",
+      "image": "./assets/cgs/star-rooftop-scene.png",
+      "hint": "Aproxime-se de Noa quando o terraço estiver liberado."
+    },
+    {
+      "id": "library-note",
+      "title": "Anotação na margem",
+      "episode": "episode-01 (replay)",
+      "image": "./assets/cgs/library-note-scene.png",
+      "hint": "Não force Caio a explicar antes de ele confiar em você."
+    },
+    {
+      "id": "observatory-door",
+      "title": "A chave sob as estrelas",
+      "episode": "episode-02",
+      "image": "./assets/cgs/observatory-door-scene.png",
+      "hint": "Entre no clube que oficialmente não existe."
+    },
+    {
+      "id": "archive-minutes",
+      "title": "Ata no arquivo morto",
+      "episode": "episode-02",
+      "image": "./assets/cgs/ep02-archive-minutes.png",
+      "hint": "Investigue o arquivo morto com cuidado e registre a ata rasurada."
+    },
+    {
+      "id": "demo-tape",
+      "title": "A demo que não devia tocar",
+      "episode": "episode-02",
+      "image": "./assets/cgs/ep02-demo-tape.png",
+      "hint": "Ouça a demo riscada sem fugir do que ela revela."
+    },
+    {
+      "id": "glass-flower",
+      "title": "A flor de vidro",
+      "episode": "episode-03",
+      "image": "./assets/cgs/glass-flower-scene.png",
+      "hint": "Proteja a estufa quando as luzes falsas tentarem enganar todo mundo."
+    },
+    {
+      "id": "false-lights",
+      "title": "Luzes falsas no pátio",
+      "episode": "episode-03",
+      "image": "./assets/cgs/ep03-false-lights.png",
+      "hint": "Descubra a fiação que transforma beleza em armadilha."
+    },
+    {
+      "id": "helena-letters",
+      "title": "Cartas de Helena",
+      "episode": "episode-03",
+      "image": "./assets/cgs/ep03-helena-letters.png",
+      "hint": "Leia as cartas antes de transformar Helena em prova."
+    },
+    {
+      "id": "ep04-ribbon-fray",
+      "title": "Fio solto da fita",
+      "episode": "episode-04",
+      "image": "./assets/cgs/blue-ribbon-memory.png",
+      "hint": "Siga o comportamento estranho da fita durante a votação."
+    },
+    {
+      "id": "ep04-council-seal",
+      "title": "Brasão rasurado",
+      "episode": "episode-04",
+      "image": "./assets/cgs/ep02-archive-minutes.png",
+      "hint": "Investigue o selo antigo escondido nos registros do conselho."
+    },
+    {
+      "id": "ep04-observatory-vote",
+      "title": "Votação sob a cúpula",
+      "episode": "episode-04",
+      "image": "./assets/cgs/observatory-door-scene.png",
+      "hint": "Chegue ao fim da votação sem nome."
+    },
+    {
+      "id": "ep05-demo-glitch",
+      "title": "Ruído no ensaio",
+      "episode": "episode-05",
+      "image": "./assets/cgs/ep02-demo-tape.png",
+      "hint": "Ouça a falha que atravessa o evento escolar."
+    },
+    {
+      "id": "ep05-lantern-message",
+      "title": "Mensagem entre luzes",
+      "episode": "episode-05",
+      "image": "./assets/cgs/ep03-false-lights.png",
+      "hint": "Observe as lanternas quando todo mundo estiver ocupado sorrindo."
+    },
+    {
+      "id": "ep05-rooftop-after",
+      "title": "Depois do evento",
+      "episode": "episode-05",
+      "image": "./assets/cgs/star-rooftop-scene.png",
+      "hint": "Suba ao terraço após a descoberta estranha."
+    },
+    {
+      "id": "ep06-service-map",
+      "title": "Mapa de serviço",
+      "episode": "episode-06",
+      "image": "./assets/cgs/library-note-scene.png",
+      "hint": "Encontre o mapa que não pertence aos alunos."
+    },
+    {
+      "id": "ep06-helena-photo",
+      "title": "Foto antiga de Helena",
+      "episode": "episode-06",
+      "image": "./assets/cgs/ep03-helena-letters.png",
+      "hint": "Compare a foto com os registros do arquivo morto."
+    },
+    {
+      "id": "ep06-archive-risk",
+      "title": "Lâmina no arquivo",
+      "episode": "episode-06",
+      "image": "./assets/cgs/ep02-archive-minutes.png",
+      "hint": "Aceite o risco de abrir a caixa errada."
+    },
+    {
+      "id": "ep07-rooftop-promise",
+      "title": "Promessa no terraço",
+      "episode": "episode-07",
+      "image": "./assets/cgs/star-rooftop-scene.png",
+      "hint": "Escolha alguém para confiar quando a escola parecer vigiar você."
+    },
+    {
+      "id": "ep07-garden-soft",
+      "title": "Conversa na estufa",
+      "episode": "episode-07",
+      "image": "./assets/cgs/glass-flower-scene.png",
+      "hint": "Deixe um laço crescer sem apressar a resposta."
+    },
+    {
+      "id": "ep07-locker-note",
+      "title": "Bilhete vigiado",
+      "episode": "episode-07",
+      "image": "./assets/cgs/blue-ribbon-scene.png",
+      "hint": "Volte ao armário depois das conversas íntimas."
+    },
+    {
+      "id": "ep08-memory-photo",
+      "title": "Fotografia da fita",
+      "episode": "episode-08",
+      "image": "./assets/cgs/blue-ribbon-memory.png",
+      "hint": "Conecte a fita azul ao passado da escola."
+    },
+    {
+      "id": "ep08-observatory-film",
+      "title": "Filme da cúpula",
+      "episode": "episode-08",
+      "image": "./assets/cgs/observatory-door-scene.png",
+      "hint": "Encontre a gravação antiga sem quebrar a chave."
+    },
+    {
+      "id": "ep08-letters-thread",
+      "title": "Linha nas cartas",
+      "episode": "episode-08",
+      "image": "./assets/cgs/ep03-helena-letters.png",
+      "hint": "Leia a carta que explica por que você foi chamada."
+    },
+    {
+      "id": "ep09-council-order",
+      "title": "Ordem do conselho",
+      "episode": "episode-09",
+      "image": "./assets/cgs/ep02-archive-minutes.png",
+      "hint": "Confronte a versão oficial antes da reunião final."
+    },
+    {
+      "id": "ep09-lavinia-lights",
+      "title": "Lavínia sob as luzes",
+      "episode": "episode-09",
+      "image": "./assets/cgs/ep03-false-lights.png",
+      "hint": "Não trate Lavínia como resposta simples demais."
+    },
+    {
+      "id": "ep09-sealed-dome",
+      "title": "Cúpula selada",
+      "episode": "episode-09",
+      "image": "./assets/cgs/observatory-door-scene.png",
+      "hint": "Prepare a entrada final no observatório."
+    },
+    {
+      "id": "ep10-garden-echo",
+      "title": "Eco no jardim",
+      "episode": "episode-10",
+      "image": "./assets/cgs/glass-flower-scene.png",
+      "hint": "Use a fita azul diante da flor de vidro."
+    },
+    {
+      "id": "ep10-starfall",
+      "title": "Estrela que caiu",
+      "episode": "episode-10",
+      "image": "./assets/cgs/star-rooftop-scene.png",
+      "hint": "Descubra a parte da queda que o capítulo 1 permite lembrar."
+    },
+    {
+      "id": "ep10-next-map",
+      "title": "Mapa que não termina",
+      "episode": "episode-10",
+      "image": "./assets/cgs/blue-ribbon-memory.png",
+      "hint": "Termine o capítulo 1 e aceite que a escola ainda guarda outro andar."
+    }
+  ],
+  "apPacks": [
+    {
+      "id": "ap-respiro",
+      "name": "Respiro rápido",
+      "ap": 6,
+      "gems": 1,
+      "description": "O suficiente para atravessar algumas escolhas ou uma rota curta no mapa."
+    },
+    {
+      "id": "ap-turno",
+      "name": "Turno de investigação",
+      "ap": 14,
+      "gems": 3,
+      "description": "Bom para começar um episódio depois de gastar energia em encontros."
+    },
+    {
+      "id": "ap-noite",
+      "name": "Noite inteira",
+      "ap": 28,
+      "gems": 5,
+      "description": "Para quando você quer seguir a história sem esperar, respeitando o limite máximo de AP."
+    }
+  ],
+  "achievements": [
+    {
+      "id": "primeiro-sinal",
+      "title": "Primeiro Sinal",
+      "category": "História",
+      "description": "Concluiu o episódio 1 e guardou a fita azul.",
+      "hint": "Termine o primeiro episódio."
+    },
+    {
+      "id": "clube-invisivel",
+      "title": "Clube Invisível",
+      "category": "História",
+      "description": "Concluiu o episódio 2 e entrou no clube que não existe.",
+      "hint": "Abra a porta do observatório antigo."
+    },
+    {
+      "id": "flor-de-vidro",
+      "title": "Flor de Vidro",
+      "category": "História",
+      "description": "Concluiu o episódio 3 e salvou a memória escondida na estufa.",
+      "hint": "Chegue ao fim do Festival de Luzes Falsas."
+    },
+    {
+      "id": "confianca-do-grupo",
+      "title": "Primeira Confiança",
+      "category": "Afinidade",
+      "description": "Escolheu alguém para encarar a verdade ao seu lado.",
+      "hint": "Defina um foco de confiança no fim do episódio 1."
+    },
+    {
+      "id": "memorias-acesas",
+      "title": "Memórias Acesas",
+      "category": "Galeria",
+      "description": "Desbloqueou pelo menos quatro memórias especiais.",
+      "hint": "Colecione CGs jogando e rejogando episódios."
+    },
+    {
+      "id": "estilista-lunar",
+      "title": "Estilista Lunar",
+      "category": "Customização",
+      "description": "Liberou quatro roupas ou mais para o guarda-roupa.",
+      "hint": "Compre ou ganhe novas roupas."
+    },
+    {
+      "id": "energia-extra",
+      "title": "Energia de Emergência",
+      "category": "Economia",
+      "description": "Comprou AP usando diamantes na loja.",
+      "hint": "Use a loja de AP quando precisar de fôlego."
+    },
+    {
+      "id": "duas-rodadas",
+      "title": "Ritmo de Investigação",
+      "category": "Minigames",
+      "description": "Concluiu duas rodadas de minigame.",
+      "hint": "Jogue os dois minigames de AP."
+    },
+    {
+      "id": "voto-sem-nome",
+      "title": "Voto Sem Nome",
+      "category": "História",
+      "description": "Sobreviveu à votação que o conselho tentou fingir que não existia.",
+      "hint": "Termine o episódio 4."
+    },
+    {
+      "id": "luzes-e-ruidos",
+      "title": "Luzes e Ruídos",
+      "category": "História",
+      "description": "Descobriu que um evento escolar também pode esconder uma transmissão antiga.",
+      "hint": "Termine o episódio 5."
+    },
+    {
+      "id": "mapa-subterraneo",
+      "title": "Mapa de Serviço",
+      "category": "Investigação",
+      "description": "Encontrou o mapa que revela corredores fora do circuito dos alunos.",
+      "hint": "Termine o episódio 6."
+    },
+    {
+      "id": "aliados-na-sombra",
+      "title": "Aliados na Sombra",
+      "category": "Afinidade",
+      "description": "Escolheu quem merece ficar perto quando a Aurora High começa a observar você.",
+      "hint": "Termine o episódio 7."
+    },
+    {
+      "id": "linha-azul",
+      "title": "Linha Azul",
+      "category": "Galeria",
+      "description": "Conectou a fita azul ao passado do Clube Aurora.",
+      "hint": "Termine o episódio 8."
+    },
+    {
+      "id": "queda-da-coroa",
+      "title": "Queda da Coroa",
+      "category": "História",
+      "description": "Encarou Lavínia quando o conselho tentou transformar memória em disciplina.",
+      "hint": "Termine o episódio 9."
+    },
+    {
+      "id": "ecos-no-jardim",
+      "title": "Ecos no Jardim",
+      "category": "Capítulo",
+      "description": "Concluiu o Capítulo 1 sem encerrar o mistério da Aurora High.",
+      "hint": "Termine o episódio 10."
+    }
+  ]
+}

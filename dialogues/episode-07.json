@@ -1,0 +1,592 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-07",
+  "title": "Quem Fica no Escuro",
+  "startNode": "ep07_intro_01",
+  "nodes": {
+    "ep07_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "A foto antiga passa a noite inteira em cima da mesa. Mesmo virada para baixo, ela parece observar seu quarto como se a Aurora High tivesse aprendido a olhar de volta.",
+      "next": "ep07_phone_01"
+    },
+    "ep07_phone_01": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Davi intercepta voce antes do primeiro sinal. O sorriso dele aparece por instinto, mas nao segura. 'Relatorio do dia: alguem mexeu no mural do jornal, apagou meu rascunho sobre o observatorio e deixou um cafe fechado na minha mesa. Sem bilhete. Claramente uma ameaca civilizada.'",
+      "variants": [
+        {
+          "when": { "flags": ["ep06_promised_group_entry"] },
+          "text": "Davi intercepta voce antes do primeiro sinal. 'Relatorio do dia: voce prometeu que ninguem entra sozinho, entao parabens, eu me autodesignei ninguem oficial. Tambem apagaram meu rascunho sobre o observatorio e deixaram um cafe fechado na minha mesa. Isso e uma ameaca com boa caligrafia.'"
+        }
+      ],
+      "next": "ep07_noa_01"
+    },
+    "ep07_noa_01": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "atento" },
+        { "id": "noa", "position": "right", "expression": "tenso" }
+      ],
+      "text": "Noa aparece do outro lado dos armarios, segurando a propria alca da mochila como se ela fosse uma ancora. Ele nao pergunta pela foto. Ele pergunta se voce dormiu. O jeito como ele evita a palavra medo responde antes de voce.",
+      "next": "ep07_trust_choice"
+    },
+    "ep07_trust_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "mystery",
+      "text": "Pela primeira vez, investigar nao parece uma aventura. Parece escolher quem vai ser arrastado para perto quando a escola fechar as portas.",
+      "choices": [
+        {
+          "label": "Pedir que Noa fique por perto, mesmo que ele nao conte tudo ainda.",
+          "next": "ep07_after_noa",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 3, "davi": 1 },
+            "flags": { "ep07_chose_noa_near": true }
+          }
+        },
+        {
+          "label": "Chamar Theo para transformar a vigilancia em algo publico e impossivel de esconder.",
+          "next": "ep07_after_theo",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 3, "davi": 1 },
+            "flags": { "ep07_chose_theo_public": true }
+          }
+        },
+        {
+          "label": "Procurar Ravi, porque alguem que entende ruido talvez entenda ameacas.",
+          "next": "ep07_after_ravi",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 3, "davi": 1 },
+            "flags": { "ep07_chose_ravi_noise": true }
+          }
+        },
+        {
+          "label": "Pedir a Davi que registre tudo, mas manter a foto escondida por enquanto.",
+          "next": "ep07_after_davi",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 3, "caio": 1 },
+            "flags": { "ep07_kept_photo_private": true }
+          }
+        }
+      ]
+    },
+    "ep07_after_noa": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "curioso",
+      "background": "corridor",
+      "music": "quiet",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "Noa leva um segundo a mais para respirar. 'Eu posso ficar', ele diz. 'So nao me peca para fingir que o observatorio e so uma sala fechada.'",
+      "next": "ep07_map_intro"
+    },
+    "ep07_after_theo": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Theo ouve a historia sem interromper. Quando termina, ele tira o broche da equipe de eventos e prende na sua mochila. 'Se alguem quer que voce pareca sozinha, vamos decepcionar essa pessoa em publico.'",
+      "next": "ep07_map_intro"
+    },
+    "ep07_after_ravi": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Ravi encosta a testa na porta da sala de musica e escuta o corredor. 'A escola tem ritmo de culpa', ele murmura. 'E hoje ela ta fora do compasso.'",
+      "next": "ep07_map_intro"
+    },
+    "ep07_after_davi": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "corridor",
+      "music": "quiet",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Davi guarda a piada de volta no bolso. 'Tudo bem. Eu registro sem expor. Mas quando voce cansar de carregar isso sozinha, minha dramaticidade esta a servico da causa.'",
+      "next": "ep07_map_intro"
+    },
+    "ep07_map_intro": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "text": "O celular vibra com tres marcadores azuis. Nao sao pistas novas. Sao pessoas. A fita parece querer saber em quem voce confia antes de mostrar o proximo caminho.",
+      "next": "ep07_map_round"
+    },
+    "ep07_map_round": {
+      "type": "map",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "title": "Laços sob vigilancia",
+      "text": "Escolha onde investigar. Cada encontro custa AP e muda o modo como seus aliados vao reagir quando a escola apertar o cerco.",
+      "events": [
+        {
+          "id": "ep07_terrace",
+          "label": "Subir ao terraco com Noa e Theo",
+          "location": "terrace",
+          "apCost": 2,
+          "onceFlag": "ep07_rooftop_promised",
+          "next": "ep07_terrace_01",
+          "revisitNext": "ep07_terrace_return"
+        },
+        {
+          "id": "ep07_garden",
+          "label": "Respirar na estufa com Miguel",
+          "location": "garden",
+          "apCost": 2,
+          "onceFlag": "ep07_garden_letter",
+          "next": "ep07_garden_01",
+          "revisitNext": "ep07_garden_return"
+        },
+        {
+          "id": "ep07_library",
+          "label": "Conferir rastros com Caio, Ravi e Davi",
+          "location": "library",
+          "apCost": 2,
+          "onceFlag": "ep07_identified_shadow",
+          "next": "ep07_library_01",
+          "revisitNext": "ep07_library_return"
+        }
+      ],
+      "doneWhenFlags": [
+        "ep07_rooftop_promised",
+        "ep07_garden_letter",
+        "ep07_identified_shadow"
+      ],
+      "doneNext": "ep07_after_map_01"
+    },
+    "ep07_terrace_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "terrace",
+      "music": "mystery",
+      "characters": [
+        { "id": "theo", "position": "left", "expression": "sincero" },
+        { "id": "noa", "position": "right", "expression": "reservado" }
+      ],
+      "text": "No terraco, Theo parece menor sem plateia. Noa fica perto da grade e observa a cupula do observatorio como quem reconhece uma ferida. Entre os dois, a noite ganha um silencio quase bonito.",
+      "next": "ep07_terrace_choice"
+    },
+    "ep07_terrace_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "terrace",
+      "music": "quiet",
+      "characters": [
+        { "id": "theo", "position": "left", "expression": "sincero" },
+        { "id": "noa", "position": "right", "expression": "tenso" }
+      ],
+      "text": "Theo admite que Lavinia pediu a equipe de eventos para desviar alunos do observatorio. Noa diz que alguem acendeu as estrelas da cupula por dentro na noite anterior. Eles esperam sua reacao.",
+      "choices": [
+        {
+          "label": "Agradecer Theo por escolher voce em vez da imagem perfeita dele.",
+          "next": "ep07_terrace_after_theo",
+          "effects": {
+            "affinity": { "theo": 3, "noa": 1 },
+            "flags": { "ep07_supported_theo_vulnerability": true }
+          }
+        },
+        {
+          "label": "Pedir que Noa conte o que ele reconhece na cupula, sem pressionar alem do que ele aguenta.",
+          "next": "ep07_terrace_after_noa",
+          "effects": {
+            "affinity": { "noa": 3, "theo": 1 },
+            "flags": { "ep07_gently_pressed_noa": true }
+          }
+        },
+        {
+          "label": "Propor que os dois montem uma distração para voce observar a cupula de perto.",
+          "next": "ep07_terrace_after_plan",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 2, "noa": 2 },
+            "flags": { "ep07_planned_rooftop_distraction": true }
+          }
+        }
+      ]
+    },
+    "ep07_terrace_after_theo": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "encabulado",
+      "background": "terrace",
+      "music": "quiet",
+      "characters": [{ "id": "theo", "position": "right", "expression": "encabulado" }],
+      "text": "Theo ri sem jeito. 'Isso foi perigosamente especifico', ele diz, mas os ombros dele descem como se alguem tivesse destrancado uma janela.",
+      "next": "ep07_cg_rooftop"
+    },
+    "ep07_terrace_after_noa": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "raro_sorriso",
+      "background": "terrace",
+      "music": "quiet",
+      "characters": [{ "id": "noa", "position": "right", "expression": "raro_sorriso" }],
+      "text": "Noa encara a cupula. 'Eu reconheco a sequencia das luzes', ele confessa. 'Era um codigo do Clube Aurora. Uma promessa de voltar.'",
+      "next": "ep07_cg_rooftop"
+    },
+    "ep07_terrace_after_plan": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "terrace",
+      "music": "mystery",
+      "text": "Theo sabe distrair uma multidao. Noa sabe perceber quando uma estrela falsa muda de lugar. Juntos, eles transformam a vigilancia em oportunidade.",
+      "next": "ep07_cg_rooftop"
+    },
+    "ep07_cg_rooftop": {
+      "type": "cg",
+      "background": "terrace",
+      "music": "quiet",
+      "cg": "ep07-rooftop-promise",
+      "title": "Memoria desbloqueada",
+      "text": "No alto da escola, a promessa de nao investigar sozinha parece menos uma regra e mais um modo de sobreviver.",
+      "effects": {
+        "galleryAdd": ["ep07-rooftop-promise"],
+        "flags": { "ep07_rooftop_promised": true }
+      },
+      "next": "ep07_map_round"
+    },
+    "ep07_terrace_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "terrace",
+      "music": "quiet",
+      "text": "O terraco ja guardou o que precisava. A cupula do observatorio continua acesa por dentro, paciente demais.",
+      "next": "ep07_map_round"
+    },
+    "ep07_garden_01": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "Miguel encontra voce perto da flor de vidro. Ele nao pergunta o que aconteceu. Oferece uma tesoura pequena para cortar uma folha seca, como se cuidado tambem pudesse ser resposta.",
+      "next": "ep07_garden_choice"
+    },
+    "ep07_garden_choice": {
+      "type": "choice",
+      "speaker": "miguel",
+      "expression": "timido",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "timido" }],
+      "text": "Entre vasos antigos, Miguel encontra uma carta sem destinatario presa sob a terra de uma jardineira. A letra parece a mesma das cartas de Helena.",
+      "choices": [
+        {
+          "label": "Ler a carta junto com Miguel, respeitando cada pausa dele.",
+          "next": "ep07_garden_after_soft",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "inventoryAdd": ["carta-nao-enviada"],
+            "flags": { "ep07_read_letter_with_miguel": true }
+          }
+        },
+        {
+          "label": "Guardar a carta sem ler agora, para nao transformar dor em espetaculo.",
+          "next": "ep07_garden_after_guard",
+          "effects": {
+            "affinity": { "miguel": 2, "lavinia": 1 },
+            "inventoryAdd": ["carta-nao-enviada"],
+            "flags": { "ep07_guarded_helena_letter": true }
+          }
+        },
+        {
+          "label": "Perguntar se Lavinia sabe que a estufa esta escondendo correspondencia antiga.",
+          "next": "ep07_garden_after_lavinia",
+          "effects": {
+            "affinity": { "miguel": 1, "caio": 1 },
+            "inventoryAdd": ["carta-nao-enviada"],
+            "flags": { "ep07_connected_lavinia_to_greenhouse": true }
+          }
+        }
+      ]
+    },
+    "ep07_garden_after_soft": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "triste",
+      "background": "garden",
+      "music": "quiet",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "triste" }],
+      "text": "Miguel le devagar: 'Se eu esquecer por medo, que alguem me encontre pelo jardim.' Ele fecha a carta com cuidado. 'Isso nao parece pista. Parece pedido.'",
+      "next": "ep07_cg_garden"
+    },
+    "ep07_garden_after_guard": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Miguel assente. 'Obrigada por nao arrancar flores so porque elas apontam para uma trilha.' A frase soa timida e corajosa ao mesmo tempo.",
+      "next": "ep07_cg_garden"
+    },
+    "ep07_garden_after_lavinia": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "garden",
+      "music": "mystery",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Miguel olha para a porta da estufa. 'Lavinia sabe de mais coisas do que admite. Mas tem medo de uma coisa especifica: gente lembrando sem pedir permissao.'",
+      "next": "ep07_cg_garden"
+    },
+    "ep07_cg_garden": {
+      "type": "cg",
+      "background": "garden",
+      "music": "garden",
+      "cg": "ep07-garden-soft",
+      "title": "Memoria desbloqueada",
+      "text": "A estufa guarda uma carta que nao acusa ninguem. Por isso mesmo, ela pesa mais.",
+      "effects": {
+        "galleryAdd": ["ep07-garden-soft"],
+        "flags": { "ep07_garden_letter": true }
+      },
+      "next": "ep07_map_round"
+    },
+    "ep07_garden_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "music": "garden",
+      "text": "A carta nao enviada esta segura no diario. A flor de vidro se move de leve, mesmo sem vento.",
+      "next": "ep07_map_round"
+    },
+    "ep07_library_01": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "preocupado",
+      "background": "library",
+      "music": "quiet",
+      "characters": [
+        { "id": "caio", "position": "left", "expression": "preocupado" },
+        { "id": "ravi", "position": "right", "expression": "atrevido" }
+      ],
+      "text": "Caio trouxe a lista de acessos da biblioteca. Ravi trouxe um gravador. Davi trouxe biscoitos e chamou isso de 'kit juridicamente duvidoso de contraespionagem escolar'.",
+      "next": "ep07_library_choice"
+    },
+    "ep07_library_choice": {
+      "type": "choice",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "library",
+      "music": "quiet",
+      "characters": [
+        { "id": "caio", "position": "left", "expression": "analitico" },
+        { "id": "ravi", "position": "right", "expression": "divertido" }
+      ],
+      "text": "A lista mostra um acesso noturno ao arquivo morto feito com credencial do conselho. O gravador de Ravi capta um clique atras da estante, como se alguem estivesse ouvindo a conversa.",
+      "choices": [
+        {
+          "label": "Seguir o som com Ravi antes que a pessoa fuja.",
+          "next": "ep07_library_after_ravi",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 3 },
+            "flags": { "ep07_chased_library_click": true }
+          }
+        },
+        {
+          "label": "Pedir que Caio preserve a prova sem tocar demais no sistema.",
+          "next": "ep07_library_after_caio",
+          "effects": {
+            "affinity": { "caio": 3 },
+            "flags": { "ep07_preserved_access_log": true }
+          }
+        },
+        {
+          "label": "Deixar Davi criar uma isca no jornal para descobrir quem reage.",
+          "next": "ep07_library_after_davi",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 3, "ravi": 1 },
+            "flags": { "ep07_set_journal_bait": true }
+          }
+        }
+      ]
+    },
+    "ep07_library_after_ravi": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "ferido",
+      "background": "library",
+      "music": "mystery",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "ferido" }],
+      "text": "Ravi encontra apenas uma porta fechando. No chao, uma lasca azul. Ele tenta rir, mas a voz falha. 'O ruim de ser bom em ouvir e que as coisas horriveis chegam primeiro.'",
+      "effects": {
+        "flags": { "ep07_identified_shadow": true }
+      },
+      "next": "ep07_map_round"
+    },
+    "ep07_library_after_caio": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Caio cria uma copia limpa, uma copia escondida e uma terceira copia que ele chama de 'vinganca preventiva'. Quando voce sorri, ele finge nao perceber.",
+      "effects": {
+        "flags": { "ep07_identified_shadow": true }
+      },
+      "next": "ep07_map_round"
+    },
+    "ep07_library_after_davi": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "dramatico",
+      "background": "library",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "dramatico" }],
+      "text": "Davi escreve uma manchete falsa: 'Observatorio tera visita guiada'. Cinco minutos depois, o celular dele recebe uma mensagem sem numero: 'nao convide quem voce nao pode proteger'.",
+      "effects": {
+        "flags": { "ep07_identified_shadow": true }
+      },
+      "next": "ep07_map_round"
+    },
+    "ep07_library_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "library",
+      "music": "quiet",
+      "text": "A biblioteca agora parece silenciosa de proposito. O acesso noturno ja foi salvo.",
+      "next": "ep07_map_round"
+    },
+    "ep07_after_map_01": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Lavinia espera no patio vazio, impecavel demais para a hora. 'Voce esta confundindo companhia com protecao', ela diz. 'E pior: esta ensinando outras pessoas a fazer o mesmo.'",
+      "next": "ep07_lavinia_choice"
+    },
+    "ep07_lavinia_choice": {
+      "type": "choice",
+      "speaker": "lavinia",
+      "expression": "cortante",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "cortante" }],
+      "text": "Ela entrega um bilhete dobrado, mas segura uma ponta ate voce encarar os olhos dela.",
+      "choices": [
+        {
+          "label": "Perguntar por que ela parece assustada sempre que alguem escolhe ficar.",
+          "next": "ep07_lavinia_after_soft",
+          "effects": {
+            "affinity": { "lavinia": 2 },
+            "flags": { "ep07_saw_lavinia_fear": true }
+          }
+        },
+        {
+          "label": "Dizer que, se o conselho vigia seus amigos, voce vai vigiar o conselho de volta.",
+          "next": "ep07_lavinia_after_defiant",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 1, "ravi": 1 },
+            "flags": { "ep07_warned_council_back": true }
+          }
+        },
+        {
+          "label": "Guardar o bilhete sem responder, para nao dar a Lavinia o controle da cena.",
+          "next": "ep07_lavinia_after_silent",
+          "effects": {
+            "affinity": { "caio": 1, "noa": 1 },
+            "flags": { "ep07_refused_lavinia_stage": true }
+          }
+        }
+      ]
+    },
+    "ep07_lavinia_after_soft": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Por um segundo, Lavinia parece uma aluna e nao uma instituicao. 'Porque ficar perto tambem pode virar prova contra voce', ela responde, baixo demais para a escola ouvir.",
+      "next": "ep07_cg_locker"
+    },
+    "ep07_lavinia_after_defiant": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "irritada",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "irritada" }],
+      "text": "Lavinia ergue o queixo, mas os dedos apertam o bilhete com forca demais. 'Entao aprenda depressa', ela diz. 'O conselho nunca olha sozinho.'",
+      "next": "ep07_cg_locker"
+    },
+    "ep07_lavinia_after_silent": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "mystery",
+      "text": "Seu silencio tira de Lavinia a fala final. Ela vai embora como quem venceu em publico e perdeu em algum lugar mais perigoso.",
+      "next": "ep07_cg_locker"
+    },
+    "ep07_cg_locker": {
+      "type": "cg",
+      "background": "corridor",
+      "music": "mystery",
+      "cg": "ep07-locker-note",
+      "title": "Memoria desbloqueada",
+      "text": "No armario, o bilhete revela uma frase curta: 'pare de formar lacos; eles serao usados como chaves'.",
+      "effects": {
+        "galleryAdd": ["ep07-locker-note"],
+        "inventoryAdd": ["bilhete-vigiado"],
+        "flags": { "ep07_received_watched_note": true }
+      },
+      "next": "ep07_reward"
+    },
+    "ep07_reward": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "Naquela noite, seu diario nao registra apenas pistas. Registra nomes. E a fita azul, presa entre as paginas, marca todos eles como se soubesse que o Capitulo ainda vai cobrar essa escolha.",
+      "effects": {
+        "completeEpisode": "episode-07",
+        "achievementAdd": ["aliados-na-sombra"],
+        "coins": 110,
+        "gems": 2,
+        "ap": 8,
+        "flags": { "episode_07_complete": true }
+      },
+      "next": "ep07_end"
+    },
+    "ep07_end": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "mystery",
+      "title": "Fim do Episodio 7",
+      "text": "Quando voce apaga a luz, uma estrela artificial acende no teto do quarto. Ela pisca tres vezes, como se chamasse alguem pelo seu nome."
+    }
+  }
+}

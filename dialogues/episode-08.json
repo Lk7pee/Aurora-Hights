@@ -1,0 +1,586 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-08",
+  "title": "A Foto Antes da Queda",
+  "startNode": "ep08_intro_01",
+  "nodes": {
+    "ep08_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "mystery",
+      "text": "A estrela falsa no teto desaparece ao amanhecer, mas deixa um reflexo azul na parede. A fita, a foto e o bilhete vigiado formam uma linha torta sobre sua mesa.",
+      "next": "ep08_davi_01"
+    },
+    "ep08_davi_01": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Davi aparece com olheiras e tres copias da foto antiga. 'Eu ampliei, inverti, rezei para a impressora e subornei o scanner com elogios. A boa noticia: a fita azul esta mesmo na mao de Helena. A noticia pessima: tem outra pessoa cortada no canto.'",
+      "variants": [
+        {
+          "when": { "flags": ["ep07_set_journal_bait"] },
+          "text": "Davi aparece com olheiras, tres copias da foto antiga e o orgulho ferido de quem mordeu a propria isca. 'A manchete falsa funcionou. Alguem tentou apagar o arquivo do jornal. E, enquanto apagava, deixou o canto da foto menos borrado.'"
+        }
+      ],
+      "next": "ep08_caio_01"
+    },
+    "ep08_caio_01": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "library",
+      "music": "quiet",
+      "characters": [
+        { "id": "caio", "position": "left", "expression": "analitico" },
+        { "id": "davi", "position": "right", "expression": "atento" }
+      ],
+      "text": "Caio coloca uma transparencia sobre a foto. A silhueta no canto coincide com o brasao antigo do conselho, mas o rosto foi raspado da imagem com cuidado demais para ser acidente.",
+      "next": "ep08_first_choice"
+    },
+    "ep08_first_choice": {
+      "type": "choice",
+      "speaker": "caio",
+      "expression": "preocupado",
+      "background": "library",
+      "music": "quiet",
+      "characters": [
+        { "id": "caio", "position": "left", "expression": "preocupado" },
+        { "id": "davi", "position": "right", "expression": "atento" }
+      ],
+      "text": "A foto nao prova tudo. Mas prova o bastante para tornar perigoso decidir o proximo passo.",
+      "choices": [
+        {
+          "label": "Comparar a foto com registros oficiais antes de acusar alguem.",
+          "next": "ep08_first_after_caio",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 3, "davi": 1 },
+            "flags": { "ep08_prioritized_records": true }
+          }
+        },
+        {
+          "label": "Levar a foto ate Lavinia e observar a primeira reacao dela.",
+          "next": "ep08_first_after_lavinia",
+          "effects": {
+            "ap": -1,
+            "affinity": { "lavinia": 2, "theo": 1 },
+            "flags": { "ep08_tested_lavinia_reaction": true }
+          }
+        },
+        {
+          "label": "Procurar por que seu nome aparece perto dessa historia, mesmo sem prova ainda.",
+          "next": "ep08_first_after_self",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 1, "miguel": 1 },
+            "flags": { "ep08_followed_transfer_instinct": true }
+          }
+        }
+      ]
+    },
+    "ep08_first_after_caio": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Caio quase sorri. 'Excelente. Verdades que sobrevivem a planilhas costumam incomodar por mais tempo.'",
+      "next": "ep08_map_intro"
+    },
+    "ep08_first_after_lavinia": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Lavinia olha para a foto por menos de um segundo. Pouco demais para ler. Tempo suficiente para empalidecer. 'Nao use mortos para vencer brigas vivas', ela diz.",
+      "next": "ep08_map_intro"
+    },
+    "ep08_first_after_self": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Noa escuta sua suspeita e nao tenta suavizar. 'Quando a Aurora chama alguem, ela finge que foi transferencia.'",
+      "next": "ep08_map_intro"
+    },
+    "ep08_map_intro": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "text": "O mapa do celular abre uma trilha incompleta: arquivo morto, observatorio e biblioteca. A fita azul aperta seu pulso como se soubesse que uma foto pode ser lembranca e armadilha ao mesmo tempo.",
+      "next": "ep08_map_round"
+    },
+    "ep08_map_round": {
+      "type": "map",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "title": "Linha azul",
+      "text": "Investigue a origem da foto. Esta etapa consome AP porque cada verificacao exige acesso a areas vigiadas.",
+      "events": [
+        {
+          "id": "ep08_archive",
+          "label": "Comparar a foto no arquivo morto",
+          "location": "archive",
+          "apCost": 3,
+          "onceFlag": "ep08_photo_verified",
+          "next": "ep08_archive_01",
+          "revisitNext": "ep08_archive_return"
+        },
+        {
+          "id": "ep08_observatory",
+          "label": "Procurar filme antigo na cupula",
+          "location": "observatory",
+          "apCost": 3,
+          "onceFlag": "ep08_observatory_film_found",
+          "next": "ep08_observatory_01",
+          "revisitNext": "ep08_observatory_return"
+        },
+        {
+          "id": "ep08_library",
+          "label": "Ler a sequencia das cartas",
+          "location": "library",
+          "apCost": 2,
+          "onceFlag": "ep08_letters_thread_read",
+          "next": "ep08_library_01",
+          "revisitNext": "ep08_library_return"
+        }
+      ],
+      "doneWhenFlags": [
+        "ep08_photo_verified",
+        "ep08_observatory_film_found",
+        "ep08_letters_thread_read"
+      ],
+      "doneNext": "ep08_after_map_01"
+    },
+    "ep08_archive_01": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "leal" },
+        { "id": "caio", "position": "right", "expression": "analitico" }
+      ],
+      "text": "No arquivo morto, Davi segura a lanterna enquanto Caio abre a caixa do Clube Aurora. A mesma foto aparece colada em uma ata, mas nela o canto nao esta raspado. Existe uma aluna ao lado de Helena.",
+      "next": "ep08_archive_choice"
+    },
+    "ep08_archive_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "mystery",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "atento" },
+        { "id": "caio", "position": "right", "expression": "preocupado" }
+      ],
+      "text": "A legenda da ata diz: 'votacao de memoria, turma zero'. A palavra memoria foi sublinhada tantas vezes que quase rasgou o papel.",
+      "choices": [
+        {
+          "label": "Fotografar a ata inteira para proteger a prova.",
+          "next": "ep08_archive_after_proof",
+          "effects": {
+            "affinity": { "caio": 2, "davi": 1 },
+            "flags": { "ep08_saved_full_archive_proof": true }
+          }
+        },
+        {
+          "label": "Perguntar a Davi se ele esta bem antes de pedir outra copia.",
+          "next": "ep08_archive_after_davi",
+          "effects": {
+            "affinity": { "davi": 3 },
+            "flags": { "ep08_checked_on_davi": true }
+          }
+        },
+        {
+          "label": "Comparar a legenda com o brasao rasurado do conselho.",
+          "next": "ep08_archive_after_seal",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 2 },
+            "flags": { "ep08_connected_zero_class": true }
+          }
+        }
+      ]
+    },
+    "ep08_archive_after_proof": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "Caio confere foco, data e copia de seguranca. 'Se alguem apagar, vai precisar apagar tres lugares e uma pessoa rancorosa com acesso a impressora.'",
+      "next": "ep08_cg_photo"
+    },
+    "ep08_archive_after_davi": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Davi engole seco. 'Eu fico bem quando alguem pergunta antes de me transformar em narrador corajoso', ele admite. 'Obrigado.'",
+      "next": "ep08_cg_photo"
+    },
+    "ep08_archive_after_seal": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "mystery",
+      "text": "O brasao antigo se encaixa na margem da ata como assinatura e fechadura. A turma zero nao era uma turma. Era um grupo escolhido para esquecer.",
+      "next": "ep08_cg_photo"
+    },
+    "ep08_cg_photo": {
+      "type": "cg",
+      "background": "archive",
+      "music": "mystery",
+      "cg": "ep08-memory-photo",
+      "title": "Memoria desbloqueada",
+      "text": "A foto antiga mostra Helena antes da queda, segurando a fita azul como quem protege uma chave viva.",
+      "effects": {
+        "galleryAdd": ["ep08-memory-photo"],
+        "flags": { "ep08_photo_verified": true }
+      },
+      "next": "ep08_map_round"
+    },
+    "ep08_archive_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "quiet",
+      "text": "A foto do arquivo ja foi salva. As caixas parecem menos esquecidas e mais caladas.",
+      "next": "ep08_map_round"
+    },
+    "ep08_observatory_01": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "noa", "position": "left", "expression": "tenso" },
+        { "id": "ravi", "position": "right", "expression": "intenso" }
+      ],
+      "text": "Na cupula, Ravi encaixa a fita demo riscada em um aparelho antigo. Noa acompanha a sequencia das luzes no teto. Quando o ruido cresce, uma pelicula escondida comeca a girar sozinha.",
+      "next": "ep08_observatory_choice"
+    },
+    "ep08_observatory_choice": {
+      "type": "choice",
+      "speaker": "ravi",
+      "expression": "ferido",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "noa", "position": "left", "expression": "tenso" },
+        { "id": "ravi", "position": "right", "expression": "ferido" }
+      ],
+      "text": "A gravacao mostra uma noite de festival. Helena corre pelo observatorio, mas nao parece fugir de alguem. Parece tentar chegar primeiro a alguma coisa.",
+      "choices": [
+        {
+          "label": "Segurar a mao de Noa quando ele reconhece o codigo de luzes.",
+          "next": "ep08_observatory_after_noa",
+          "effects": {
+            "affinity": { "noa": 3 },
+            "flags": { "ep08_comforted_noa_at_film": true }
+          }
+        },
+        {
+          "label": "Pedir que Ravi continue tocando o audio, mesmo que doa.",
+          "next": "ep08_observatory_after_ravi",
+          "effects": {
+            "affinity": { "ravi": 3 },
+            "flags": { "ep08_trusted_ravi_audio": true }
+          }
+        },
+        {
+          "label": "Pausar a gravacao na imagem da fita azul se partindo.",
+          "next": "ep08_observatory_after_fragment",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 1, "ravi": 1 },
+            "inventoryAdd": ["fragmento-fita"],
+            "flags": { "ep08_spotted_ribbon_fragment": true }
+          }
+        }
+      ]
+    },
+    "ep08_observatory_after_noa": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "raro_sorriso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "noa", "position": "right", "expression": "raro_sorriso" }],
+      "text": "Noa nao solta sua mao. 'Eu achei que era uma lembranca minha', ele sussurra. 'Mas talvez seja algo que colocaram em mim.'",
+      "next": "ep08_cg_film"
+    },
+    "ep08_observatory_after_ravi": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Ravi mantem o audio ate o fim. Quando a voz de Helena surge no chiado, ele nao brinca. 'Ela deixou musica porque sabia que papel podia queimar.'",
+      "next": "ep08_cg_film"
+    },
+    "ep08_observatory_after_fragment": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A imagem congelada mostra a fita azul rasgando em duas partes. Um dos fragmentos cai para dentro da grade que leva ao jardim.",
+      "next": "ep08_cg_film"
+    },
+    "ep08_cg_film": {
+      "type": "cg",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "ep08-observatory-film",
+      "title": "Memoria desbloqueada",
+      "text": "O filme da cupula revela que a queda de Helena comecou antes da escada e terminou em algum ponto abaixo do jardim.",
+      "effects": {
+        "galleryAdd": ["ep08-observatory-film"],
+        "inventoryAdd": ["fragmento-fita"],
+        "flags": { "ep08_observatory_film_found": true }
+      },
+      "next": "ep08_map_round"
+    },
+    "ep08_observatory_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "music": "mystery",
+      "text": "A pelicula ja mostrou sua parte. O observatorio volta ao escuro, mas nao ao silencio.",
+      "next": "ep08_map_round"
+    },
+    "ep08_library_01": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "library",
+      "music": "quiet",
+      "characters": [
+        { "id": "miguel", "position": "left", "expression": "determinado" },
+        { "id": "theo", "position": "right", "expression": "sincero" }
+      ],
+      "text": "Miguel traz a carta nao enviada. Theo traz uma lista de convidados do festival antigo. Juntas, as folhas contam uma historia que nenhuma delas teria coragem de assumir sozinha.",
+      "variants": [
+        {
+          "when": { "flags": ["ep07_guarded_helena_letter"] },
+          "text": "Miguel traz a carta nao enviada ainda fechada. 'Acho que agora ela pediu para ser lida', ele diz. Theo traz uma lista de convidados do festival antigo, e as duas folhas parecem se reconhecer."
+        }
+      ],
+      "next": "ep08_library_choice"
+    },
+    "ep08_library_choice": {
+      "type": "choice",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "library",
+      "music": "quiet",
+      "characters": [
+        { "id": "miguel", "position": "left", "expression": "determinado" },
+        { "id": "theo", "position": "right", "expression": "protetor" }
+      ],
+      "text": "A carta de Helena diz: 'Se a proxima pessoa chegar como transferencia, nao deixem que chamem de coincidencia.' Na lista de convidados, seu sobrenome aparece escrito a lapis.",
+      "choices": [
+        {
+          "label": "Confiar em Theo para descobrir quem escreveu seu nome na lista.",
+          "next": "ep08_library_after_theo",
+          "effects": {
+            "affinity": { "theo": 3 },
+            "flags": { "ep08_trusted_theo_guest_list": true }
+          }
+        },
+        {
+          "label": "Pedir que Miguel ajude a ler a carta como pedido, nao como sentenca.",
+          "next": "ep08_library_after_miguel",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "flags": { "ep08_read_letter_as_request": true }
+          }
+        },
+        {
+          "label": "Guardar o registro de transferencia antes que alguem tome de voce.",
+          "next": "ep08_library_after_record",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 1, "lavinia": 1 },
+            "inventoryAdd": ["registro-transferencia"],
+            "flags": { "ep08_took_transfer_record": true }
+          }
+        }
+      ]
+    },
+    "ep08_library_after_theo": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Theo dobra a lista com cuidado. 'Eu conheco gente demais nesta escola. Pela primeira vez, isso talvez sirva para alguma coisa alem de foto sorrindo.'",
+      "next": "ep08_cg_letters"
+    },
+    "ep08_library_after_miguel": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "Miguel toca o canto da carta. 'Helena nao queria escolher quem sofreria depois. Ela queria que alguem tivesse a chance de escolher melhor.'",
+      "next": "ep08_cg_letters"
+    },
+    "ep08_library_after_record": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "library",
+      "music": "mystery",
+      "text": "O registro de transferencia entra no diario com um peso estranho. A data e anterior a sua matricula. Anterior ate a primeira ligacao da escola para sua familia.",
+      "next": "ep08_cg_letters"
+    },
+    "ep08_cg_letters": {
+      "type": "cg",
+      "background": "library",
+      "music": "quiet",
+      "cg": "ep08-letters-thread",
+      "title": "Memoria desbloqueada",
+      "text": "As cartas costuram a foto, a fita e seu nome em uma mesma linha azul. A chegada a Aurora High deixa de parecer acaso.",
+      "effects": {
+        "galleryAdd": ["ep08-letters-thread"],
+        "inventoryAdd": ["registro-transferencia"],
+        "flags": { "ep08_letters_thread_read": true }
+      },
+      "next": "ep08_map_round"
+    },
+    "ep08_library_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "library",
+      "music": "quiet",
+      "text": "A sequencia das cartas ja foi lida. O silencio da biblioteca parece menos neutro desde entao.",
+      "next": "ep08_map_round"
+    },
+    "ep08_after_map_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Com foto, filme e cartas alinhados, uma verdade parcial fica impossivel de negar: Helena tentou impedir que o conselho apagasse memorias. E alguem escolheu voce antes de voce escolher a Aurora High.",
+      "next": "ep08_final_choice"
+    },
+    "ep08_final_choice": {
+      "type": "choice",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavinia surge no fim do corredor antes que voce guarde os documentos. 'Se voce mostrar isso para todos agora, vai entregar a pessoa errada para a culpa certa.'",
+      "choices": [
+        {
+          "label": "Mostrar a verdade ao grupo inteiro, mesmo incompleta.",
+          "next": "ep08_final_group",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 1, "theo": 1, "ravi": 1 },
+            "flags": { "ep08_shared_truth_with_group": true }
+          }
+        },
+        {
+          "label": "Perguntar a Lavinia quem ela esta tentando proteger.",
+          "next": "ep08_final_lavinia",
+          "effects": {
+            "affinity": { "lavinia": 3 },
+            "flags": { "ep08_asked_who_lavinia_protects": true }
+          }
+        },
+        {
+          "label": "Guardar a revelacao ate encontrar a outra metade da fita.",
+          "next": "ep08_final_secret",
+          "effects": {
+            "affinity": { "noa": 1, "caio": 1, "miguel": 1 },
+            "flags": { "ep08_delayed_reveal_for_fragment": true }
+          }
+        }
+      ]
+    },
+    "ep08_final_group": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "text": "Quando voce conta ao grupo, ninguem fala por um momento inteiro. Entao Davi fecha o diario, Theo tranca o patio, Ravi desliga o som, Caio salva outra copia, Miguel respira fundo e Noa olha para a cupula.",
+      "next": "ep08_reward"
+    },
+    "ep08_final_lavinia": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavinia desvia os olhos. 'Nem toda pessoa protegida merece', ela diz. 'Mas algumas herdaram uma fechadura antes de aprender o que havia atras da porta.'",
+      "next": "ep08_reward"
+    },
+    "ep08_final_secret": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "reservado",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "reservado" }],
+      "text": "Noa concorda sem alivio. 'Algumas verdades incompletas viram armas. A gente precisa descobrir quem esta segurando o cabo.'",
+      "next": "ep08_reward"
+    },
+    "ep08_reward": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "De madrugada, um envelope do conselho passa por baixo da porta do quarto. Ele convoca voce para uma audiencia disciplinar por 'acesso indevido a memoria institucional'.",
+      "effects": {
+        "completeEpisode": "episode-08",
+        "achievementAdd": ["linha-azul"],
+        "coins": 130,
+        "gems": 3,
+        "ap": 8,
+        "flags": { "episode_08_complete": true }
+      },
+      "next": "ep08_end"
+    },
+    "ep08_end": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "mystery",
+      "title": "Fim do Episodio 8",
+      "text": "No rodape da convocacao, uma assinatura foi coberta por tinta dourada. Mesmo assim, voce reconhece a pressao da caneta: Lavinia assinou tremendo."
+    }
+  }
+}

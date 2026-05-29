@@ -1,0 +1,65 @@
+{
+  "schema": "aurora-high.routes.v1",
+  "routes": [
+    {
+      "characterId": "noa",
+      "relationship": "paquera",
+      "title": "Rota das Estrelas Apagadas",
+      "tone": "mistério íntimo",
+      "encounterLocation": "terrace",
+      "requirements": { "affinity": 8, "flags": ["saw_rooftop_shadow"] },
+      "rewardCg": "star-rooftop",
+      "chapters": ["Promessa no terraço", "O planetário fechado", "Cartas que nunca chegaram"]
+    },
+    {
+      "characterId": "theo",
+      "relationship": "paquera",
+      "title": "Rota do Sorriso em Público",
+      "tone": "romance popular com vulnerabilidade",
+      "encounterLocation": "atrium",
+      "requirements": { "affinity": 7, "flags": ["helped_theo"] },
+      "rewardItem": "passe-clube",
+      "chapters": ["Fotos do mural", "A festa cancelada", "Aplausos sem plateia"]
+    },
+    {
+      "characterId": "ravi",
+      "relationship": "paquera",
+      "title": "Rota do Ruído Bonito",
+      "tone": "faísca, humor ácido e confiança",
+      "encounterLocation": "music-room",
+      "requirements": { "affinity": 7, "flags": ["answered_ravi_back"] },
+      "rewardItem": "demo-riscada",
+      "chapters": ["Ensaio interrompido", "A demo perdida", "Última música antes da chuva"]
+    },
+    {
+      "characterId": "caio",
+      "relationship": "paquera",
+      "title": "Rota das Margens Anotadas",
+      "tone": "slow burn intelectual",
+      "encounterLocation": "library",
+      "requirements": { "affinity": 7, "flags": ["respected_caio_space"] },
+      "rewardCg": "library-note",
+      "chapters": ["Silêncio emprestado", "Xadrez depois da aula", "A carta que ele decorou"]
+    },
+    {
+      "characterId": "miguel",
+      "relationship": "paquera",
+      "title": "Rota da Flor de Vidro",
+      "tone": "cuidado, ternura e coragem",
+      "encounterLocation": "garden",
+      "requirements": { "affinity": 7, "flags": ["watered_greenhouse"] },
+      "rewardItem": "fita-azul",
+      "chapters": ["Regador azul", "Estufa trancada", "A flor que espera escuro"]
+    },
+    {
+      "characterId": "davi",
+      "relationship": "amizade",
+      "title": "Amizade do Riso que Falha",
+      "tone": "amizade, lealdade e humor como defesa",
+      "encounterLocation": "corridor",
+      "requirements": { "affinity": 7, "flags": ["trusted_davi"] },
+      "rewardItem": "passe-clube",
+      "chapters": ["Matéria de capa", "Piada fora de hora", "O texto que ele não publicou"]
+    }
+  ]
+}

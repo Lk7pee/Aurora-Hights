@@ -1,0 +1,134 @@
+{
+  "schema": "aurora-high.scenes.v1",
+  "scenes": [
+    {
+      "id": "gate",
+      "name": "Entrada da Aurora High",
+      "type": "map-location",
+      "image": "./presaves/sceness/portaoinicialD.jpeg",
+      "dayImage": "./presaves/sceness/portaoinicialD.jpeg",
+      "nightImage": "./presaves/sceness/portaoinicialN.jpeg",
+      "music": "morning",
+      "mapPosition": { "x": 18, "y": 74 },
+      "description": "Portões de ferro branco, bandeirolas e o primeiro rumor do semestre."
+    },
+    {
+      "id": "atrium",
+      "name": "Mapa do Terraço",
+      "type": "story-location",
+      "image": "./presaves/sceness/mapa.jpeg",
+      "dayImage": "./presaves/sceness/mapa.jpeg",
+      "nightImage": "./presaves/sceness/mapa.jpeg",
+      "music": "morning",
+      "description": "A planta ilustrada da Aurora High que surge no piso do terraço apenas durante o primeiro encontro."
+    },
+    {
+      "id": "corridor",
+      "name": "Corredor de Armário Leste",
+      "type": "map-location",
+      "image": "./presaves/sceness/corredorlesteD.jpeg",
+      "dayImage": "./presaves/sceness/corredorlesteD.jpeg",
+      "nightImage": "./presaves/sceness/corredorlesteN.jpeg",
+      "music": "school",
+      "mapPosition": { "x": 57, "y": 49 },
+      "description": "Fileiras de armários, cartazes de clubes e bilhetes que aparecem onde ninguém viu."
+    },
+    {
+      "id": "library",
+      "name": "Biblioteca",
+      "type": "map-location",
+      "image": "./presaves/sceness/bibliotecaD.jpeg",
+      "dayImage": "./presaves/sceness/bibliotecaD.jpeg",
+      "nightImage": "./presaves/sceness/bibliotecaN.jpeg",
+      "music": "quiet",
+      "mapPosition": { "x": 73, "y": 33 },
+      "description": "Silenciosa, organizada e vigiada pelo olhar impaciente de Caio."
+    },
+    {
+      "id": "terrace",
+      "name": "Terraço",
+      "type": "map-location",
+      "image": "./presaves/sceness/terracoD.jpeg",
+      "dayImage": "./presaves/sceness/terracoD.jpeg",
+      "nightImage": "./presaves/sceness/terracoN.jpeg",
+      "music": "mystery",
+      "mapPosition": { "x": 50, "y": 17 },
+      "description": "O céu parece perto o bastante para ouvir conversas que não deveriam subir até ali."
+    },
+    {
+      "id": "garden",
+      "name": "Estufa",
+      "type": "map-location",
+      "image": "./presaves/sceness/estufaD.jpeg",
+      "dayImage": "./presaves/sceness/estufaD.jpeg",
+      "nightImage": "./presaves/sceness/estufaN.jpeg",
+      "music": "garden",
+      "mapPosition": { "x": 25, "y": 31 },
+      "description": "Um canto verde, úmido e calmo, onde Miguel fala baixo com plantas e pessoas."
+    },
+    {
+      "id": "music-room",
+      "name": "Sala de Música",
+      "type": "map-location",
+      "image": "./presaves/sceness/salademusicaD.jpeg",
+      "dayImage": "./presaves/sceness/salademusicaD.jpeg",
+      "nightImage": "./presaves/sceness/salademusicaN.jpeg",
+      "music": "band",
+      "mapPosition": { "x": 70, "y": 68 },
+      "description": "Instrumentos emprestados, cabos enrolados e uma bateria que sempre parece culpada."
+    },
+    {
+      "id": "archive",
+      "name": "Arquivo Morto",
+      "type": "map-location",
+      "image": "./assets/scenes/archive.png",
+      "dayImage": "./assets/scenes/archive.png",
+      "nightImage": "./assets/scenes/archive.png",
+      "music": "quiet",
+      "mapPosition": { "x": 86, "y": 45 },
+      "description": "Prateleiras estreitas, caixas lacradas e atas que mudam de lugar quando ninguém olha."
+    },
+    {
+      "id": "observatory",
+      "name": "Observatório Antigo",
+      "type": "map-location",
+      "image": "./assets/scenes/observatory.png",
+      "dayImage": "./assets/scenes/observatory.png",
+      "nightImage": "./assets/scenes/observatory.png",
+      "music": "mystery",
+      "mapPosition": { "x": 49, "y": 7 },
+      "description": "A cúpula fechada desde o acidente. Por baixo da poeira, ainda há estrelas projetadas no piso."
+    },
+    {
+      "id": "courtyard",
+      "name": "Pátio das Luzes",
+      "type": "map-location",
+      "image": "./assets/scenes/courtyard.png",
+      "dayImage": "./assets/scenes/courtyard.png",
+      "nightImage": "./assets/scenes/courtyard.png",
+      "music": "school",
+      "mapPosition": { "x": 39, "y": 77 },
+      "description": "O pátio central onde o festival transforma sombras em vitrine e segredos em espetáculo."
+    },
+    {
+      "id": "boutique",
+      "name": "Boutique Lunar",
+      "type": "shop",
+      "image": "./assets/scenes/boutique.svg",
+      "music": "boutique",
+      "mapPosition": { "x": 84, "y": 79 },
+      "description": "Roupas, acessórios e vitrines que sabem exatamente quantas moedas você tem."
+    },
+    {
+      "id": "dorm",
+      "name": "Quarto",
+      "type": "safe-room",
+      "image": "./presaves/sceness/quarto.jpeg",
+      "dayImage": "./presaves/sceness/quarto.jpeg",
+      "nightImage": "./presaves/sceness/quarto.jpeg",
+      "music": "room",
+      "mapPosition": { "x": 12, "y": 44 },
+      "description": "Seu espaço para trocar de roupa, rever escolhas e fingir que está tudo sob controle."
+    }
+  ]
+}

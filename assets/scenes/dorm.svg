@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Quarto">
+  <defs>
+    <linearGradient id="room" x1="0" y1="0" x2="1600" y2="900">
+      <stop stop-color="#1d1727"/>
+      <stop offset=".58" stop-color="#15101b"/>
+      <stop offset="1" stop-color="#0a080d"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#room)"/>
+  <path fill="#0d0a11" d="M0 594h1600v306H0z"/>
+  <rect x="106" y="112" width="574" height="390" rx="28" fill="#090812"/>
+  <rect x="144" y="150" width="498" height="314" rx="18" fill="#182540"/>
+  <circle cx="538" cy="226" r="64" fill="#ffd166" opacity=".86"/>
+  <g fill="#e6f8ff" opacity=".8">
+    <circle cx="216" cy="202" r="2"/><circle cx="318" cy="280" r="2"/><circle cx="450" cy="174" r="3"/><circle cx="572" cy="352" r="2"/>
+  </g>
+  <rect x="884" y="132" width="420" height="432" rx="24" fill="#22172c"/>
+  <rect x="928" y="182" width="332" height="18" rx="9" fill="#ff6e9d"/>
+  <rect x="928" y="238" width="332" height="18" rx="9" fill="#67d8e8" opacity=".75"/>
+  <rect x="928" y="294" width="252" height="18" rx="9" fill="#ffd166" opacity=".75"/>
+  <path fill="#2b2131" d="M128 640h708v190H128z"/>
+  <path fill="#6d79ff" d="M166 570h548c58 0 106 47 106 106v32H166V570Z"/>
+  <path fill="#ff6e9d" d="M166 646h654v94H166z" opacity=".78"/>
+  <rect x="226" y="544" width="164" height="88" rx="22" fill="#f7efe6"/>
+  <rect x="426" y="544" width="166" height="88" rx="22" fill="#e6edf6"/>
+  <path fill="#120d18" d="M128 830h708v70H128z"/>
+  <rect x="990" y="626" width="320" height="210" rx="22" fill="#17111d"/>
+  <path fill="#f7efe6" d="M1044 578h176l34 80h-244l34-80Z"/>
+  <path fill="#6d79ff" d="M1068 604h112v14h-112zm0 30h144v14h-144z"/>
+  <circle cx="1196" cy="570" r="70" fill="#ffd166" opacity=".14" filter="url(#glow)"/>
+  <path fill="#70d6ff" d="M1240 642c-34 0-60 14-80 42 38 5 68-7 90-35l-10-7Z"/>
+  <g stroke="#42384a" stroke-width="4" opacity=".42">
+    <path d="M0 692h1600M0 790h1600"/>
+    <path d="M360 594 300 900M800 594l20 306M1240 594l78 306"/>
+  </g>
+</svg>

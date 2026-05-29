@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Atrio Central">
+  <defs>
+    <linearGradient id="wall" x1="800" y1="0" x2="800" y2="900">
+      <stop stop-color="#26314b"/>
+      <stop offset=".56" stop-color="#171526"/>
+      <stop offset="1" stop-color="#0c0a13"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="800" y1="548" x2="800" y2="900">
+      <stop stop-color="#323142"/>
+      <stop offset="1" stop-color="#12101a"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#wall)"/>
+  <path fill="#101624" d="M74 120h1452v440H74z"/>
+  <path fill="#293a5d" d="M142 168h1316v344H142z"/>
+  <path fill="#101624" d="M650 112h300v420H650z"/>
+  <path fill="#5c6fb3" d="M688 154h224v320H688z"/>
+  <g fill="#ffe7a8" opacity=".9">
+    <rect x="206" y="206" width="122" height="176" rx="16"/>
+    <rect x="404" y="206" width="122" height="176" rx="16"/>
+    <rect x="1074" y="206" width="122" height="176" rx="16"/>
+    <rect x="1272" y="206" width="122" height="176" rx="16"/>
+  </g>
+  <g fill="#152033">
+    <rect x="230" y="224" width="16" height="140"/><rect x="288" y="224" width="16" height="140"/>
+    <rect x="428" y="224" width="16" height="140"/><rect x="486" y="224" width="16" height="140"/>
+    <rect x="1098" y="224" width="16" height="140"/><rect x="1156" y="224" width="16" height="140"/>
+    <rect x="1296" y="224" width="16" height="140"/><rect x="1354" y="224" width="16" height="140"/>
+  </g>
+  <path fill="url(#floor)" d="M0 548h1600v352H0z"/>
+  <path fill="#1d1a28" d="M488 520h624l206 380H282l206-380Z"/>
+  <g stroke="#5d5872" stroke-width="3" opacity=".45">
+    <path d="M552 568h496M500 640h600M446 724h708M382 826h836"/>
+    <path d="M800 520v380M646 548 518 900M954 548l128 352"/>
+  </g>
+  <path fill="#0a0910" d="M90 518h1420v54H90z"/>
+  <path fill="#ff6e9d" d="M586 134h60v292l-30-34-30 34V134Zm368 0h60v292l-30-34-30 34V134Z"/>
+  <path fill="#67d8e8" d="M718 138h164v22H718zm0 44h164v22H718zm0 44h164v22H718z" opacity=".88"/>
+  <g>
+    <circle cx="800" cy="112" r="74" fill="#ffd166" opacity=".18" filter="url(#glow)"/>
+    <circle cx="800" cy="112" r="36" fill="#ffd166" opacity=".84"/>
+  </g>
+  <g fill="#08080e" opacity=".65">
+    <path d="M284 713c22 0 40 18 40 40v87h-80v-87c0-22 18-40 40-40Z"/>
+    <path d="M384 742c18 0 32 14 32 32v66h-64v-66c0-18 14-32 32-32Z"/>
+    <path d="M1282 714c22 0 40 18 40 40v86h-80v-86c0-22 18-40 40-40Z"/>
+  </g>
+  <path fill="#70d6ff" d="M678 480c84-20 160-20 244 0v36H678z" opacity=".45"/>
+</svg>

@@ -1,0 +1,571 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-05",
+  "title": "Festival de Lanternas",
+  "startNode": "ep05_intro_01",
+  "nodes": {
+    "ep05_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "school",
+      "text": "A Aurora High decide curar tensão com decoração. Lanternas coloridas aparecem no pátio, cartazes anunciam oficinas de clubes e todo mundo finge que a votação sem nome foi apenas um mal-entendido administrativo.",
+      "effects": {
+        "inventoryAdd": ["programa-luzes"],
+        "flags": { "ep05_received_lantern_program": true }
+      },
+      "next": "ep05_intro_02"
+    },
+    "ep05_intro_02": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "confiante",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [
+        { "id": "theo", "position": "left", "expression": "confiante" },
+        { "id": "ravi", "position": "right", "expression": "atrevido" }
+      ],
+      "text": "Theo sorri com uma prancheta na mão. Ravi testa um microfone que chia como se tivesse opinião política.",
+      "variants": [
+        {
+          "when": { "flags": ["ep04_forced_question_public"] },
+          "text": "Theo sorri com uma prancheta na mão, ainda mais cuidadoso depois de ter repetido sua pergunta em público. Ravi testa um microfone que chia como se quisesse concordar com você."
+        },
+        {
+          "when": { "flags": ["ep04_gave_lavinia_seal"] },
+          "text": "Theo tenta manter o evento de pé enquanto Lavínia observa de longe, fechada em si mesma desde que recebeu o selo rasurado. Ravi testa um microfone que chia como se tivesse segredos na garganta."
+        }
+      ],
+      "next": "ep05_social_choice"
+    },
+    "ep05_social_choice": {
+      "type": "choice",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [
+        { "id": "theo", "position": "left", "expression": "sincero" },
+        { "id": "ravi", "position": "right", "expression": "divertido" }
+      ],
+      "text": "O evento precisa de voluntários. Theo quer ordem, Ravi quer barulho controlado, e Davi manda mensagem dizendo que qualquer função com crachá falso é uma função nobre.",
+      "choices": [
+        {
+          "label": "Ajudar Theo a organizar as oficinas sem deixar ele carregar tudo sozinho.",
+          "next": "ep05_social_after_theo",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 3 },
+            "flags": { "ep05_helped_theo_event": true }
+          }
+        },
+        {
+          "label": "Acompanhar Ravi no teste de som e procurar a falha da demo.",
+          "next": "ep05_social_after_ravi",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 3 },
+            "flags": { "ep05_joined_ravi_soundcheck": true }
+          }
+        },
+        {
+          "label": "Aceitar o crachá extra de Davi e circular como repórter improvisada.",
+          "next": "ep05_social_after_davi",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 3, "caio": 1 },
+            "flags": { "ep05_reporter_badge": true }
+          }
+        }
+      ]
+    },
+    "ep05_social_after_theo": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "encabulado",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "encabulado" }],
+      "text": "Theo agradece com um sorriso menor, mais verdadeiro. O tipo de sorriso que não cabe em cartaz, mas fica no peito.",
+      "next": "ep05_map_intro"
+    },
+    "ep05_social_after_ravi": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Ravi entrega um cabo enrolado para você e diz que, se o som explodir, foi arte experimental. A mão dele demora um pouco para soltar a sua.",
+      "next": "ep05_map_intro"
+    },
+    "ep05_social_after_davi": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "brincalhao",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "brincalhao" }],
+      "text": "Davi chama o crachá de licença poética de investigação. Ele também admite que imprimiu em papel caro para parecer menos crime.",
+      "next": "ep05_map_intro"
+    },
+    "ep05_map_intro": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "exploration",
+      "text": "No meio da normalidade ensaiada, três detalhes destoam: lanternas que piscam fora do ritmo, cabos de som puxados para uma sala vazia e uma rota no mapa apontando para o terraço depois do evento.",
+      "next": "ep05_map_round"
+    },
+    "ep05_map_round": {
+      "type": "map",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "exploration",
+      "title": "Festival em andamento",
+      "text": "Explore o evento escolar antes que o mistério se esconda de novo no barulho do pátio.",
+      "events": [
+        {
+          "id": "ep05_lanterns",
+          "label": "Checar as lanternas do pátio",
+          "location": "courtyard",
+          "apCost": 2,
+          "onceFlag": "ep05_checked_lanterns",
+          "next": "ep05_lanterns_01",
+          "revisitNext": "ep05_lanterns_return"
+        },
+        {
+          "id": "ep05_sound",
+          "label": "Investigar a falha do som",
+          "location": "music-room",
+          "apCost": 2,
+          "onceFlag": "ep05_found_sound_glitch",
+          "next": "ep05_sound_01",
+          "revisitNext": "ep05_sound_return"
+        },
+        {
+          "id": "ep05_rooftop",
+          "label": "Subir ao terraço no intervalo",
+          "location": "terrace",
+          "apCost": 2,
+          "onceFlag": "ep05_found_rooftop_message",
+          "next": "ep05_rooftop_01",
+          "revisitNext": "ep05_rooftop_return"
+        }
+      ],
+      "doneWhenFlags": [
+        "ep05_checked_lanterns",
+        "ep05_found_sound_glitch",
+        "ep05_found_rooftop_message"
+      ],
+      "doneNext": "ep05_after_map_01"
+    },
+    "ep05_lanterns_01": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "courtyard",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "Miguel ajeita lanternas perto das plantas usadas na decoração. Ele repara que algumas fitas azuis amarradas nelas não estavam no plano original.",
+      "next": "ep05_lanterns_choice"
+    },
+    "ep05_lanterns_choice": {
+      "type": "choice",
+      "speaker": "miguel",
+      "expression": "timido",
+      "background": "courtyard",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "timido" }],
+      "text": "Uma sequência de luzes se repete: três piscadas, pausa, duas piscadas. Miguel diz que parece respiração presa.",
+      "choices": [
+        {
+          "label": "Pedir para Miguel preservar as fitas sem assustar os alunos.",
+          "next": "ep05_lanterns_after_care",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "flags": { "ep05_preserved_lantern_fibers": true, "ep05_checked_lanterns": true }
+          }
+        },
+        {
+          "label": "Anotar o padrão das piscadas no programa do evento.",
+          "next": "ep05_lanterns_after_pattern",
+          "effects": {
+            "affinity": { "caio": 2, "miguel": 1 },
+            "flags": { "ep05_logged_lantern_pattern": true, "ep05_checked_lanterns": true }
+          }
+        },
+        {
+          "label": "Perguntar se a estufa já reagiu assim antes.",
+          "next": "ep05_lanterns_after_greenhouse",
+          "effects": {
+            "affinity": { "miguel": 2, "noa": 1 },
+            "flags": { "ep05_connected_lanterns_greenhouse": true, "ep05_checked_lanterns": true }
+          }
+        }
+      ]
+    },
+    "ep05_lanterns_after_care": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "courtyard",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Miguel guarda as fitas como se fossem sementes. Ele diz que coisas frágeis não precisam ser fracas.",
+      "next": "ep05_cg_lanterns"
+    },
+    "ep05_lanterns_after_pattern": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "courtyard",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "No papel, as piscadas viram código. O último intervalo forma uma palavra quando você junta com o horário da votação: volte.",
+      "next": "ep05_cg_lanterns"
+    },
+    "ep05_lanterns_after_greenhouse": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "triste",
+      "background": "courtyard",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "triste" }],
+      "text": "Miguel admite que a flor de vidro pulsa do mesmo jeito quando alguém fala de Helena sem medo.",
+      "next": "ep05_cg_lanterns"
+    },
+    "ep05_cg_lanterns": {
+      "type": "cg",
+      "background": "courtyard",
+      "music": "mystery",
+      "cg": "ep05-lantern-message",
+      "title": "Memória desbloqueada",
+      "text": "As lanternas do festival escondem uma mensagem curta demais para consolar e precisa demais para ser acidente.",
+      "effects": {
+        "galleryAdd": ["ep05-lantern-message"],
+        "flags": { "ep05_unlocked_lantern_message": true }
+      },
+      "next": "ep05_map_round"
+    },
+    "ep05_lanterns_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "school",
+      "text": "As lanternas balançam como se o vento estivesse lendo em voz baixa.",
+      "next": "ep05_map_round"
+    },
+    "ep05_sound_01": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "A sala de música está vazia, mas o gravador continua aceso. Ravi olha para o aparelho como se ele tivesse dito algo imperdoável.",
+      "next": "ep05_sound_choice"
+    },
+    "ep05_sound_choice": {
+      "type": "choice",
+      "speaker": "ravi",
+      "expression": "ferido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "ferido" }],
+      "text": "No ruído, uma voz antiga fala seu nome pela metade. Não Brenda ou Filipe. Seu nome de perfil, como se a gravação tivesse aprendido agora.",
+      "choices": [
+        {
+          "label": "Ficar com Ravi até a gravação terminar.",
+          "next": "ep05_sound_after_stay",
+          "effects": {
+            "affinity": { "ravi": 3 },
+            "inventoryAdd": ["nota-palco"],
+            "flags": { "ep05_stayed_with_ravi_glitch": true, "ep05_found_sound_glitch": true }
+          }
+        },
+        {
+          "label": "Pedir para Ravi isolar a frequência sem se culpar pelo que surgir.",
+          "next": "ep05_sound_after_frequency",
+          "effects": {
+            "affinity": { "ravi": 2, "caio": 1 },
+            "inventoryAdd": ["nota-palco"],
+            "flags": { "ep05_isolated_frequency": true, "ep05_found_sound_glitch": true }
+          }
+        },
+        {
+          "label": "Brincar que fantasmas deviam respeitar passagem de som.",
+          "next": "ep05_sound_after_joke",
+          "effects": {
+            "affinity": { "ravi": 2, "davi": 1 },
+            "inventoryAdd": ["nota-palco"],
+            "flags": { "ep05_lightened_ravi_fear": true, "ep05_found_sound_glitch": true }
+          }
+        }
+      ]
+    },
+    "ep05_sound_after_stay": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "ferido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "ferido" }],
+      "text": "Ravi não agradece. Só encosta o ombro no seu por um segundo. Para ele, isso parece um discurso inteiro.",
+      "next": "ep05_cg_sound"
+    },
+    "ep05_sound_after_frequency": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "A frequência isolada revela outra frase: não foi queda, foi chamada. Ravi xinga baixo, mas salva o arquivo três vezes.",
+      "next": "ep05_cg_sound"
+    },
+    "ep05_sound_after_joke": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Ravi ri apesar do medo. A risada falha no meio, mas volta mais honesta.",
+      "next": "ep05_cg_sound"
+    },
+    "ep05_cg_sound": {
+      "type": "cg",
+      "background": "music-room",
+      "music": "band",
+      "cg": "ep05-demo-glitch",
+      "title": "Memória desbloqueada",
+      "text": "O ruído no ensaio transforma uma tarde comum em prova: a Aurora High ainda consegue responder quando todos estão ouvindo outra coisa.",
+      "effects": {
+        "galleryAdd": ["ep05-demo-glitch"],
+        "flags": { "ep05_unlocked_demo_glitch": true }
+      },
+      "next": "ep05_map_round"
+    },
+    "ep05_sound_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "music-room",
+      "music": "band",
+      "text": "O gravador está desligado agora. Isso não torna o silêncio mais seguro.",
+      "next": "ep05_map_round"
+    },
+    "ep05_rooftop_01": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "reservado",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "reservado" }],
+      "text": "Noa está no terraço, olhando o pátio iluminado de longe. As lanternas formam uma constelação errada quando vistas de cima.",
+      "next": "ep05_rooftop_choice"
+    },
+    "ep05_rooftop_choice": {
+      "type": "choice",
+      "speaker": "noa",
+      "expression": "curioso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "Ele aponta para o desenho. Uma estrela falta no mesmo ponto onde o mapa antigo marcava o observatório.",
+      "choices": [
+        {
+          "label": "Perguntar se Noa tem medo do que vai aparecer quando a estrela voltar.",
+          "next": "ep05_rooftop_after_fear",
+          "effects": {
+            "affinity": { "noa": 3 },
+            "flags": { "ep05_asked_noa_fear": true, "ep05_found_rooftop_message": true }
+          }
+        },
+        {
+          "label": "Comparar a constelação com o padrão das lanternas.",
+          "next": "ep05_rooftop_after_pattern",
+          "effects": {
+            "affinity": { "noa": 2, "caio": 1 },
+            "flags": { "ep05_matched_lantern_constellation": true, "ep05_found_rooftop_message": true }
+          }
+        },
+        {
+          "label": "Dizer que ele não precisa desaparecer sempre que a pista dói.",
+          "next": "ep05_rooftop_after_stay",
+          "effects": {
+            "affinity": { "noa": 2, "miguel": 1 },
+            "flags": { "ep05_asked_noa_to_stay": true, "ep05_found_rooftop_message": true }
+          }
+        }
+      ]
+    },
+    "ep05_rooftop_after_fear": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Noa diz que tem medo do que já apareceu e de como todo mundo aprendeu a chamar aquilo de céu bonito.",
+      "next": "ep05_cg_rooftop"
+    },
+    "ep05_rooftop_after_pattern": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "curioso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "As lanternas e a constelação dizem a mesma coisa por línguas diferentes: a queda começou antes da cúpula.",
+      "next": "ep05_cg_rooftop"
+    },
+    "ep05_rooftop_after_stay": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "raro_sorriso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "raro_sorriso" }],
+      "text": "Noa fica. Não por muito tempo, mas o suficiente para a noite mudar de temperatura.",
+      "next": "ep05_cg_rooftop"
+    },
+    "ep05_cg_rooftop": {
+      "type": "cg",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "ep05-rooftop-after",
+      "title": "Memória desbloqueada",
+      "text": "Do terraço, o evento escolar deixa de parecer festa. Vira mapa. E todo mapa da Aurora High cobra alguma coisa de quem aprende a ler.",
+      "effects": {
+        "galleryAdd": ["ep05-rooftop-after"],
+        "flags": { "ep05_unlocked_rooftop_after": true }
+      },
+      "next": "ep05_map_round"
+    },
+    "ep05_rooftop_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "O terraço continua distante da música. Talvez por isso escute melhor.",
+      "next": "ep05_map_round"
+    },
+    "ep05_after_map_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Quando as oficinas acabam, as lanternas apagam juntas. Só uma permanece acesa, azul, no centro do pátio.",
+      "next": "ep05_final_choice"
+    },
+    "ep05_final_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "ravi", "position": "left", "expression": "intenso" },
+        { "id": "theo", "position": "right", "expression": "protetor" }
+      ],
+      "text": "A lanterna azul projeta uma frase no chão: a chamada foi aceita. Ninguém no pátio percebe, exceto seu grupo.",
+      "choices": [
+        {
+          "label": "Guardar a frase em segredo até entender quem chamou.",
+          "next": "ep05_final_secret",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 2, "noa": 1 },
+            "flags": { "ep05_kept_call_secret": true }
+          }
+        },
+        {
+          "label": "Contar ao grupo inteiro e dividir o risco.",
+          "next": "ep05_final_group",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 2, "theo": 1 },
+            "flags": { "ep05_shared_call_with_group": true }
+          }
+        },
+        {
+          "label": "Pedir para Ravi esconder a frase dentro da música final.",
+          "next": "ep05_final_music",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 3 },
+            "flags": { "ep05_hid_message_in_song": true }
+          }
+        }
+      ]
+    },
+    "ep05_final_secret": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "Caio aceita o segredo como quem aceita um instrumento perigoso. Ele diz que a chamada não foi convite. Foi confirmação.",
+      "next": "ep05_reward"
+    },
+    "ep05_final_group": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Davi olha para todos e abandona a piada pronta. Dividir o risco, ele diz, talvez seja a primeira coisa adulta que esta escola ensinou sem querer.",
+      "next": "ep05_reward"
+    },
+    "ep05_final_music": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "timeOfDay": "night",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Ravi transforma a frase em três notas. Parece bonito demais para ser aviso, e talvez esse seja o problema.",
+      "next": "ep05_reward"
+    },
+    "ep05_reward": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "Mais tarde, o programa do evento aparece dobrado dentro do diário. No verso, alguém escreveu: procure o corredor que não aparece no mapa.",
+      "effects": {
+        "completeEpisode": "episode-05",
+        "achievementAdd": ["luzes-e-ruidos"],
+        "wardrobeAdd": ["look-palco"],
+        "coins": 115,
+        "gems": 2,
+        "ap": 7,
+        "flags": { "episode_05_complete": true }
+      },
+      "next": "ep05_end"
+    },
+    "ep05_end": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "title": "Fim do Episódio 5",
+      "text": "O mapa do celular apaga todos os lugares conhecidos por um segundo. Quando volta, há uma linha azul passando por dentro das paredes."
+    }
+  }
+}

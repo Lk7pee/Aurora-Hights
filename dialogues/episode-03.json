@@ -1,0 +1,863 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-03",
+  "title": "Festival de Luzes Falsas",
+  "startNode": "ep03_intro_01",
+  "nodes": {
+    "ep03_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "school",
+      "text": "No dia do festival, a Aurora High aprende a sorrir em conjunto. Luzes douradas atravessam o pátio, cartazes cobrem rachaduras e ninguém menciona o observatório.",
+      "next": "ep03_intro_02"
+    },
+    "ep03_intro_02": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "school",
+      "text": "A fita azul vibra no seu bolso quando as lâmpadas acendem. O mapa do celular escreve uma frase e apaga logo depois: luz falsa também projeta sombra.",
+      "next": "ep03_theo_01"
+    },
+    "ep03_theo_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "A votação de segurança foi confirmada para o fim da noite. Se passar, o observatório vira área permanentemente interditada e todas as provas vão para o conselho.",
+      "next": "ep03_opening_choice"
+    },
+    "ep03_opening_choice": {
+      "type": "choice",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Ele tenta sorrir para um grupo de alunos que passa, mas a preocupação chega primeiro.",
+      "choices": [
+        {
+          "label": "Pedir que ele pare de fingir só por um minuto.",
+          "next": "ep03_opening_theo",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 3 },
+            "flags": { "ep03_let_theo_be_honest": true }
+          }
+        },
+        {
+          "label": "Dizer que a votação precisa de testemunhas, não de palco perfeito.",
+          "next": "ep03_opening_witness",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 2, "theo": 1 },
+            "flags": { "ep03_prioritized_witnesses": true }
+          }
+        },
+        {
+          "label": "Brincar que luz falsa é péssima para foto e para mentira.",
+          "next": "ep03_opening_spark",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 1, "theo": 1 },
+            "flags": { "ep03_kept_festival_light": true }
+          }
+        }
+      ]
+    },
+    "ep03_opening_theo": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "encabulado",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "encabulado" }],
+      "text": "Então, honestamente: eu estou apavorado. Não de perder o festival. De descobrir que todo mundo viu o que aconteceu com Helena e escolheu a iluminação certa para não enxergar.",
+      "next": "ep03_lavinia_01"
+    },
+    "ep03_opening_witness": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Testemunhas eu consigo. Manchete provisória: estudante local descobre que multidão é mais útil quando não está só comprando doce.",
+      "next": "ep03_lavinia_01"
+    },
+    "ep03_opening_spark": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Finalmente alguém respeita a estética da conspiração. Se a mentira estiver mal iluminada, eu me recuso a ser enganado.",
+      "next": "ep03_lavinia_01"
+    },
+    "ep03_lavinia_01": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "A votação não é punição. É contenção. Se vocês abrirem essa história no meio do festival, Helena vai virar rumor outra vez.",
+      "next": "ep03_lavinia_choice"
+    },
+    "ep03_lavinia_choice": {
+      "type": "choice",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "O nome de Helena atravessa Lavínia como vidro fino. Há medo real ali, mas ele aprendeu a dar ordens.",
+      "choices": [
+        {
+          "label": "Responder que silêncio também transformou Helena em rumor.",
+          "next": "ep03_lavinia_truth",
+          "effects": {
+            "ap": -1,
+            "affinity": { "lavinia": 2, "noa": 1 },
+            "flags": { "ep03_challenged_lavinia_silence": true }
+          }
+        },
+        {
+          "label": "Prometer que a história será contada com cuidado.",
+          "next": "ep03_lavinia_care",
+          "effects": {
+            "ap": -1,
+            "affinity": { "miguel": 2, "lavinia": 1 },
+            "flags": { "ep03_promised_careful_reveal": true }
+          }
+        },
+        {
+          "label": "Pedir que ela ajude antes que o conselho use o medo dela.",
+          "next": "ep03_lavinia_help",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 1, "lavinia": 2 },
+            "flags": { "ep03_asked_lavinia_help": true }
+          }
+        }
+      ]
+    },
+    "ep03_lavinia_truth": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "irritada",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "irritada" }],
+      "text": "Você fala como se verdade fosse remédio. Às vezes, é lâmina. Mas talvez eu esteja segurando a lâmina pelo lado errado há tempo demais.",
+      "next": "ep03_map_round"
+    },
+    "ep03_lavinia_care": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Cuidado não é uma palavra que eu confio facilmente. Ainda assim, Helena gostava de pessoas que tentavam antes de prometer.",
+      "next": "ep03_map_round"
+    },
+    "ep03_lavinia_help": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Eu não posso ser vista ajudando. Mas se as luzes do pátio falharem às oito e doze, talvez o palco precise de outro ponto de atenção.",
+      "next": "ep03_map_round"
+    },
+    "ep03_map_round": {
+      "type": "map",
+      "background": "courtyard",
+      "music": "school",
+      "title": "Festival em investigação",
+      "text": "Reúna provas antes da votação. As ações no festival definem quem estará ao seu lado quando as luzes caírem.",
+      "events": [
+        {
+          "location": "garden",
+          "label": "Proteger a flor de vidro",
+          "next": "ep03_garden_01",
+          "revisitNext": "ep03_garden_return",
+          "apCost": 2,
+          "onceFlag": "ep03_stabilized_flower"
+        },
+        {
+          "location": "courtyard",
+          "label": "Checar a fiação das luzes falsas",
+          "next": "ep03_courtyard_01",
+          "revisitNext": "ep03_courtyard_return",
+          "apCost": 2,
+          "onceFlag": "ep03_found_false_lights"
+        },
+        {
+          "location": "library",
+          "label": "Comparar a ata com registros da biblioteca",
+          "next": "ep03_library_01",
+          "revisitNext": "ep03_library_return",
+          "apCost": 2,
+          "onceFlag": "ep03_decoded_schedule"
+        },
+        {
+          "location": "music-room",
+          "label": "Preparar a demo para tocar no palco",
+          "next": "ep03_music_01",
+          "revisitNext": "ep03_music_return",
+          "apCost": 2,
+          "onceFlag": "ep03_prepared_song"
+        },
+        {
+          "location": "terrace",
+          "label": "Traçar o sinal azul com Noa",
+          "next": "ep03_terrace_01",
+          "revisitNext": "ep03_terrace_return",
+          "apCost": 2,
+          "onceFlag": "ep03_traced_signal"
+        }
+      ],
+      "doneWhenFlags": [
+        "ep03_stabilized_flower",
+        "ep03_found_false_lights",
+        "ep03_decoded_schedule",
+        "ep03_prepared_song",
+        "ep03_traced_signal"
+      ],
+      "doneNext": "ep03_after_map_01"
+    },
+    "ep03_garden_01": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Alguém abriu a estufa durante a montagem. A flor de vidro está fria demais. Se ela quebrar hoje, perdemos a única memória viva de Helena.",
+      "next": "ep03_garden_choice"
+    },
+    "ep03_garden_choice": {
+      "type": "choice",
+      "speaker": "miguel",
+      "expression": "triste",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "triste" }],
+      "text": "O sino de vidro reflete as luzes do festival como pequenas mentiras bonitas.",
+      "choices": [
+        {
+          "label": "Usar o orvalho com cuidado, seguindo Miguel.",
+          "next": "ep03_garden_care",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "flags": { "ep03_stabilized_flower": true, "ep03_used_dew_gently": true }
+          }
+        },
+        {
+          "label": "Perguntar se Miguel está pronto para contar de Helena.",
+          "next": "ep03_garden_story",
+          "effects": {
+            "affinity": { "miguel": 2, "davi": 1 },
+            "flags": { "ep03_stabilized_flower": true, "ep03_prepared_miguel_story": true }
+          }
+        },
+        {
+          "label": "Prometer ficar na frente se alguém tentar levar a flor.",
+          "next": "ep03_garden_guard",
+          "effects": {
+            "affinity": { "miguel": 2, "theo": 1 },
+            "flags": { "ep03_stabilized_flower": true, "ep03_guarded_flower": true }
+          }
+        }
+      ]
+    },
+    "ep03_garden_care": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "Devagar. Isso. A flor não precisa de pressa, só de alguém que não confunda fragilidade com fraqueza.",
+      "next": "ep03_map_round"
+    },
+    "ep03_garden_story": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Não estou pronto. Mas posso estar presente. Talvez coragem seja isso: não esperar o medo ir embora para fazer a coisa certa.",
+      "next": "ep03_map_round"
+    },
+    "ep03_garden_guard": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "timido",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "timido" }],
+      "text": "Você fala como se fosse simples se colocar entre alguém e o que machuca. Não é. Por isso significa tanto.",
+      "next": "ep03_map_round"
+    },
+    "ep03_garden_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "music": "garden",
+      "text": "A flor pulsa uma luz pálida. O vidro ainda está inteiro, e isso já parece uma vitória pequena o bastante para caber no peito.",
+      "next": "ep03_map_round"
+    },
+    "ep03_courtyard_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Essas luzes não estavam no projeto. São lindas, perigosas e ligadas ao quadro do palco. Três qualidades péssimas juntas.",
+      "next": "ep03_courtyard_choice"
+    },
+    "ep03_courtyard_choice": {
+      "type": "choice",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Ele entrega uma lanterna. A mão encosta na sua por meio segundo e fica ali um pouco mais do que o necessário.",
+      "choices": [
+        {
+          "label": "Ficar perto e checar os fios com ele.",
+          "next": "ep03_courtyard_together",
+          "effects": {
+            "affinity": { "theo": 3 },
+            "flags": { "ep03_found_false_lights": true, "ep03_checked_wires_with_theo": true }
+          }
+        },
+        {
+          "label": "Pedir que Theo avise a equipe sem causar pânico.",
+          "next": "ep03_courtyard_team",
+          "effects": {
+            "affinity": { "theo": 2, "caio": 1 },
+            "flags": { "ep03_found_false_lights": true, "ep03_warned_event_team": true }
+          }
+        },
+        {
+          "label": "Usar as luzes falsas contra quem as instalou.",
+          "next": "ep03_courtyard_trap",
+          "effects": {
+            "affinity": { "ravi": 1, "theo": 1 },
+            "flags": { "ep03_found_false_lights": true, "ep03_planned_light_trap": true }
+          }
+        }
+      ]
+    },
+    "ep03_courtyard_together": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "encabulado",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "encabulado" }],
+      "text": "Eu deveria dizer que está tudo sob controle. Mas com você perto, parece mais honesto dizer: talvez fique.",
+      "next": "ep03_cg_false_lights"
+    },
+    "ep03_courtyard_team": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Certo. Pânico estraga festival e investigação. Vou chamar de revisão técnica, que é uma mentira socialmente aceita.",
+      "next": "ep03_cg_false_lights"
+    },
+    "ep03_courtyard_trap": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Isso é arriscado. Também é exatamente o tipo de risco que talvez impeça alguém de mentir no microfone.",
+      "next": "ep03_cg_false_lights"
+    },
+    "ep03_cg_false_lights": {
+      "type": "cg",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "false-lights",
+      "title": "Memória desbloqueada",
+      "text": "As luzes falsas revelam o truque no reflexo: beleza suficiente para distrair, azul suficiente para apontar o caminho.",
+      "effects": {
+        "galleryAdd": ["false-lights"],
+        "flags": { "unlocked_false_lights_memory": true }
+      },
+      "next": "ep03_map_round"
+    },
+    "ep03_courtyard_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "school",
+      "text": "A fileira de lâmpadas continua bonita. Agora você sabe onde ela pode falhar.",
+      "next": "ep03_map_round"
+    },
+    "ep03_library_01": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "A programação do festival foi alterada às 8h12. O mesmo horário anotado na ata do observatório. Coincidências têm péssimo gosto para repetição.",
+      "next": "ep03_library_choice"
+    },
+    "ep03_library_choice": {
+      "type": "choice",
+      "speaker": "caio",
+      "expression": "impaciente",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "impaciente" }],
+      "text": "Caio empurra dois livros para você. Um tem registro de eventos; o outro, cartas nunca enviadas por Helena.",
+      "choices": [
+        {
+          "label": "Ler as cartas antes de procurar culpados.",
+          "next": "ep03_library_letters",
+          "effects": {
+            "affinity": { "caio": 3 },
+            "flags": { "ep03_decoded_schedule": true, "ep03_read_helena_letters": true }
+          }
+        },
+        {
+          "label": "Comparar horários e montar a linha do tempo.",
+          "next": "ep03_library_timeline",
+          "effects": {
+            "affinity": { "caio": 2, "davi": 1 },
+            "flags": { "ep03_decoded_schedule": true, "ep03_built_timeline": true }
+          }
+        },
+        {
+          "label": "Perguntar se Caio está tentando proteger alguém.",
+          "next": "ep03_library_protect",
+          "effects": {
+            "affinity": { "caio": 2, "noa": 1 },
+            "flags": { "ep03_decoded_schedule": true, "ep03_questioned_caio_protection": true }
+          }
+        }
+      ]
+    },
+    "ep03_library_letters": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Você escolheu a pessoa antes do caso. Isso é uma falha metodológica que eu gostaria de aprender.",
+      "next": "ep03_cg_letters"
+    },
+    "ep03_library_timeline": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "Linha do tempo concluída: a queda, o apagão e a primeira votação foram preparados com antecedência. Medo raramente é tão organizado sozinho.",
+      "next": "ep03_cg_letters"
+    },
+    "ep03_library_protect": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "preocupado",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "preocupado" }],
+      "text": "Sim. Você. O que é inconveniente, porque proteção emocional não entra direito em planilhas.",
+      "next": "ep03_cg_letters"
+    },
+    "ep03_cg_letters": {
+      "type": "cg",
+      "background": "library",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "cg": "helena-letters",
+      "title": "Memória desbloqueada",
+      "text": "As cartas de Helena não pedem vingança. Pedem que alguém leia devagar o bastante para lembrar que ela existiu antes do acidente.",
+      "effects": {
+        "galleryAdd": ["helena-letters"],
+        "flags": { "unlocked_helena_letters_memory": true }
+      },
+      "next": "ep03_map_round"
+    },
+    "ep03_library_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "library",
+      "music": "quiet",
+      "text": "As cartas ficam alinhadas sobre a mesa. Pela primeira vez, Helena parece menos fantasma e mais aluna.",
+      "next": "ep03_map_round"
+    },
+    "ep03_music_01": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "atrevido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "atrevido" }],
+      "text": "A demo está limpa o bastante para tocar no palco e suja o bastante para derrubar a votação. Arte, justiça e péssimas escolhas em um arquivo só.",
+      "next": "ep03_music_choice"
+    },
+    "ep03_music_choice": {
+      "type": "choice",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Ele estende um fone para você. A voz de Helena aparece no fundo, baixa e firme: 'se as luzes falharem, olhem para a flor'.",
+      "choices": [
+        {
+          "label": "Segurar o fone e agradecer por ele não ter apagado a dor.",
+          "next": "ep03_music_thanks",
+          "effects": {
+            "affinity": { "ravi": 3 },
+            "flags": { "ep03_prepared_song": true, "ep03_thanked_ravi": true }
+          }
+        },
+        {
+          "label": "Pedir para ele tocar a demo só quando houver testemunhas.",
+          "next": "ep03_music_witnesses",
+          "effects": {
+            "affinity": { "ravi": 2, "davi": 1 },
+            "flags": { "ep03_prepared_song": true, "ep03_saved_demo_for_witnesses": true }
+          }
+        },
+        {
+          "label": "Dizer que ele pode transformar raiva em ritmo sem pedir desculpa.",
+          "next": "ep03_music_anger",
+          "effects": {
+            "affinity": { "ravi": 2, "theo": 1 },
+            "flags": { "ep03_prepared_song": true, "ep03_let_ravi_be_angry": true }
+          }
+        }
+      ]
+    },
+    "ep03_music_thanks": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "ferido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "ferido" }],
+      "text": "Eu quase apaguei. Não por covardia, claro. Por uma variação altamente sofisticada de covardia com jaqueta.",
+      "next": "ep03_map_round"
+    },
+    "ep03_music_witnesses": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Certo. Nada de heroísmo vazio. Quando tocar, todo mundo ouve. Inclusive quem preferia continuar surdo.",
+      "next": "ep03_map_round"
+    },
+    "ep03_music_anger": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "music-room",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Você fala minha língua e isso é perigoso. Vou afinar a raiva em dó menor e tentar não incendiar o palco. Metaforicamente.",
+      "next": "ep03_map_round"
+    },
+    "ep03_music_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "music-room",
+      "music": "band",
+      "text": "O fone ainda vibra com a voz de Helena. A música parece menos uma arma e mais uma porta.",
+      "next": "ep03_map_round"
+    },
+    "ep03_terrace_01": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "reservado",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "reservado" }],
+      "text": "O sinal azul não vem do observatório. Vem da estufa. O clube usava as estrelas para esconder o jardim no mapa.",
+      "next": "ep03_terrace_choice"
+    },
+    "ep03_terrace_choice": {
+      "type": "choice",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Noa aponta para o pátio. As luzes falsas desenham uma constelação errada, bonita o bastante para enganar quem olha rápido.",
+      "choices": [
+        {
+          "label": "Perguntar o que ele ainda está escondendo.",
+          "next": "ep03_terrace_secret",
+          "effects": {
+            "affinity": { "noa": 3 },
+            "flags": { "ep03_traced_signal": true, "ep03_asked_noa_secret": true }
+          }
+        },
+        {
+          "label": "Dizer que ele não precisa pagar sozinho pela culpa do clube.",
+          "next": "ep03_terrace_guilt",
+          "effects": {
+            "affinity": { "noa": 2, "miguel": 1 },
+            "flags": { "ep03_traced_signal": true, "ep03_softened_noa_guilt": true }
+          }
+        },
+        {
+          "label": "Seguir o desenho errado até encontrar a estrela que falta.",
+          "next": "ep03_terrace_star",
+          "effects": {
+            "affinity": { "noa": 2, "caio": 1 },
+            "flags": { "ep03_traced_signal": true, "ep03_found_missing_star": true }
+          }
+        }
+      ]
+    },
+    "ep03_terrace_secret": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Meu irmão fazia parte do clube. Eu vim para a Aurora achando que encontraria culpados. Encontrei pessoas tentando sobreviver ao mesmo silêncio.",
+      "next": "ep03_map_round"
+    },
+    "ep03_terrace_guilt": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "raro_sorriso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "raro_sorriso" }],
+      "text": "Você fala como se culpa fosse algo que dá para dividir em porções menores. Talvez seja. Obrigado por tentar.",
+      "next": "ep03_map_round"
+    },
+    "ep03_terrace_star": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "curioso",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "A estrela que falta aponta para a flor. Helena deixou o caminho para quem soubesse desconfiar de beleza demais.",
+      "next": "ep03_map_round"
+    },
+    "ep03_terrace_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "terrace",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Do terraço, o festival parece uma constelação organizada por alguém com medo do escuro.",
+      "next": "ep03_map_round"
+    },
+    "ep03_after_map_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Às oito e doze, as luzes falsas falham. O pátio inteiro prende a respiração no mesmo segundo.",
+      "variants": [
+        {
+          "when": { "flags": ["ep03_checked_wires_with_theo"] },
+          "text": "Às oito e doze, as luzes falsas falham exatamente onde você e Theo tinham previsto. O pátio inteiro prende a respiração no mesmo segundo."
+        },
+        {
+          "when": { "flags": ["ep03_read_helena_letters"] },
+          "text": "Às oito e doze, as luzes falsas falham. As cartas de Helena fazem o pátio parecer menos palco e mais promessa."
+        },
+        {
+          "when": { "flags": ["ep03_planned_light_trap"] },
+          "text": "Às oito e doze, as luzes falsas falham dentro da armadilha que você aceitou montar. O pátio inteiro prende a respiração no mesmo segundo."
+        }
+      ],
+      "next": "ep03_stage_01"
+    },
+    "ep03_stage_01": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Microfone aberto. Demo pronta. Se alguém quiser fingir que não ouviu Helena, vai precisar fazer isso na frente de todo mundo.",
+      "next": "ep03_stage_02"
+    },
+    "ep03_stage_02": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "band",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Testemunhas posicionadas, fontes salvas, mãos suando em quantidade jornalisticamente relevante.",
+      "next": "ep03_final_choice"
+    },
+    "ep03_final_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "lavinia", "position": "left", "expression": "vulneravel" },
+        { "id": "miguel", "position": "right", "expression": "determinado" }
+      ],
+      "text": "A votação começa. A flor de vidro acende na estufa, visível através das portas abertas. O pátio espera sua primeira palavra.",
+      "choices": [
+        {
+          "label": "Contar a história de Helena pelo nome.",
+          "next": "ep03_final_name",
+          "effects": {
+            "ap": -1,
+            "affinity": { "miguel": 2, "lavinia": 1 },
+            "flags": { "ep03_spoke_helena_name": true }
+          }
+        },
+        {
+          "label": "Tocar a demo e deixar a voz dela abrir a votação.",
+          "next": "ep03_final_demo",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 2, "davi": 1 },
+            "flags": { "ep03_played_demo_publicly": true }
+          }
+        },
+        {
+          "label": "Pedir que Lavínia conte a parte que só ela sabe.",
+          "next": "ep03_final_lavinia",
+          "effects": {
+            "ap": -1,
+            "affinity": { "lavinia": 3, "theo": 1 },
+            "flags": { "ep03_let_lavinia_speak": true }
+          }
+        }
+      ]
+    },
+    "ep03_final_name": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Você diz Helena. O nome, simples e inteiro, atravessa o pátio. Algumas pessoas olham para baixo. Outras finalmente olham para a estufa.",
+      "next": "ep03_cg_flower"
+    },
+    "ep03_final_demo": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "band",
+      "text": "A voz na demo não acusa. Ela pede que olhem para a flor se as luzes mentirem. Isso é pior para o conselho: soa como alguém viva o bastante para ser ouvida.",
+      "next": "ep03_cg_flower"
+    },
+    "ep03_final_lavinia": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Eu fechei a porta depois. Não antes. Passei anos aceitando culpa errada porque era melhor que admitir que todos os adultos nos deixaram sozinhos.",
+      "next": "ep03_cg_flower"
+    },
+    "ep03_cg_flower": {
+      "type": "cg",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "garden",
+      "cg": "glass-flower",
+      "title": "Memória desbloqueada",
+      "text": "Na estufa, a flor de vidro abre sem quebrar. Por um segundo, cada reflexo mostra Helena como presença, não lenda.",
+      "effects": {
+        "galleryAdd": ["glass-flower"],
+        "flags": { "unlocked_glass_flower_memory": true }
+      },
+      "next": "ep03_after_cg_01"
+    },
+    "ep03_after_cg_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "A votação foi suspensa. Não cancelada. Suspensa. Isso significa que ganhamos tempo, não guerra.",
+      "next": "ep03_after_cg_02"
+    },
+    "ep03_after_cg_02": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "reservado",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "reservado" }],
+      "text": "E alguém vai tentar recuperar o controle. A fita escolheu você porque a escola precisava de alguém que não confundisse calma com obediência.",
+      "next": "ep03_reward_01"
+    },
+    "ep03_reward_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "No quarto, um casaco azul profundo espera dobrado sobre a cadeira. No bolso, uma pequena etiqueta: Para noites em que a verdade pede abrigo.",
+      "effects": {
+        "wardrobeAdd": ["trench-observatorio"],
+        "coins": 110,
+        "gems": 3,
+        "ap": 8
+      },
+      "next": "ep03_end_01"
+    },
+    "ep03_end_01": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "title": "Episódio concluído",
+      "text": "Festival de Luzes Falsas foi concluído. O capítulo 1 seguirá até o episódio 10, onde a verdade da queda terá seu primeiro desfecho.",
+      "effects": {
+        "completeEpisode": "episode-03",
+        "flags": { "episode_03_complete": true }
+      }
+    }
+  }
+}

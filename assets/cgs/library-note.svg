@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Anotacao na margem">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="675">
+      <stop stop-color="#1c2334"/>
+      <stop offset=".62" stop-color="#14121e"/>
+      <stop offset="1" stop-color="#21150f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000000" flood-opacity=".44"/>
+    </filter>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect x="66" y="86" width="1068" height="326" rx="22" fill="#182335"/>
+  <g fill="#34261c">
+    <rect x="104" y="126" width="148" height="250" rx="10"/>
+    <rect x="284" y="126" width="148" height="250" rx="10"/>
+    <rect x="768" y="126" width="148" height="250" rx="10"/>
+    <rect x="948" y="126" width="148" height="250" rx="10"/>
+  </g>
+  <g fill="#6d79ff" opacity=".78">
+    <rect x="130" y="158" width="22" height="188"/><rect x="166" y="158" width="38" height="188"/><rect x="218" y="158" width="22" height="188"/>
+    <rect x="310" y="158" width="32" height="188"/><rect x="356" y="158" width="24" height="188"/>
+    <rect x="800" y="158" width="28" height="188"/><rect x="842" y="158" width="44" height="188"/>
+    <rect x="980" y="158" width="30" height="188"/><rect x="1026" y="158" width="52" height="188"/>
+  </g>
+  <circle cx="600" cy="236" r="84" fill="#f7efe6" opacity=".15" filter="url(#glow)"/>
+  <g filter="url(#shadow)">
+    <path fill="#f7efe6" d="M322 360h556l84 232H238l84-232Z"/>
+    <path fill="#d7b18c" d="M356 392h488l50 152H304l52-152Z"/>
+    <path fill="#fffaf0" d="M414 330h300l62 196H352l62-196Z"/>
+    <path fill="#111827" opacity=".68" d="M454 382h198v12H454zm0 36h234v12H454zm0 36h156v12H454z"/>
+    <path fill="#6d79ff" d="M700 362h42v150h-42z"/>
+    <path fill="#ff6e9d" d="M724 360c48 12 80 42 96 90-52-2-88-26-112-72l16-18Z"/>
+    <path fill="#70d6ff" d="M700 424c-42 2-74 20-96 54 46 4 80-12 104-48l-8-6Z"/>
+  </g>
+  <g stroke="#ffd166" stroke-width="5" fill="none" opacity=".78">
+    <path d="M456 510c72-30 148-30 228 0"/>
+    <path d="M704 458c50 16 86 44 108 84"/>
+  </g>
+  <circle cx="704" cy="458" r="8" fill="#ffd166"/>
+  <circle cx="812" cy="542" r="8" fill="#ffd166"/>
+</svg>

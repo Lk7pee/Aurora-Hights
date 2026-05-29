@@ -1,0 +1,206 @@
+{
+  "schema": "aurora-high.episodes.v1",
+  "structure": {
+    "totalChapters": 4,
+    "episodesPerChapter": 10,
+    "activeChapter": 1,
+    "activeChapterTitle": "Ecos no Jardim"
+  },
+  "episodes": [
+    {
+      "id": "episode-01",
+      "chapter": 1,
+      "number": 1,
+      "title": "A Fita Azul no Corredor",
+      "subtitle": "Um bilhete sem assinatura muda seu primeiro dia na Aurora High.",
+      "status": "available",
+      "dialogue": "./dialogues/episode-01.json",
+      "cover": "./assets/cgs/blue-ribbon-scene.png",
+      "startNode": "ep01_intro_01",
+      "durationMinutes": 10,
+      "minimumStartAp": 24,
+      "reward": {
+        "ap": 8,
+        "coins": 80,
+        "wardrobe": ["jaqueta-constelacao"]
+      }
+    },
+    {
+      "id": "episode-02",
+      "chapter": 1,
+      "number": 2,
+      "title": "O Clube Que Não Existe",
+      "subtitle": "A porta do observatório abre para um grupo apagado dos registros e uma culpa que ainda respira.",
+      "status": "locked",
+      "requiresCompleted": ["episode-01"],
+      "dialogue": "./dialogues/episode-02.json",
+      "cover": "./assets/cgs/observatory-door-scene.png",
+      "startNode": "ep02_intro_01",
+      "durationMinutes": 10,
+      "minimumStartAp": 16,
+      "reward": {
+        "ap": 7,
+        "coins": 95,
+        "gems": 2,
+        "wardrobe": ["moletom-jornal"]
+      }
+    },
+    {
+      "id": "episode-03",
+      "chapter": 1,
+      "number": 3,
+      "title": "Festival de Luzes Falsas",
+      "subtitle": "Enquanto o campus celebra, a estufa revela quem prefere beleza a verdade.",
+      "status": "locked",
+      "requiresCompleted": ["episode-02"],
+      "dialogue": "./dialogues/episode-03.json",
+      "cover": "./assets/cgs/glass-flower-scene.png",
+      "startNode": "ep03_intro_01",
+      "durationMinutes": 10,
+      "minimumStartAp": 16,
+      "reward": {
+        "ap": 8,
+        "coins": 110,
+        "gems": 3,
+        "wardrobe": ["trench-observatorio"]
+      }
+    },
+    {
+      "id": "episode-04",
+      "chapter": 1,
+      "number": 4,
+      "title": "A Votação Sem Nome",
+      "subtitle": "Lavínia convoca uma votação que ninguém admite ter proposto, e a fita azul reage ao brasão antigo da escola.",
+      "status": "locked",
+      "requiresCompleted": ["episode-03"],
+      "dialogue": "./dialogues/episode-04.json",
+      "cover": "./assets/cgs/star-rooftop-scene.png",
+      "startNode": "ep04_intro_01",
+      "durationMinutes": 10,
+      "minimumStartAp": 17,
+      "reward": {
+        "ap": 7,
+        "coins": 105,
+        "gems": 2
+      }
+    },
+    {
+      "id": "episode-05",
+      "chapter": 1,
+      "number": 5,
+      "title": "Festival de Lanternas",
+      "subtitle": "Um evento escolar parece normal até a música falhar, as luzes responderem e alguém usar aplausos como cortina.",
+      "status": "locked",
+      "requiresCompleted": ["episode-04"],
+      "dialogue": "./dialogues/episode-05.json",
+      "cover": "./assets/cgs/ep03-false-lights.png",
+      "startNode": "ep05_intro_01",
+      "durationMinutes": 10,
+      "minimumStartAp": 17,
+      "reward": {
+        "ap": 7,
+        "coins": 115,
+        "gems": 2,
+        "wardrobe": ["look-palco"]
+      }
+    },
+    {
+      "id": "episode-06",
+      "chapter": 1,
+      "number": 6,
+      "title": "Corredor de Serviço",
+      "subtitle": "Biblioteca, arquivo morto e estufa revelam um mapa que nunca deveria chegar às mãos de uma aluna.",
+      "status": "locked",
+      "requiresCompleted": ["episode-05"],
+      "dialogue": "./dialogues/episode-06.json",
+      "cover": "./assets/cgs/library-note-scene.png",
+      "startNode": "ep06_intro_01",
+      "durationMinutes": 10,
+      "minimumStartAp": 18,
+      "reward": {
+        "ap": 7,
+        "coins": 125,
+        "gems": 2,
+        "wardrobe": ["cardigan-chuva"]
+      }
+    },
+    {
+      "id": "episode-07",
+      "chapter": 1,
+      "number": 7,
+      "title": "Quem Fica no Escuro",
+      "subtitle": "Laços, conversas íntimas e escolhas de confiança ficam perigosos quando alguém passa a vigiar seus passos.",
+      "status": "locked",
+      "requiresCompleted": ["episode-06"],
+      "dialogue": "./dialogues/episode-07.json",
+      "cover": "./assets/cgs/observatory-door-scene.png",
+      "startNode": "ep07_intro_01",
+      "durationMinutes": 10,
+      "minimumStartAp": 17,
+      "reward": {
+        "ap": 8,
+        "coins": 110,
+        "gems": 2
+      }
+    },
+    {
+      "id": "episode-08",
+      "chapter": 1,
+      "number": 8,
+      "title": "A Foto Antes da Queda",
+      "subtitle": "Uma imagem antiga conecta a fita azul, Helena e sua chegada à escola de um jeito impossível de chamar coincidência.",
+      "status": "locked",
+      "requiresCompleted": ["episode-07"],
+      "dialogue": "./dialogues/episode-08.json",
+      "cover": "./assets/cgs/blue-ribbon-memory.png",
+      "startNode": "ep08_intro_01",
+      "durationMinutes": 10,
+      "minimumStartAp": 18,
+      "reward": {
+        "ap": 8,
+        "coins": 130,
+        "gems": 3
+      }
+    },
+    {
+      "id": "episode-09",
+      "chapter": 1,
+      "number": 9,
+      "title": "A Coroa de Lavínia",
+      "subtitle": "A rival deixa de ser só obstáculo quando a verdade cobra dela o preço mais antigo.",
+      "status": "locked",
+      "requiresCompleted": ["episode-08"],
+      "dialogue": "./dialogues/episode-09.json",
+      "cover": "./assets/cgs/ep02-archive-minutes.png",
+      "startNode": "ep09_intro_01",
+      "durationMinutes": 10,
+      "minimumStartAp": 18,
+      "reward": {
+        "ap": 8,
+        "coins": 140,
+        "gems": 3,
+        "wardrobe": ["blazer-conselho"]
+      }
+    },
+    {
+      "id": "episode-10",
+      "chapter": 1,
+      "number": 10,
+      "title": "Ecos no Jardim",
+      "subtitle": "Final do capítulo 1: a noite do festival decide quem controla a memória da Aurora High.",
+      "status": "locked",
+      "requiresCompleted": ["episode-09"],
+      "dialogue": "./dialogues/episode-10.json",
+      "cover": "./assets/cgs/glass-flower-scene.png",
+      "startNode": "ep10_intro_01",
+      "durationMinutes": 14,
+      "minimumStartAp": 20,
+      "reward": {
+        "ap": 10,
+        "coins": 180,
+        "gems": 5,
+        "wardrobe": ["conjunto-estufa"]
+      }
+    }
+  ]
+}

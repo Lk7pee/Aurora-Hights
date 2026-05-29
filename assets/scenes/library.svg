@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Biblioteca Norte">
+  <defs>
+    <linearGradient id="room" x1="0" y1="0" x2="1600" y2="900">
+      <stop stop-color="#1c2334"/>
+      <stop offset=".58" stop-color="#14121e"/>
+      <stop offset="1" stop-color="#21150f"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#room)"/>
+  <rect x="72" y="104" width="1456" height="474" rx="24" fill="#182335"/>
+  <g fill="#34261c">
+    <rect x="116" y="150" width="178" height="372" rx="12"/>
+    <rect x="326" y="150" width="178" height="372" rx="12"/>
+    <rect x="536" y="150" width="178" height="372" rx="12"/>
+    <rect x="886" y="150" width="178" height="372" rx="12"/>
+    <rect x="1096" y="150" width="178" height="372" rx="12"/>
+    <rect x="1306" y="150" width="178" height="372" rx="12"/>
+  </g>
+  <g fill="#6d79ff" opacity=".78">
+    <rect x="144" y="190" width="24" height="284"/><rect x="184" y="190" width="44" height="284"/><rect x="244" y="190" width="28" height="284"/>
+    <rect x="354" y="190" width="34" height="284"/><rect x="404" y="190" width="28" height="284"/><rect x="456" y="190" width="22" height="284"/>
+    <rect x="570" y="190" width="36" height="284"/><rect x="618" y="190" width="56" height="284"/>
+    <rect x="920" y="190" width="30" height="284"/><rect x="966" y="190" width="50" height="284"/>
+    <rect x="1126" y="190" width="34" height="284"/><rect x="1178" y="190" width="56" height="284"/>
+    <rect x="1338" y="190" width="32" height="284"/><rect x="1388" y="190" width="60" height="284"/>
+  </g>
+  <g fill="#ffd166" opacity=".66">
+    <rect x="156" y="222" width="112" height="8"/><rect x="364" y="250" width="104" height="8"/>
+    <rect x="582" y="278" width="82" height="8"/><rect x="932" y="228" width="82" height="8"/>
+    <rect x="1136" y="310" width="86" height="8"/><rect x="1346" y="254" width="96" height="8"/>
+  </g>
+  <rect x="744" y="166" width="112" height="306" rx="56" fill="#0c111c"/>
+  <circle cx="800" cy="296" r="92" fill="#f7efe6" opacity=".2" filter="url(#glow)"/>
+  <circle cx="800" cy="296" r="70" fill="#f7efe6" opacity=".36"/>
+  <path fill="#ffd166" d="M792 236h16v120h-16zm-60 52h136v16H732z"/>
+  <path fill="#7a563e" d="M354 606h892l142 294H212l142-294Z"/>
+  <ellipse cx="800" cy="606" rx="450" ry="76" fill="#b7895f"/>
+  <path fill="#261711" d="M458 662h684l82 238H376l82-238Z" opacity=".5"/>
+  <path fill="#f7efe6" d="M670 552h260l44 92H626l44-92Z"/>
+  <path fill="#6d79ff" d="M704 574h142v14H704zm0 31h176v14H704z"/>
+  <path fill="#70d6ff" d="M894 550c40 18 64 49 72 92-45-10-78-36-96-79l24-13Z" opacity=".85"/>
+  <g fill="#08070d" opacity=".64">
+    <path d="M350 724c20 0 36 16 36 36v91h-72v-91c0-20 16-36 36-36Z"/>
+    <path d="M1246 724c20 0 36 16 36 36v91h-72v-91c0-20 16-36 36-36Z"/>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Mapa de estrelas">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="675">
+      <stop stop-color="#050713"/>
+      <stop offset=".55" stop-color="#111a34"/>
+      <stop offset="1" stop-color="#22172b"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#sky)"/>
+  <circle cx="954" cy="110" r="68" fill="#dce6ef" opacity=".9"/>
+  <g fill="#dce6ef" opacity=".74">
+    <circle cx="112" cy="84" r="2"/><circle cx="228" cy="170" r="3"/><circle cx="350" cy="112" r="2"/>
+    <circle cx="514" cy="222" r="2"/><circle cx="646" cy="118" r="3"/><circle cx="770" cy="232" r="2"/>
+    <circle cx="1048" cy="250" r="3"/><circle cx="1110" cy="164" r="2"/>
+  </g>
+  <g stroke="#67d8e8" stroke-width="2" opacity=".35">
+    <path d="M228 170 350 112 514 222 646 118 770 232"/>
+    <path d="M770 232 1048 250 1110 164"/>
+  </g>
+  <path fill="#070912" d="M0 372c160-54 292-48 428-16 140 33 278 30 422-14 148-46 262-43 350 12v321H0V372Z"/>
+  <path fill="#24283a" d="M0 424h1200v251H0z"/>
+  <g stroke="#565b70" stroke-width="3" opacity=".42">
+    <path d="M0 498h1200M0 588h1200"/>
+    <path d="M200 424 80 675M520 424l-32 251M820 424l42 251M1100 424l118 251"/>
+  </g>
+  <path fill="#e6edf6" d="M352 418h496l72 174H280l72-174Z"/>
+  <path fill="#1c2742" d="M408 456h384l32 82H374l34-82Z"/>
+  <g stroke="#ffd166" stroke-width="5" fill="none">
+    <path d="M452 506c74-54 144-54 208 0 54-38 112-40 174-8"/>
+    <path d="M508 542c72 28 154 28 246 0"/>
+  </g>
+  <g fill="#ffd166">
+    <circle cx="452" cy="506" r="8"/><circle cx="660" cy="506" r="8"/><circle cx="834" cy="498" r="8"/>
+    <circle cx="508" cy="542" r="7"/><circle cx="754" cy="542" r="7"/>
+  </g>
+  <path fill="#70d6ff" d="M744 388c-52 10-88 36-108 80 58-3 98-27 126-74l-18-6Z"/>
+  <path fill="#6d79ff" d="M742 436h54v118h-54z"/>
+  <circle cx="622" cy="506" r="190" fill="#67d8e8" opacity=".07" filter="url(#glow)"/>
+</svg>

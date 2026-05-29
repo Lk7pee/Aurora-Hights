@@ -1,0 +1,569 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-06",
+  "title": "Corredor de Serviço",
+  "startNode": "ep06_intro_01",
+  "nodes": {
+    "ep06_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "school",
+      "text": "A linha azul no mapa do celular não segue portas. Ela atravessa paredes, passa por trás de armários e termina em uma parte da Aurora High que os alunos fingem nunca notar.",
+      "next": "ep06_caio_01"
+    },
+    "ep06_caio_01": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "Caio não pergunta por que você está na biblioteca antes da primeira aula. Ele só coloca três livros sobre a mesa e diz que corredores de serviço são o tipo de coisa que escolas ricas chamam de inexistente.",
+      "variants": [
+        {
+          "when": { "flags": ["ep05_kept_call_secret"] },
+          "text": "Caio não pergunta por que você guardou a mensagem da lanterna. Ele só coloca três livros sobre a mesa e diz que segredos úteis precisam de método antes de plateia."
+        },
+        {
+          "when": { "flags": ["ep05_shared_call_with_group"] },
+          "text": "Caio já sabe da frase da lanterna porque Davi contou com a discrição de um alarme. Ele coloca três livros sobre a mesa e diz que agora falta método."
+        }
+      ],
+      "next": "ep06_research_choice"
+    },
+    "ep06_research_choice": {
+      "type": "choice",
+      "speaker": "caio",
+      "expression": "impaciente",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "impaciente" }],
+      "text": "Os livros mostram plantas antigas, mas nenhuma delas bate com a linha azul. Caio espera sua decisão como se estivesse testando mais do que lógica.",
+      "choices": [
+        {
+          "label": "Pedir que Caio conduza a pesquisa e admitir que você confia no método dele.",
+          "next": "ep06_research_after_caio",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 3 },
+            "flags": { "ep06_trusted_caio_method": true }
+          }
+        },
+        {
+          "label": "Chamar Davi para cruzar arquivos oficiais e fofocas de corredor.",
+          "next": "ep06_research_after_davi",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 2, "caio": 1 },
+            "flags": { "ep06_crossed_files_with_davi": true }
+          }
+        },
+        {
+          "label": "Seguir a linha azul primeiro e lidar com a teoria depois.",
+          "next": "ep06_research_after_risk",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 1, "noa": 1 },
+            "flags": { "ep06_chose_field_risk": true }
+          }
+        }
+      ]
+    },
+    "ep06_research_after_caio": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Caio abaixa os olhos rápido demais. Confiar no método dele, aparentemente, é uma gentileza altamente desorganizada.",
+      "next": "ep06_map_intro"
+    },
+    "ep06_research_after_davi": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "dramatico",
+      "background": "library",
+      "music": "quiet",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "dramatico" },
+        { "id": "caio", "position": "right", "expression": "impaciente" }
+      ],
+      "text": "Davi chega com biscoitos e chama isso de perícia alimentar. Caio ameaça expulsá-lo da biblioteca, mas aceita um biscoito sem olhar.",
+      "next": "ep06_map_intro"
+    },
+    "ep06_research_after_risk": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "music": "mystery",
+      "text": "Você segue a linha azul até um armário sem número. A fita no seu bolso parece concordar. Isso não torna a decisão mais inteligente, só mais inevitável.",
+      "next": "ep06_map_intro"
+    },
+    "ep06_map_intro": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "text": "Para encontrar o corredor de serviço, você precisa de três coisas: uma planta antiga, uma chave de manutenção e coragem para abrir uma caixa que o arquivo morto marcou como perdida.",
+      "next": "ep06_map_round"
+    },
+    "ep06_map_round": {
+      "type": "map",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "title": "Rota que não existe",
+      "text": "Investigue os pontos que sustentam a linha azul. Esta busca consome AP porque cada pista exige deslocamento e tempo.",
+      "events": [
+        {
+          "id": "ep06_library",
+          "label": "Decifrar a planta antiga",
+          "location": "library",
+          "apCost": 2,
+          "onceFlag": "ep06_decoded_service_map",
+          "next": "ep06_library_01",
+          "revisitNext": "ep06_library_return"
+        },
+        {
+          "id": "ep06_garden",
+          "label": "Procurar a chave na estufa",
+          "location": "garden",
+          "apCost": 2,
+          "onceFlag": "ep06_found_greenhouse_key_clue",
+          "next": "ep06_garden_01",
+          "revisitNext": "ep06_garden_return"
+        },
+        {
+          "id": "ep06_archive",
+          "label": "Abrir a caixa perdida",
+          "location": "archive",
+          "apCost": 3,
+          "onceFlag": "ep06_opened_lost_box",
+          "next": "ep06_archive_01",
+          "revisitNext": "ep06_archive_return"
+        }
+      ],
+      "doneWhenFlags": [
+        "ep06_decoded_service_map",
+        "ep06_found_greenhouse_key_clue",
+        "ep06_opened_lost_box"
+      ],
+      "doneNext": "ep06_after_map_01"
+    },
+    "ep06_library_01": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "Caio espalha transparências sobre uma mesa iluminada. Quando as plantas se sobrepõem, surge uma escada que nunca existiu em guia nenhum.",
+      "next": "ep06_library_choice"
+    },
+    "ep06_library_choice": {
+      "type": "choice",
+      "speaker": "caio",
+      "expression": "preocupado",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "preocupado" }],
+      "text": "O mapa de serviço tem uma anotação de Helena: se a escola mentir, procure onde a limpeza entra e os alunos não.",
+      "choices": [
+        {
+          "label": "Pedir a Caio para guardar uma cópia com ele.",
+          "next": "ep06_library_after_copy",
+          "effects": {
+            "affinity": { "caio": 3 },
+            "inventoryAdd": ["mapa-servico"],
+            "flags": { "ep06_caio_kept_map_copy": true, "ep06_decoded_service_map": true }
+          }
+        },
+        {
+          "label": "Fotografar só a parte da escada para não expor tudo.",
+          "next": "ep06_library_after_photo",
+          "effects": {
+            "affinity": { "davi": 2, "caio": 1 },
+            "inventoryAdd": ["mapa-servico"],
+            "flags": { "ep06_saved_partial_map": true, "ep06_decoded_service_map": true }
+          }
+        },
+        {
+          "label": "Perguntar por que Helena confiou em rotas invisíveis.",
+          "next": "ep06_library_after_helena",
+          "effects": {
+            "affinity": { "caio": 2, "noa": 1 },
+            "inventoryAdd": ["mapa-servico"],
+            "flags": { "ep06_questioned_helena_routes": true, "ep06_decoded_service_map": true }
+          }
+        }
+      ]
+    },
+    "ep06_library_after_copy": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Caio diz que guardar prova é responsabilidade, mas o jeito como ele dobra a cópia parece cuidado.",
+      "next": "ep06_cg_map"
+    },
+    "ep06_library_after_photo": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Davi aprova a foto parcial. Pela primeira vez, ele diz que nem toda verdade precisa sair inteira para ser verdadeira.",
+      "next": "ep06_cg_map"
+    },
+    "ep06_library_after_helena": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "preocupado",
+      "background": "library",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "preocupado" }],
+      "text": "Caio passa o polegar sobre a anotação. Talvez porque as rotas visíveis pertenciam a quem queria que ela caísse.",
+      "next": "ep06_cg_map"
+    },
+    "ep06_cg_map": {
+      "type": "cg",
+      "background": "library",
+      "music": "quiet",
+      "cg": "ep06-service-map",
+      "title": "Memória desbloqueada",
+      "text": "O mapa de serviço revela uma Aurora High por trás da Aurora High: estreita, prática e feita para passar despercebida.",
+      "effects": {
+        "galleryAdd": ["ep06-service-map"],
+        "flags": { "ep06_unlocked_service_map": true }
+      },
+      "next": "ep06_map_round"
+    },
+    "ep06_library_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "library",
+      "music": "quiet",
+      "text": "As transparências continuam sobre a mesa. A escada invisível já não pode ser desvista.",
+      "next": "ep06_map_round"
+    },
+    "ep06_garden_01": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "triste",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "triste" }],
+      "text": "Miguel encontra marcas de terra mexida perto da flor de vidro. Ele parece mais chateado com o desrespeito à planta do que com o perigo.",
+      "next": "ep06_garden_choice"
+    },
+    "ep06_garden_choice": {
+      "type": "choice",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "Dentro do vaso, há uma etiqueta metálica com o mesmo número da escada no mapa de serviço.",
+      "choices": [
+        {
+          "label": "Ajudar Miguel a limpar a terra com calma.",
+          "next": "ep06_garden_after_calm",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "flags": { "ep06_helped_miguel_soil": true, "ep06_found_greenhouse_key_clue": true }
+          }
+        },
+        {
+          "label": "Perguntar se alguém machucou a estufa para esconder a etiqueta.",
+          "next": "ep06_garden_after_angry",
+          "effects": {
+            "affinity": { "miguel": 2, "ravi": 1 },
+            "flags": { "ep06_named_greenhouse_violation": true, "ep06_found_greenhouse_key_clue": true }
+          }
+        },
+        {
+          "label": "Prometer que a flor não será usada como isca.",
+          "next": "ep06_garden_after_promise",
+          "effects": {
+            "affinity": { "miguel": 2, "lavinia": 1 },
+            "flags": { "ep06_promised_not_to_use_flower": true, "ep06_found_greenhouse_key_clue": true }
+          }
+        }
+      ]
+    },
+    "ep06_garden_after_calm": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "timido",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "timido" }],
+      "text": "Miguel sorri pequeno quando você não apressa as raízes. Algumas pistas, ele diz, apodrecem se arrancadas com força.",
+      "next": "ep06_map_round"
+    },
+    "ep06_garden_after_angry": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Miguel fica firme de um jeito raro. Gentileza não é permitir que alguém pise no que está vivo.",
+      "next": "ep06_map_round"
+    },
+    "ep06_garden_after_promise": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "garden",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "Ele acredita em você. Isso torna a promessa mais pesada, não mais leve.",
+      "next": "ep06_map_round"
+    },
+    "ep06_garden_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "music": "garden",
+      "text": "A flor de vidro pulsa devagar, como se guardasse a respiração da escola.",
+      "next": "ep06_map_round"
+    },
+    "ep06_archive_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "quiet",
+      "text": "A caixa perdida está atrás de uma fileira de atas novas demais. Na etiqueta, alguém escreveu: fotos não entregues.",
+      "next": "ep06_archive_choice"
+    },
+    "ep06_archive_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [
+        { "id": "caio", "position": "left", "expression": "preocupado" },
+        { "id": "davi", "position": "right", "expression": "atento" }
+      ],
+      "text": "Abrir a caixa agora pode disparar alarme de inventário. Esperar pode fazer a caixa sumir.",
+      "choices": [
+        {
+          "label": "Abrir a caixa agora e assumir o risco.",
+          "next": "ep06_archive_after_open",
+          "effects": {
+            "ap": -2,
+            "affinity": { "ravi": 1, "davi": 2 },
+            "inventoryAdd": ["foto-clube-aurora"],
+            "flags": { "ep06_opened_box_now": true, "ep06_opened_lost_box": true }
+          }
+        },
+        {
+          "label": "Deixar Caio desarmar o lacre com paciência.",
+          "next": "ep06_archive_after_caio",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 3 },
+            "inventoryAdd": ["foto-clube-aurora"],
+            "flags": { "ep06_caio_disarmed_box": true, "ep06_opened_lost_box": true }
+          }
+        },
+        {
+          "label": "Pedir para Davi filmar tudo antes de tocar no lacre.",
+          "next": "ep06_archive_after_record",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 3 },
+            "inventoryAdd": ["foto-clube-aurora"],
+            "flags": { "ep06_davi_recorded_box": true, "ep06_opened_lost_box": true }
+          }
+        }
+      ]
+    },
+    "ep06_archive_after_open": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "mystery",
+      "text": "O alarme não toca. Pior: uma luz vermelha acende em silêncio no canto do teto. Alguém saberá que você abriu a caixa.",
+      "next": "ep06_cg_archive"
+    },
+    "ep06_archive_after_caio": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Caio solta o lacre sem ruído. Ele parece aliviado demais para alguém que insiste não se importar.",
+      "next": "ep06_cg_archive"
+    },
+    "ep06_archive_after_record": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Davi filma sem comentário. Quando ele cala, você lembra que o humor dele também sabe a hora de sair da frente.",
+      "next": "ep06_cg_archive"
+    },
+    "ep06_cg_archive": {
+      "type": "cg",
+      "background": "archive",
+      "music": "mystery",
+      "cg": "ep06-archive-risk",
+      "title": "Memória desbloqueada",
+      "text": "Na caixa perdida, a prova respira poeira. Risco, às vezes, é só a forma que a verdade assume quando ficou trancada tempo demais.",
+      "effects": {
+        "galleryAdd": ["ep06-archive-risk"],
+        "flags": { "ep06_unlocked_archive_risk": true }
+      },
+      "next": "ep06_cg_photo"
+    },
+    "ep06_cg_photo": {
+      "type": "cg",
+      "background": "archive",
+      "music": "quiet",
+      "cg": "ep06-helena-photo",
+      "title": "Memória desbloqueada",
+      "text": "A foto antiga mostra Helena no Clube Aurora, sorrindo de lado, com uma fita azul amarrada no pulso.",
+      "effects": {
+        "galleryAdd": ["ep06-helena-photo"],
+        "flags": { "ep06_unlocked_helena_photo": true }
+      },
+      "next": "ep06_map_round"
+    },
+    "ep06_archive_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "quiet",
+      "text": "A caixa perdida já não parece perdida. Parece devolvida para a pessoa certa.",
+      "next": "ep06_map_round"
+    },
+    "ep06_after_map_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Com o mapa de serviço, a etiqueta da estufa e a foto antiga, a linha azul finalmente abre uma porta estreita atrás dos armários.",
+      "next": "ep06_service_01"
+    },
+    "ep06_service_01": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "cortante",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "cortante" }],
+      "text": "Lavínia aparece antes que você entre. Ela diz que alguns corredores existem para impedir que pessoas curiosas virem tragédia estatística.",
+      "next": "ep06_final_choice"
+    },
+    "ep06_final_choice": {
+      "type": "choice",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Ela não bloqueia a porta com o corpo. Bloqueia com medo. Isso é mais difícil de empurrar.",
+      "choices": [
+        {
+          "label": "Dizer que medo não pode continuar governando a escola.",
+          "next": "ep06_final_courage",
+          "effects": {
+            "ap": -1,
+            "affinity": { "lavinia": 1, "theo": 1 },
+            "flags": { "ep06_challenged_fear_rule": true }
+          }
+        },
+        {
+          "label": "Prometer que ninguém vai entrar sozinho no corredor.",
+          "next": "ep06_final_promise",
+          "effects": {
+            "ap": -1,
+            "affinity": { "miguel": 2, "lavinia": 1 },
+            "flags": { "ep06_promised_group_entry": true }
+          }
+        },
+        {
+          "label": "Perguntar se Helena entrou ali na noite da queda.",
+          "next": "ep06_final_helena",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 1, "noa": 1, "lavinia": 1 },
+            "flags": { "ep06_asked_helena_service_corridor": true }
+          }
+        }
+      ]
+    },
+    "ep06_final_courage": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "irritada",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "irritada" }],
+      "text": "Lavínia quase responde como presidente do conselho. Mas a palavra medo acertou antes da máscara subir.",
+      "next": "ep06_reward"
+    },
+    "ep06_final_promise": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Ela olha para o corredor como se alguém ainda estivesse lá dentro. Então dá um passo para o lado.",
+      "next": "ep06_reward"
+    },
+    "ep06_final_helena": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavínia fecha os olhos. Quando abre, só diz: Helena não entrou. Ela saiu por ele.",
+      "next": "ep06_reward"
+    },
+    "ep06_reward": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "text": "O corredor de serviço fica aberto por menos de um minuto. Tempo suficiente para o mapa marcar uma sala sem nome atrás do observatório.",
+      "effects": {
+        "completeEpisode": "episode-06",
+        "achievementAdd": ["mapa-subterraneo"],
+        "wardrobeAdd": ["cardigan-chuva"],
+        "coins": 125,
+        "gems": 2,
+        "ap": 7,
+        "flags": { "episode_06_complete": true }
+      },
+      "next": "ep06_end"
+    },
+    "ep06_end": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "title": "Fim do Episódio 6",
+      "text": "No verso da foto antiga, uma frase aparece sob a luz azul: ela não caiu sozinha, mas também não estava sozinha para cair."
+    }
+  }
+}

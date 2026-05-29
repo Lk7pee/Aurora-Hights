@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Boutique Lunar">
+  <defs>
+    <linearGradient id="room" x1="0" y1="0" x2="1600" y2="900">
+      <stop stop-color="#211426"/>
+      <stop offset=".56" stop-color="#15101c"/>
+      <stop offset="1" stop-color="#09070d"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#room)"/>
+  <path fill="#0d0b12" d="M0 594h1600v306H0z"/>
+  <path fill="#26162b" d="M144 118h1312v476H144z"/>
+  <path fill="#4d2c5a" d="M200 174h1200v352H200z"/>
+  <rect x="274" y="220" width="288" height="254" rx="28" fill="#15101c"/>
+  <rect x="656" y="220" width="288" height="254" rx="28" fill="#15101c"/>
+  <rect x="1038" y="220" width="288" height="254" rx="28" fill="#15101c"/>
+  <g fill="#ffd166" opacity=".18" filter="url(#glow)">
+    <circle cx="418" cy="296" r="72"/><circle cx="800" cy="296" r="72"/><circle cx="1182" cy="296" r="72"/>
+  </g>
+  <g stroke="#ffd166" stroke-width="7" stroke-linecap="round">
+    <path d="M418 246v184m-92 0h184"/>
+    <path d="M800 246v184m-92 0h184"/>
+    <path d="M1182 246v184m-92 0h184"/>
+  </g>
+  <path fill="#ff6e9d" d="M286 388c52-84 102-84 150 0l-38 50h-74l-38-50Z"/>
+  <path fill="#70d6ff" d="M686 376c52-90 110-96 172-18l-35 82H722l-36-64Z"/>
+  <path fill="#8de969" d="M1096 386c42-94 92-102 150-22l-26 78h-92l-32-56Z"/>
+  <rect x="508" y="584" width="584" height="112" rx="20" fill="#17111d"/>
+  <rect x="558" y="622" width="484" height="24" rx="12" fill="#6d79ff" opacity=".82"/>
+  <path fill="#0c0910" d="M0 694h1600v206H0z"/>
+  <g stroke="#46334d" stroke-width="4" opacity=".42">
+    <path d="M0 748h1600M0 830h1600"/>
+    <path d="M260 694 180 900M608 694l-26 206M992 694l26 206M1340 694l80 206"/>
+  </g>
+  <g fill="#ffd166">
+    <circle cx="260" cy="142" r="9"/><circle cx="1340" cy="142" r="9"/><circle cx="800" cy="142" r="9"/>
+  </g>
+  <path fill="#70d6ff" d="M952 604c-42 4-72 22-92 54 45 2 77-13 98-48l-6-6Z"/>
+</svg>

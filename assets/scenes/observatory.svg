@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Observatorio antigo da Aurora High">
+  <defs>
+    <radialGradient id="sky" cx=".5" cy=".08" r=".9">
+      <stop stop-color="#243d79"/>
+      <stop offset=".45" stop-color="#101936"/>
+      <stop offset="1" stop-color="#070913"/>
+    </radialGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#9ee8ff" stop-opacity=".9"/>
+      <stop offset=".42" stop-color="#4a7dff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#4a7dff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="floorObs" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#352444"/>
+      <stop offset="1" stop-color="#10111f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <path d="M180 520C220 220 480 90 800 90s580 130 620 430Z" fill="#1e1b33" stroke="#7b6599" stroke-width="8"/>
+  <path d="M270 515C310 280 520 180 800 180s490 100 530 335" fill="none" stroke="#415b9b" stroke-width="10" opacity=".5"/>
+  <path d="M0 532h1600v368H0z" fill="url(#floorObs)"/>
+  <ellipse cx="800" cy="678" rx="470" ry="145" fill="none" stroke="#70d6ff" stroke-width="4" opacity=".65"/>
+  <ellipse cx="800" cy="678" rx="315" ry="92" fill="none" stroke="#70d6ff" stroke-width="3" opacity=".42"/>
+  <path d="M514 672 646 620l154 58 140-74 146 70M621 726l178-48 197 56M800 588v184" stroke="#9ee8ff" stroke-width="3" opacity=".75"/>
+  <g fill="#b7f0ff">
+    <circle cx="514" cy="672" r="8"/>
+    <circle cx="646" cy="620" r="7"/>
+    <circle cx="800" cy="678" r="10"/>
+    <circle cx="940" cy="604" r="7"/>
+    <circle cx="1086" cy="674" r="8"/>
+    <circle cx="621" cy="726" r="6"/>
+    <circle cx="996" cy="734" r="6"/>
+  </g>
+  <circle cx="800" cy="678" r="360" fill="url(#glow)" opacity=".32"/>
+  <g stroke="#d6b679" stroke-width="8" fill="#171827">
+    <path d="M910 468h230v48H910z"/>
+    <path d="M980 500h54v170h-54z"/>
+    <path d="M934 660h146l42 84H892z"/>
+    <circle cx="1160" cy="491" r="40"/>
+  </g>
+  <path d="M1000 462 1168 410" stroke="#d6b679" stroke-width="16" stroke-linecap="round"/>
+  <g fill="#ffe0a3" opacity=".8">
+    <circle cx="250" cy="190" r="4"/>
+    <circle cx="371" cy="135" r="3"/>
+    <circle cx="1210" cy="155" r="4"/>
+    <circle cx="1350" cy="260" r="3"/>
+    <circle cx="720" cy="125" r="3"/>
+    <circle cx="880" cy="145" r="4"/>
+  </g>
+  <path d="M256 532c96-55 160-73 264-78M1080 456c118 12 188 35 268 76" stroke="#7b6599" stroke-width="8" opacity=".45"/>
+</svg>

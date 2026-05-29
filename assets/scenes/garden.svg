@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Jardim da Estufa">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="900">
+      <stop stop-color="#071218"/>
+      <stop offset=".52" stop-color="#10251f"/>
+      <stop offset="1" stop-color="#07110d"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="800" y1="170" x2="800" y2="652">
+      <stop stop-color="#c9fff4" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#67d8e8" stop-opacity=".12"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#night)"/>
+  <circle cx="1330" cy="126" r="66" fill="#ffd166" opacity=".66"/>
+  <path fill="#0a1d15" d="M0 654c184-74 356-67 528-18 184 52 346 46 540-14 208-65 377-55 532 26v252H0V654Z"/>
+  <path fill="#103b2b" d="M0 724c206-52 390-33 578 20 188 52 350 38 522-18 184-61 354-61 500-6v180H0V724Z"/>
+  <path fill="url(#glass)" d="M406 236h788l152 416H254l152-416Z"/>
+  <path fill="#122a27" d="M402 236h796l38 40H364l38-40Zm-148 416h1092v44H254z"/>
+  <g stroke="#d9fff8" stroke-width="6" opacity=".42">
+    <path d="M406 236 254 652M1194 236l152 416M800 236v416M542 236 464 652M1058 236l78 416"/>
+    <path d="M354 370h892M304 510h992"/>
+  </g>
+  <g fill="#2d8b62">
+    <path d="M374 682c40-130 88-190 144-180 30 88-24 148-144 180Z"/>
+    <path d="M1230 682c-40-130-88-190-144-180-30 88 24 148 144 180Z"/>
+    <path d="M190 780c40-142 108-200 204-174 6 102-62 160-204 174Z"/>
+    <path d="M1410 778c-44-138-116-197-212-174-2 105 70 162 212 174Z"/>
+  </g>
+  <g fill="#8de969" opacity=".82">
+    <path d="M568 636c44-92 92-124 144-96-12 80-60 112-144 96Z"/>
+    <path d="M924 640c-44-92-92-124-144-96 12 80 60 112 144 96Z"/>
+  </g>
+  <path fill="#47332a" d="M566 702h468l52 198H514l52-198Z"/>
+  <ellipse cx="800" cy="702" rx="252" ry="44" fill="#7b5b3b"/>
+  <path fill="#f7efe6" d="M756 642h88l22 74h-132l22-74Z"/>
+  <path fill="#70d6ff" d="M785 588c-26 28-30 62-12 102 38-24 48-60 30-108l-18 6Z"/>
+  <path fill="#8de969" d="M820 584c34 16 54 44 60 84-44-6-72-31-76-76l16-8Z"/>
+  <path fill="#ffd166" d="M782 612c10-24 26-36 48-36 12 25 4 46-24 62-15-4-23-13-24-26Z"/>
+</svg>

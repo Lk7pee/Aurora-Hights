@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Arquivo morto da Aurora High">
+  <defs>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#17152a"/>
+      <stop offset=".55" stop-color="#2b2140"/>
+      <stop offset="1" stop-color="#0f1223"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" x2="0" y1="0" y2="1">
+      <stop stop-color="#332747"/>
+      <stop offset="1" stop-color="#171123"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#ffe0a3"/>
+      <stop offset=".38" stop-color="#d78a57" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#d78a57" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#wall)"/>
+  <path d="M0 632h1600v268H0z" fill="url(#floor)"/>
+  <path d="M0 632h1600M170 900 530 632m310 268-30-268m430 268-190-268" stroke="#5b4564" stroke-width="4" opacity=".45"/>
+  <g opacity=".95">
+    <rect x="95" y="95" width="360" height="600" rx="16" fill="#19182d" stroke="#80648e" stroke-width="5"/>
+    <rect x="1145" y="95" width="360" height="600" rx="16" fill="#19182d" stroke="#80648e" stroke-width="5"/>
+    <g fill="#513f61">
+      <rect x="130" y="150" width="290" height="74" rx="8"/>
+      <rect x="130" y="252" width="290" height="74" rx="8"/>
+      <rect x="130" y="354" width="290" height="74" rx="8"/>
+      <rect x="130" y="456" width="290" height="74" rx="8"/>
+      <rect x="1180" y="150" width="290" height="74" rx="8"/>
+      <rect x="1180" y="252" width="290" height="74" rx="8"/>
+      <rect x="1180" y="354" width="290" height="74" rx="8"/>
+      <rect x="1180" y="456" width="290" height="74" rx="8"/>
+    </g>
+    <g fill="#d9bd83" opacity=".8">
+      <rect x="158" y="181" width="88" height="9"/>
+      <rect x="158" y="283" width="120" height="9"/>
+      <rect x="158" y="385" width="74" height="9"/>
+      <rect x="1208" y="181" width="106" height="9"/>
+      <rect x="1208" y="283" width="92" height="9"/>
+      <rect x="1208" y="385" width="130" height="9"/>
+    </g>
+  </g>
+  <rect x="520" y="110" width="560" height="520" rx="20" fill="#201a32" stroke="#9877a1" stroke-width="5"/>
+  <path d="M574 174h452M574 254h452M574 334h452M574 414h452M574 494h452" stroke="#5d4967" stroke-width="8"/>
+  <g fill="#3f3350">
+    <rect x="608" y="190" width="72" height="48" rx="5"/>
+    <rect x="694" y="190" width="92" height="48" rx="5"/>
+    <rect x="806" y="270" width="110" height="48" rx="5"/>
+    <rect x="628" y="350" width="126" height="48" rx="5"/>
+    <rect x="790" y="430" width="150" height="48" rx="5"/>
+  </g>
+  <circle cx="800" cy="114" r="120" fill="url(#lamp)"/>
+  <path d="M760 83h80l-18 56h-44z" fill="#d5a260" stroke="#ffe0a3" stroke-width="3"/>
+  <rect x="625" y="615" width="350" height="46" rx="8" fill="#332747" stroke="#9a7898" stroke-width="4"/>
+  <path d="M670 640h260" stroke="#d9bd83" stroke-width="4" stroke-dasharray="18 14" opacity=".9"/>
+  <g opacity=".62">
+    <path d="M1110 735c-190-70-430-70-620 0" fill="none" stroke="#70d6ff" stroke-width="3"/>
+    <path d="M740 713 800 650l60 63-60 66z" fill="none" stroke="#70d6ff" stroke-width="3"/>
+  </g>
+</svg>
