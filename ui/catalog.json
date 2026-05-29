@@ -56,6 +56,118 @@
       "icon": "ribbon",
       "rarity": "especial",
       "description": "Miguel diz que a flor de vidro só reage a água recolhida antes do primeiro sinal."
+    },
+    {
+      "id": "convite-conselho",
+      "name": "Convite do conselho",
+      "type": "story",
+      "icon": "ticket",
+      "rarity": "raro",
+      "description": "Um convite sem assinatura para uma votação que ninguém assume ter marcado."
+    },
+    {
+      "id": "selo-rasurado",
+      "name": "Selo rasurado da Aurora",
+      "type": "story",
+      "icon": "book",
+      "rarity": "secreto",
+      "description": "O brasão antigo da escola aparece raspado, como se alguém tivesse apagado uma turma inteira."
+    },
+    {
+      "id": "programa-luzes",
+      "name": "Programa das Luzes",
+      "type": "access",
+      "icon": "ticket",
+      "rarity": "comum",
+      "description": "A ordem oficial do evento escolar, com horários que não combinam com o que aconteceu no pátio."
+    },
+    {
+      "id": "nota-palco",
+      "name": "Nota dobrada do palco",
+      "type": "route",
+      "icon": "music",
+      "rarity": "especial",
+      "description": "Um bilhete escondido entre cabos de som: 'o eco começa quando todos aplaudem'."
+    },
+    {
+      "id": "mapa-servico",
+      "name": "Mapa de serviço da Aurora",
+      "type": "story",
+      "icon": "book",
+      "rarity": "raro",
+      "description": "Mostra corredores de manutenção que não aparecem no mapa dos alunos."
+    },
+    {
+      "id": "foto-clube-aurora",
+      "name": "Foto antiga do Clube Aurora",
+      "type": "story",
+      "icon": "book",
+      "rarity": "secreto",
+      "description": "Helena aparece ao fundo, segurando uma fita azul igual à sua."
+    },
+    {
+      "id": "carta-nao-enviada",
+      "name": "Carta não enviada",
+      "type": "route",
+      "icon": "book",
+      "rarity": "especial",
+      "description": "Uma carta de Helena interrompida no meio de uma promessa."
+    },
+    {
+      "id": "bilhete-vigiado",
+      "name": "Bilhete vigiado",
+      "type": "story",
+      "icon": "book",
+      "rarity": "raro",
+      "description": "Alguém deixou no seu armário a prova de que sua investigação está sendo acompanhada."
+    },
+    {
+      "id": "fragmento-fita",
+      "name": "Fragmento da fita azul",
+      "type": "story",
+      "icon": "ribbon",
+      "rarity": "secreto",
+      "description": "Um pedaço antigo da mesma fita, encontrado onde o observatório toca o jardim."
+    },
+    {
+      "id": "registro-transferencia",
+      "name": "Registro de transferência",
+      "type": "story",
+      "icon": "book",
+      "rarity": "secreto",
+      "description": "Seu nome aparece em um registro feito antes de você chegar à Aurora High."
+    },
+    {
+      "id": "ordem-conselho",
+      "name": "Ordem do conselho",
+      "type": "story",
+      "icon": "ticket",
+      "rarity": "raro",
+      "description": "A autorização para fechar o observatório tem uma assinatura que Lavínia não queria reconhecer."
+    },
+    {
+      "id": "chave-cupula-partida",
+      "name": "Chave partida da cúpula",
+      "type": "story",
+      "icon": "key",
+      "rarity": "secreto",
+      "description": "Metade de uma chave antiga. A outra metade ainda está em algum lugar da escola."
+    },
+    {
+      "id": "promessa-jardim",
+      "name": "Promessa do jardim",
+      "type": "story",
+      "icon": "ribbon",
+      "rarity": "secreto",
+      "description": "Uma promessa feita sob a flor de vidro: lembrar sem destruir quem ainda pode escolher diferente."
+    },
+    {
+      "id": "mapa-capitulo-2",
+      "name": "Mapa para o Capítulo 2",
+      "type": "key",
+      "icon": "book",
+      "rarity": "secreto",
+      "description": "Um desenho incompleto aponta para uma área da Aurora High que ainda não foi aberta."
     }
   ],
   "outfits": [
@@ -241,6 +353,153 @@
       "episode": "episode-03",
       "image": "./assets/cgs/ep03-helena-letters.png",
       "hint": "Leia as cartas antes de transformar Helena em prova."
+    },
+    {
+      "id": "ep04-ribbon-fray",
+      "title": "Fio solto da fita",
+      "episode": "episode-04",
+      "image": "./assets/cgs/blue-ribbon-memory.png",
+      "hint": "Siga o comportamento estranho da fita durante a votação."
+    },
+    {
+      "id": "ep04-council-seal",
+      "title": "Brasão rasurado",
+      "episode": "episode-04",
+      "image": "./assets/cgs/ep02-archive-minutes.png",
+      "hint": "Investigue o selo antigo escondido nos registros do conselho."
+    },
+    {
+      "id": "ep04-observatory-vote",
+      "title": "Votação sob a cúpula",
+      "episode": "episode-04",
+      "image": "./assets/cgs/observatory-door-scene.png",
+      "hint": "Chegue ao fim da votação sem nome."
+    },
+    {
+      "id": "ep05-demo-glitch",
+      "title": "Ruído no ensaio",
+      "episode": "episode-05",
+      "image": "./assets/cgs/ep02-demo-tape.png",
+      "hint": "Ouça a falha que atravessa o evento escolar."
+    },
+    {
+      "id": "ep05-lantern-message",
+      "title": "Mensagem entre luzes",
+      "episode": "episode-05",
+      "image": "./assets/cgs/ep03-false-lights.png",
+      "hint": "Observe as lanternas quando todo mundo estiver ocupado sorrindo."
+    },
+    {
+      "id": "ep05-rooftop-after",
+      "title": "Depois do evento",
+      "episode": "episode-05",
+      "image": "./assets/cgs/star-rooftop-scene.png",
+      "hint": "Suba ao terraço após a descoberta estranha."
+    },
+    {
+      "id": "ep06-service-map",
+      "title": "Mapa de serviço",
+      "episode": "episode-06",
+      "image": "./assets/cgs/library-note-scene.png",
+      "hint": "Encontre o mapa que não pertence aos alunos."
+    },
+    {
+      "id": "ep06-helena-photo",
+      "title": "Foto antiga de Helena",
+      "episode": "episode-06",
+      "image": "./assets/cgs/ep03-helena-letters.png",
+      "hint": "Compare a foto com os registros do arquivo morto."
+    },
+    {
+      "id": "ep06-archive-risk",
+      "title": "Lâmina no arquivo",
+      "episode": "episode-06",
+      "image": "./assets/cgs/ep02-archive-minutes.png",
+      "hint": "Aceite o risco de abrir a caixa errada."
+    },
+    {
+      "id": "ep07-rooftop-promise",
+      "title": "Promessa no terraço",
+      "episode": "episode-07",
+      "image": "./assets/cgs/star-rooftop-scene.png",
+      "hint": "Escolha alguém para confiar quando a escola parecer vigiar você."
+    },
+    {
+      "id": "ep07-garden-soft",
+      "title": "Conversa na estufa",
+      "episode": "episode-07",
+      "image": "./assets/cgs/glass-flower-scene.png",
+      "hint": "Deixe um laço crescer sem apressar a resposta."
+    },
+    {
+      "id": "ep07-locker-note",
+      "title": "Bilhete vigiado",
+      "episode": "episode-07",
+      "image": "./assets/cgs/blue-ribbon-scene.png",
+      "hint": "Volte ao armário depois das conversas íntimas."
+    },
+    {
+      "id": "ep08-memory-photo",
+      "title": "Fotografia da fita",
+      "episode": "episode-08",
+      "image": "./assets/cgs/blue-ribbon-memory.png",
+      "hint": "Conecte a fita azul ao passado da escola."
+    },
+    {
+      "id": "ep08-observatory-film",
+      "title": "Filme da cúpula",
+      "episode": "episode-08",
+      "image": "./assets/cgs/observatory-door-scene.png",
+      "hint": "Encontre a gravação antiga sem quebrar a chave."
+    },
+    {
+      "id": "ep08-letters-thread",
+      "title": "Linha nas cartas",
+      "episode": "episode-08",
+      "image": "./assets/cgs/ep03-helena-letters.png",
+      "hint": "Leia a carta que explica por que você foi chamada."
+    },
+    {
+      "id": "ep09-council-order",
+      "title": "Ordem do conselho",
+      "episode": "episode-09",
+      "image": "./assets/cgs/ep02-archive-minutes.png",
+      "hint": "Confronte a versão oficial antes da reunião final."
+    },
+    {
+      "id": "ep09-lavinia-lights",
+      "title": "Lavínia sob as luzes",
+      "episode": "episode-09",
+      "image": "./assets/cgs/ep03-false-lights.png",
+      "hint": "Não trate Lavínia como resposta simples demais."
+    },
+    {
+      "id": "ep09-sealed-dome",
+      "title": "Cúpula selada",
+      "episode": "episode-09",
+      "image": "./assets/cgs/observatory-door-scene.png",
+      "hint": "Prepare a entrada final no observatório."
+    },
+    {
+      "id": "ep10-garden-echo",
+      "title": "Eco no jardim",
+      "episode": "episode-10",
+      "image": "./assets/cgs/glass-flower-scene.png",
+      "hint": "Use a fita azul diante da flor de vidro."
+    },
+    {
+      "id": "ep10-starfall",
+      "title": "Estrela que caiu",
+      "episode": "episode-10",
+      "image": "./assets/cgs/star-rooftop-scene.png",
+      "hint": "Descubra a parte da queda que o capítulo 1 permite lembrar."
+    },
+    {
+      "id": "ep10-next-map",
+      "title": "Mapa que não termina",
+      "episode": "episode-10",
+      "image": "./assets/cgs/blue-ribbon-memory.png",
+      "hint": "Termine o capítulo 1 e aceite que a escola ainda guarda outro andar."
     }
   ],
   "apPacks": [
@@ -322,6 +581,55 @@
       "category": "Minigames",
       "description": "Concluiu duas rodadas de minigame.",
       "hint": "Jogue os dois minigames de AP."
+    },
+    {
+      "id": "voto-sem-nome",
+      "title": "Voto Sem Nome",
+      "category": "História",
+      "description": "Sobreviveu à votação que o conselho tentou fingir que não existia.",
+      "hint": "Termine o episódio 4."
+    },
+    {
+      "id": "luzes-e-ruidos",
+      "title": "Luzes e Ruídos",
+      "category": "História",
+      "description": "Descobriu que um evento escolar também pode esconder uma transmissão antiga.",
+      "hint": "Termine o episódio 5."
+    },
+    {
+      "id": "mapa-subterraneo",
+      "title": "Mapa de Serviço",
+      "category": "Investigação",
+      "description": "Encontrou o mapa que revela corredores fora do circuito dos alunos.",
+      "hint": "Termine o episódio 6."
+    },
+    {
+      "id": "aliados-na-sombra",
+      "title": "Aliados na Sombra",
+      "category": "Afinidade",
+      "description": "Escolheu quem merece ficar perto quando a Aurora High começa a observar você.",
+      "hint": "Termine o episódio 7."
+    },
+    {
+      "id": "linha-azul",
+      "title": "Linha Azul",
+      "category": "Galeria",
+      "description": "Conectou a fita azul ao passado do Clube Aurora.",
+      "hint": "Termine o episódio 8."
+    },
+    {
+      "id": "queda-da-coroa",
+      "title": "Queda da Coroa",
+      "category": "História",
+      "description": "Encarou Lavínia quando o conselho tentou transformar memória em disciplina.",
+      "hint": "Termine o episódio 9."
+    },
+    {
+      "id": "ecos-no-jardim",
+      "title": "Ecos no Jardim",
+      "category": "Capítulo",
+      "description": "Concluiu o Capítulo 1 sem encerrar o mistério da Aurora High.",
+      "hint": "Termine o episódio 10."
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 
 const readJson = async (file) => JSON.parse(await readFile(file, "utf8"));
 const [episodes, characters, scenes, catalog, routes] = await Promise.all([
@@ -27,6 +27,17 @@ const cgIds = new Set(catalog.cgs.map((cg) => cg.id));
 const outfitIds = new Set(catalog.outfits.map((outfit) => outfit.id));
 const inventoryIds = new Set(catalog.inventory.map((item) => item.id));
 const achievementIds = new Set((catalog.achievements ?? []).map((achievement) => achievement.id));
+const assetChecks = [];
+
+function validateAsset(path, context) {
+  if (!path || path.startsWith("data:") || /^https?:\/\//i.test(path)) return;
+  const normalized = path.replace(/^\.\//, "");
+  assetChecks.push(
+    access(normalized).catch(() => {
+      throw new Error(`${context} referencia arquivo ausente: ${path}`);
+    })
+  );
+}
 
 function validateEffects(effects = {}, context) {
   for (const outfitId of effects.wardrobeAdd ?? []) {
@@ -46,6 +57,7 @@ function validateEffects(effects = {}, context) {
 for (const episode of episodes.episodes) {
   if (!episode.id || !episode.title) throw new Error("Episódio sem id/título.");
   if (episode.dialogue && !dialogues[episode.id]) throw new Error(`Episódio sem roteiro carregado: ${episode.id}`);
+  validateAsset(episode.cover, `Capa de ${episode.id}`);
 }
 
 for (const [episodeId, dialogue] of Object.entries(dialogues)) {
@@ -91,4 +103,28 @@ for (const route of routes.routes) {
   if (route.rewardItem && !inventoryIds.has(route.rewardItem)) throw new Error(`Rota ${route.characterId} recompensa item ausente: ${route.rewardItem}`);
 }
 
-console.log(`Smoke test OK: ${episodes.episodes.length} episódios, ${Object.keys(dialogues).length} roteiros e referências principais consistentes.`);
+for (const character of characters.characters) {
+  validateAsset(character.sprite, `Sprite de ${character.id}`);
+  validateAsset(character.playerMasculino?.sprite, `Sprite masculino alternativo de ${character.id}`);
+  validateAsset(character.playerFeminino?.sprite, `Sprite feminino alternativo de ${character.id}`);
+}
+
+for (const scene of scenes.scenes) {
+  validateAsset(scene.image, `Cenario ${scene.id}`);
+  validateAsset(scene.dayImage, `Cenario diurno ${scene.id}`);
+  validateAsset(scene.nightImage, `Cenario noturno ${scene.id}`);
+}
+
+for (const cg of catalog.cgs) {
+  validateAsset(cg.image, `CG ${cg.id}`);
+}
+
+for (const outfit of catalog.outfits) {
+  for (const [variant, sprite] of Object.entries(outfit.sprites ?? {})) {
+    validateAsset(sprite, `Roupa ${outfit.id}/${variant}`);
+  }
+}
+
+await Promise.all(assetChecks);
+
+console.log(`Smoke test OK: ${episodes.episodes.length} episódios, ${Object.keys(dialogues).length} roteiros, ${assetChecks.length} assets e referências principais consistentes.`);

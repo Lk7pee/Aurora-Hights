@@ -1,0 +1,590 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-09",
+  "title": "A Coroa de Lavínia",
+  "startNode": "ep09_intro_01",
+  "nodes": {
+    "ep09_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "mystery",
+      "text": "A audiencia disciplinar acontece no Patio das Luzes, nao em uma sala fechada. A escolha e calculada: se a Aurora High quer punir curiosidade, prefere fazer isso diante de testemunhas bem penteadas.",
+      "next": "ep09_lavinia_01"
+    },
+    "ep09_lavinia_01": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Lavinia lê a convocacao com voz perfeita. Cada palavra parece polida antes de sair da boca. 'Acesso indevido. Interferencia em registros. Risco a seguranca institucional.' Ela nao olha para voce ao dizer risco.",
+      "variants": [
+        {
+          "when": { "flags": ["ep08_asked_who_lavinia_protects"] },
+          "text": "Lavinia lê a convocacao com voz perfeita, mas a mao treme no rodape onde a assinatura dela deveria parecer firme. 'Acesso indevido. Interferencia em registros. Risco a seguranca institucional.' Ela evita seus olhos justamente por saber que voce percebeu."
+        }
+      ],
+      "next": "ep09_group_01"
+    },
+    "ep09_group_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [
+        { "id": "theo", "position": "left", "expression": "protetor" },
+        { "id": "davi", "position": "right", "expression": "atento" }
+      ],
+      "text": "Theo fica perto o bastante para que todos vejam. Davi segura um caderno sem fingir que nao esta anotando tudo. Do outro lado do patio, Noa, Ravi, Caio e Miguel formam uma linha discreta. Nao e uma defesa. Ainda. E uma promessa.",
+      "next": "ep09_hearing_choice"
+    },
+    "ep09_hearing_choice": {
+      "type": "choice",
+      "speaker": "lavinia",
+      "expression": "cortante",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "cortante" }],
+      "text": "Lavinia oferece a saida elegante: devolver todos os documentos, entregar a fita azul e aceitar que o assunto do observatorio termine antes do festival final.",
+      "choices": [
+        {
+          "label": "Recusar em publico e dizer que memoria nao pertence ao conselho.",
+          "next": "ep09_hearing_after_public",
+          "effects": {
+            "ap": -2,
+            "affinity": { "theo": 2, "davi": 2, "ravi": 1 },
+            "flags": { "ep09_publicly_refused_council": true }
+          }
+        },
+        {
+          "label": "Pedir uma conversa privada com Lavinia antes de responder.",
+          "next": "ep09_hearing_after_private",
+          "effects": {
+            "ap": -1,
+            "affinity": { "lavinia": 3, "noa": 1 },
+            "flags": { "ep09_requested_private_lavinia": true }
+          }
+        },
+        {
+          "label": "Aceitar ouvir as condicoes para descobrir quem escreveu o roteiro dela.",
+          "next": "ep09_hearing_after_listen",
+          "effects": {
+            "affinity": { "caio": 2, "miguel": 1 },
+            "flags": { "ep09_observed_council_script": true }
+          }
+        }
+      ]
+    },
+    "ep09_hearing_after_public": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Um murmurio atravessa o patio. Ravi sorri sem humor. 'Agora sim', ele diz baixo. 'A escola inteira ouviu o que fingia nao existir.'",
+      "next": "ep09_map_intro"
+    },
+    "ep09_hearing_after_private": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "corridor",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "No corredor, Lavinia deixa a mascara cair por meio segundo. 'Voce acha que eu mando nisso porque estou na frente', ela diz. 'Isso e exatamente o que eles querem.'",
+      "next": "ep09_map_intro"
+    },
+    "ep09_hearing_after_listen": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "courtyard",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "Caio observa os conselheiros atras de Lavinia. 'Ela pausou na palavra institucional. Alguem escreveu esse texto para soar antigo. Mais antigo que o mandato dela.'",
+      "next": "ep09_map_intro"
+    },
+    "ep09_map_intro": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "text": "A audiencia termina sem decisao, o que na Aurora High significa apenas que a decisao foi empurrada para um lugar mais escuro. O mapa marca tres pontos antes do por do sol.",
+      "next": "ep09_map_round"
+    },
+    "ep09_map_round": {
+      "type": "map",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "title": "Quebrar o roteiro",
+      "text": "Investigue a ordem do conselho, a reacao de Lavinia e a cupula selada. Voce precisa preparar a entrada final do capitulo.",
+      "events": [
+        {
+          "id": "ep09_archive",
+          "label": "Buscar a ordem original",
+          "location": "archive",
+          "apCost": 3,
+          "onceFlag": "ep09_found_council_order",
+          "next": "ep09_archive_01",
+          "revisitNext": "ep09_archive_return"
+        },
+        {
+          "id": "ep09_courtyard",
+          "label": "Encarar Lavinia sob as luzes",
+          "location": "courtyard",
+          "apCost": 2,
+          "onceFlag": "ep09_lavinia_under_lights",
+          "next": "ep09_courtyard_01",
+          "revisitNext": "ep09_courtyard_return"
+        },
+        {
+          "id": "ep09_observatory",
+          "label": "Examinar a cupula selada",
+          "location": "observatory",
+          "apCost": 3,
+          "onceFlag": "ep09_found_broken_dome_key",
+          "next": "ep09_observatory_01",
+          "revisitNext": "ep09_observatory_return"
+        }
+      ],
+      "doneWhenFlags": [
+        "ep09_found_council_order",
+        "ep09_lavinia_under_lights",
+        "ep09_found_broken_dome_key"
+      ],
+      "doneNext": "ep09_after_map_01"
+    },
+    "ep09_archive_01": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "preocupado",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [
+        { "id": "caio", "position": "left", "expression": "preocupado" },
+        { "id": "davi", "position": "right", "expression": "atento" }
+      ],
+      "text": "A ordem original nao esta na pasta da audiencia. Esta escondida em uma caixa de reformas antigas, assinada por um cargo que nao existe mais: Curadoria de Memoria Aurora.",
+      "next": "ep09_archive_choice"
+    },
+    "ep09_archive_choice": {
+      "type": "choice",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "archive",
+      "music": "mystery",
+      "characters": [
+        { "id": "caio", "position": "left", "expression": "analitico" },
+        { "id": "davi", "position": "right", "expression": "atento" }
+      ],
+      "text": "A ordem manda 'impedir a herdeira da fita de acessar o jardim inferior'. Davi para de escrever quando percebe que a frase pode ser sobre voce.",
+      "choices": [
+        {
+          "label": "Guardar a ordem como prova principal.",
+          "next": "ep09_archive_after_proof",
+          "effects": {
+            "affinity": { "caio": 2, "davi": 1 },
+            "inventoryAdd": ["ordem-conselho"],
+            "flags": { "ep09_kept_order_as_proof": true }
+          }
+        },
+        {
+          "label": "Pedir que Davi publique apenas uma pista, sem expor a frase inteira.",
+          "next": "ep09_archive_after_article",
+          "effects": {
+            "affinity": { "davi": 3 },
+            "flags": { "ep09_soft_published_hint": true }
+          }
+        },
+        {
+          "label": "Deixar Caio criar uma copia falsa para testar quem tenta roubar.",
+          "next": "ep09_archive_after_decoy",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 3 },
+            "flags": { "ep09_created_order_decoy": true }
+          }
+        }
+      ]
+    },
+    "ep09_archive_after_proof": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "mystery",
+      "text": "A ordem entra no diario. O papel e pesado, como se tivesse sido escrito para sobreviver a varias versoes da verdade.",
+      "next": "ep09_cg_order"
+    },
+    "ep09_archive_after_article": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Davi assente. 'Uma pista, nao uma explosao. Crescimento pessoal horrivel. Detestei. Vamos fazer direito.'",
+      "effects": {
+        "inventoryAdd": ["ordem-conselho"]
+      },
+      "next": "ep09_cg_order"
+    },
+    "ep09_archive_after_decoy": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Caio copia a ordem falsa com uma elegancia ofensiva. 'Se roubarem, saberemos que o inimigo tem bom gosto e pessima verificacao de margem.'",
+      "effects": {
+        "inventoryAdd": ["ordem-conselho"]
+      },
+      "next": "ep09_cg_order"
+    },
+    "ep09_cg_order": {
+      "type": "cg",
+      "background": "archive",
+      "music": "mystery",
+      "cg": "ep09-council-order",
+      "title": "Memoria desbloqueada",
+      "text": "A ordem do conselho confirma que a fita azul e o jardim inferior ja eram temidos antes de voce chegar.",
+      "effects": {
+        "galleryAdd": ["ep09-council-order"],
+        "inventoryAdd": ["ordem-conselho"],
+        "flags": { "ep09_found_council_order": true }
+      },
+      "next": "ep09_map_round"
+    },
+    "ep09_archive_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "quiet",
+      "text": "A ordem original ja esta no diario. O arquivo morto volta a parecer morto demais.",
+      "next": "ep09_map_round"
+    },
+    "ep09_courtyard_01": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "A noite desce sobre o Patio das Luzes. Lavinia esta sozinha, sem conselho, sem plateia e sem a coroa invisivel que costuma usar. Ainda assim, parece mais perigosa.",
+      "next": "ep09_courtyard_choice"
+    },
+    "ep09_courtyard_choice": {
+      "type": "choice",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Ela confessa que herdou a chave de uma sala que nunca abriu. 'Eu achei que proteger a escola era manter a porta fechada. Agora nao sei se a porta protege alguem de fora ou prende alguem la dentro.'",
+      "choices": [
+        {
+          "label": "Dizer que ela ainda pode escolher diferente antes do fim do capitulo.",
+          "next": "ep09_courtyard_after_mercy",
+          "effects": {
+            "affinity": { "lavinia": 3, "miguel": 1 },
+            "flags": { "ep09_offered_lavinia_choice": true }
+          }
+        },
+        {
+          "label": "Cobrar tudo que ela fez para impedir a investigacao.",
+          "next": "ep09_courtyard_after_charge",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 2, "theo": 1 },
+            "flags": { "ep09_confronted_lavinia_hard": true }
+          }
+        },
+        {
+          "label": "Perguntar quem colocou a coroa nela antes que ela soubesse o peso.",
+          "next": "ep09_courtyard_after_crown",
+          "effects": {
+            "affinity": { "lavinia": 2, "noa": 1 },
+            "flags": { "ep09_named_lavinia_crown": true }
+          }
+        }
+      ]
+    },
+    "ep09_courtyard_after_mercy": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavinia fecha os olhos. 'Voce fala como se escolha fosse uma porta simples.' Ela respira. 'Talvez eu tenha esquecido como abrir uma.'",
+      "next": "ep09_cg_lavinia"
+    },
+    "ep09_courtyard_after_charge": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "irritada",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "irritada" }],
+      "text": "Lavinia aceita a acusacao sem desviar. Isso incomoda mais do que defesa. 'Eu fiz coisas imperdoaveis por uma historia que tambem mentiu para mim.'",
+      "next": "ep09_cg_lavinia"
+    },
+    "ep09_courtyard_after_crown": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "A palavra coroa atravessa Lavinia como uma coisa antiga. 'Minha avó chamava de responsabilidade', ela diz. 'Helena chamava de coleira.'",
+      "next": "ep09_cg_lavinia"
+    },
+    "ep09_cg_lavinia": {
+      "type": "cg",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "cg": "ep09-lavinia-lights",
+      "title": "Memoria desbloqueada",
+      "text": "Sob as luzes do patio, Lavinia deixa de parecer resposta. Ela se torna uma porta mal guardada para uma culpa maior.",
+      "effects": {
+        "galleryAdd": ["ep09-lavinia-lights"],
+        "flags": { "ep09_lavinia_under_lights": true }
+      },
+      "next": "ep09_map_round"
+    },
+    "ep09_courtyard_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "quiet",
+      "text": "O Patio das Luzes ja mostrou a rachadura na postura de Lavinia. As luzes continuam acesas, mas menos obedientes.",
+      "next": "ep09_map_round"
+    },
+    "ep09_observatory_01": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "noa", "position": "left", "expression": "tenso" },
+        { "id": "miguel", "position": "right", "expression": "determinado" }
+      ],
+      "text": "No observatorio, Noa encontra marcas novas na fechadura. Miguel ilumina o piso e revela uma fenda fina descendo da cupula ate a direcao da estufa.",
+      "next": "ep09_observatory_choice"
+    },
+    "ep09_observatory_choice": {
+      "type": "choice",
+      "speaker": "noa",
+      "expression": "reservado",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "noa", "position": "left", "expression": "reservado" },
+        { "id": "miguel", "position": "right", "expression": "determinado" }
+      ],
+      "text": "Dentro da fechadura, ha metade de uma chave presa. A fita azul vibra quando voce aproxima o fragmento encontrado no filme.",
+      "choices": [
+        {
+          "label": "Deixar Noa retirar a chave com calma, mesmo que demore.",
+          "next": "ep09_observatory_after_noa",
+          "effects": {
+            "affinity": { "noa": 3 },
+            "inventoryAdd": ["chave-cupula-partida"],
+            "flags": { "ep09_trusted_noa_with_key": true }
+          }
+        },
+        {
+          "label": "Pedir que Miguel estabilize a fenda antes que alguem se machuque.",
+          "next": "ep09_observatory_after_miguel",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "inventoryAdd": ["chave-cupula-partida"],
+            "flags": { "ep09_miguel_secured_crack": true }
+          }
+        },
+        {
+          "label": "Forcar a chave para abrir uma fresta agora.",
+          "next": "ep09_observatory_after_force",
+          "effects": {
+            "ap": -2,
+            "affinity": { "ravi": 1, "caio": 1 },
+            "inventoryAdd": ["chave-cupula-partida"],
+            "flags": { "ep09_forced_dome_key": true }
+          }
+        }
+      ]
+    },
+    "ep09_observatory_after_noa": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "raro_sorriso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "noa", "position": "right", "expression": "raro_sorriso" }],
+      "text": "Noa retira a chave partida sem quebrar a fechadura. 'Nem tudo que esta preso precisa ser arrancado', ele diz, e a frase fica entre voces dois.",
+      "next": "ep09_cg_dome"
+    },
+    "ep09_observatory_after_miguel": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Miguel prende uma haste sob a fenda e impede que o piso ceda. 'A gente descobre a verdade sem quebrar quem esta em cima dela', ele diz.",
+      "next": "ep09_cg_dome"
+    },
+    "ep09_observatory_after_force": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A chave cede com um estalo e o ar muda. Por um segundo, voce ouve passos abaixo do jardim. Depois a fenda fecha, como se tivesse engolido o som.",
+      "next": "ep09_cg_dome"
+    },
+    "ep09_cg_dome": {
+      "type": "cg",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "ep09-sealed-dome",
+      "title": "Memoria desbloqueada",
+      "text": "A cupula selada nao aponta apenas para cima. Ela tambem abre caminho para baixo, na direcao do jardim.",
+      "effects": {
+        "galleryAdd": ["ep09-sealed-dome"],
+        "inventoryAdd": ["chave-cupula-partida"],
+        "flags": { "ep09_found_broken_dome_key": true }
+      },
+      "next": "ep09_map_round"
+    },
+    "ep09_observatory_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "music": "mystery",
+      "text": "A cupula ja entregou a chave partida. O resto espera no jardim.",
+      "next": "ep09_map_round"
+    },
+    "ep09_after_map_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A ordem do conselho, a confissao torta de Lavinia e a chave partida apontam para o mesmo lugar: uma entrada escondida entre o observatorio e a estufa, aberta apenas durante o festival final.",
+      "next": "ep09_final_choice"
+    },
+    "ep09_final_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "corridor",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Antes do episodio final, voce precisa decidir como entrar no jardim inferior.",
+      "choices": [
+        {
+          "label": "Entrar com o grupo inteiro, assumindo que todo laco pode virar chave.",
+          "next": "ep09_final_group",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 1, "theo": 1, "ravi": 1, "caio": 1, "miguel": 1, "noa": 1 },
+            "flags": { "ep09_prepare_group_entry": true }
+          }
+        },
+        {
+          "label": "Aceitar a ajuda de Lavinia, mesmo sem confiar totalmente nela.",
+          "next": "ep09_final_lavinia",
+          "effects": {
+            "ap": -1,
+            "affinity": { "lavinia": 3 },
+            "flags": { "ep09_accept_lavinia_help": true }
+          }
+        },
+        {
+          "label": "Usar a ordem do conselho como isca para puxar o verdadeiro responsavel.",
+          "next": "ep09_final_bait",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 1, "ravi": 1, "davi": 1 },
+            "flags": { "ep09_use_order_as_bait": true }
+          }
+        }
+      ]
+    },
+    "ep09_final_group": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Theo aperta o broche da equipe de eventos. 'Entao a gente entra junto. Sem pose heroica. Sem sumir sozinho. Essa escola ja teve silencio demais.'",
+      "next": "ep09_reward"
+    },
+    "ep09_final_lavinia": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavinia entrega um horario do festival com um ponto circulado. 'Eu posso abrir uma porta. Nao posso garantir o que vai sobrar de mim depois.'",
+      "next": "ep09_reward"
+    },
+    "ep09_final_bait": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "music-room",
+      "timeOfDay": "night",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "divertido" }],
+      "text": "Ravi sorri do jeito errado para uma situacao certa. 'Isca com documento antigo? Finalmente um crime escolar com identidade visual.'",
+      "next": "ep09_reward"
+    },
+    "ep09_reward": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "Na ultima pagina do diario, a fita azul desenha um circulo ao redor de uma palavra que voce nao escreveu: jardim.",
+      "effects": {
+        "completeEpisode": "episode-09",
+        "achievementAdd": ["queda-da-coroa"],
+        "wardrobeAdd": ["blazer-conselho"],
+        "coins": 140,
+        "gems": 3,
+        "ap": 8,
+        "flags": { "episode_09_complete": true }
+      },
+      "next": "ep09_end"
+    },
+    "ep09_end": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "mystery",
+      "title": "Fim do Episodio 9",
+      "text": "No mapa do celular, a cupula do observatorio e a estufa deixam de ser dois pontos. Entre elas surge uma escada azul que desce para uma area sem nome."
+    }
+  }
+}

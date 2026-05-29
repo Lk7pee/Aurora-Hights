@@ -1,0 +1,866 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-10",
+  "title": "Ecos no Jardim",
+  "startNode": "ep10_intro_01",
+  "nodes": {
+    "ep10_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A ultima noite do festival transforma a Aurora High em vitrine. Lanternas douradas balancam no Patio das Luzes, musica escapa da sala de ensaio e cada janela acesa parece um olho tentando descobrir onde voce vai colocar a fita azul.",
+      "next": "ep10_intro_02"
+    },
+    "ep10_intro_02": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "No diario, a ordem do conselho, a chave partida, o registro de transferencia e a foto de Helena formam uma constelacao sem ceu. No centro, a fita azul pulsa como se finalmente tivesse encontrado o proprio ritmo.",
+      "next": "ep10_group_01"
+    },
+    "ep10_group_01": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "school",
+      "characters": [
+        { "id": "davi", "position": "left", "expression": "leal" },
+        { "id": "theo", "position": "right", "expression": "protetor" }
+      ],
+      "text": "Davi chega primeiro, sem piada de abertura. Theo vem logo depois, com o cracha do evento virado para dentro. 'Ninguem entra sozinho', Theo diz. Davi abre o caderno. 'E ninguem some sem virar manchete, combinado?'",
+      "variants": [
+        {
+          "when": { "flags": ["ep09_prepare_group_entry"] },
+          "text": "Davi chega primeiro, sem piada de abertura. Theo vem logo depois, com o cracha do evento virado para dentro. A decisao do episodio anterior ainda esta viva entre voces: ninguem entra sozinho, e ninguem some sem deixar testemunha."
+        }
+      ],
+      "next": "ep10_group_02"
+    },
+    "ep10_group_02": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "text": "Noa observa o observatorio. Ravi ajusta um fone no ouvido e finge calma como quem afina uma mentira. Caio confere tres copias dos documentos. Miguel carrega um frasco de orvalho. Lavinia aparece por ultimo, sem broche do conselho.",
+      "next": "ep10_lavinia_01"
+    },
+    "ep10_lavinia_01": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavinia entrega a voce um alfinete dourado quebrado. 'A Curadoria usava isso antes do conselho existir oficialmente. Eu achei que era simbolo. Era permissao.'",
+      "variants": [
+        {
+          "when": { "flags": ["ep09_accept_lavinia_help"] },
+          "text": "Lavinia entrega a voce um alfinete dourado quebrado, como prometeu. 'Eu consigo abrir a primeira porta. Depois disso, nao sou presidente, nao sou herdeira, nao sou nada que possa mandar em voce.'"
+        },
+        {
+          "when": { "flags": ["ep09_confronted_lavinia_hard"] },
+          "text": "Lavinia entrega a voce um alfinete dourado quebrado sem pedir desculpa facil. 'Eu mereci sua raiva. Mas se ainda ha uma porta, eu prefiro abrir antes que alguem pior tranque por dentro.'"
+        }
+      ],
+      "next": "ep10_plan_choice"
+    },
+    "ep10_plan_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A entrada para o jardim inferior so abrira quando o festival estiver no ponto mais alto. Ate la, voce precisa escolher como preparar o grupo.",
+      "choices": [
+        {
+          "label": "Manter todos juntos e transformar laços em protecao.",
+          "next": "ep10_plan_after_group",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 1, "theo": 1, "noa": 1, "ravi": 1, "caio": 1, "miguel": 1 },
+            "flags": { "ep10_chose_group_protection": true }
+          }
+        },
+        {
+          "label": "Deixar Lavinia abrir caminho enquanto os outros observam de longe.",
+          "next": "ep10_plan_after_lavinia",
+          "effects": {
+            "ap": -1,
+            "affinity": { "lavinia": 3, "caio": 1 },
+            "flags": { "ep10_chose_lavinia_door": true }
+          }
+        },
+        {
+          "label": "Usar a ordem do conselho como isca e gravar quem tentar impedir.",
+          "next": "ep10_plan_after_bait",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 2, "davi": 2 },
+            "flags": { "ep10_chose_recorded_bait": true }
+          }
+        }
+      ]
+    },
+    "ep10_plan_after_group": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Miguel distribui pequenas fitas brancas para amarrar nos pulsos. 'Nao e ritual', ele diz. 'E so um jeito de olhar rapido e lembrar que tem alguem voltando com voce.'",
+      "next": "ep10_map_intro"
+    },
+    "ep10_plan_after_lavinia": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Lavinia aceita a dianteira como quem aceita uma sentenca. 'Se eu falhar, nao confundam falha com traicao', ela pede. O pedido e pequeno demais para o orgulho dela e grande demais para ignorar.",
+      "next": "ep10_map_intro"
+    },
+    "ep10_plan_after_bait": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "timeOfDay": "night",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Ravi instala o gravador dentro de um amplificador. 'Se alguem tentar silenciar a gente, vai precisar fazer isso no ritmo certo.'",
+      "next": "ep10_map_intro"
+    },
+    "ep10_map_intro": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "atrium",
+      "timeOfDay": "night",
+      "music": "exploration",
+      "text": "O mapa do celular se transforma em um relogio. Quatro pontos precisam responder antes da meia-noite: patio, sala de musica, observatorio e estufa. Cada um segura uma parte da passagem.",
+      "next": "ep10_map_round"
+    },
+    "ep10_map_round": {
+      "type": "map",
+      "speaker": "narrator",
+      "background": "atrium",
+      "timeOfDay": "night",
+      "music": "exploration",
+      "title": "Ritual do festival",
+      "text": "Prepare a entrada do jardim inferior. Cada acao consome AP e define quem tera voz no momento da revelacao.",
+      "events": [
+        {
+          "id": "ep10_courtyard",
+          "label": "Controlar o fluxo do Patio das Luzes",
+          "location": "courtyard",
+          "apCost": 2,
+          "onceFlag": "ep10_crowd_ready",
+          "next": "ep10_courtyard_01",
+          "revisitNext": "ep10_courtyard_return"
+        },
+        {
+          "id": "ep10_music",
+          "label": "Sincronizar o sinal pela sala de musica",
+          "location": "music-room",
+          "apCost": 2,
+          "onceFlag": "ep10_signal_ready",
+          "next": "ep10_music_01",
+          "revisitNext": "ep10_music_return"
+        },
+        {
+          "id": "ep10_observatory",
+          "label": "Alinhar a cupula do observatorio",
+          "location": "observatory",
+          "apCost": 3,
+          "onceFlag": "ep10_cupola_ready",
+          "next": "ep10_observatory_01",
+          "revisitNext": "ep10_observatory_return"
+        },
+        {
+          "id": "ep10_garden",
+          "label": "Preparar a flor de vidro na estufa",
+          "location": "garden",
+          "apCost": 2,
+          "onceFlag": "ep10_garden_ready",
+          "next": "ep10_garden_01",
+          "revisitNext": "ep10_garden_return"
+        }
+      ],
+      "doneWhenFlags": [
+        "ep10_crowd_ready",
+        "ep10_signal_ready",
+        "ep10_cupola_ready",
+        "ep10_garden_ready"
+      ],
+      "doneNext": "ep10_gate_01"
+    },
+    "ep10_courtyard_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "school",
+      "characters": [
+        { "id": "theo", "position": "left", "expression": "protetor" },
+        { "id": "davi", "position": "right", "expression": "dramatico" }
+      ],
+      "text": "Theo transforma a circulacao do festival em coreografia. Davi chama de 'evacuacao emocionalmente elegante' e posiciona voluntarios sem que ninguem perceba que estao abrindo um corredor ate a estufa.",
+      "next": "ep10_courtyard_choice"
+    },
+    "ep10_courtyard_choice": {
+      "type": "choice",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "school",
+      "characters": [
+        { "id": "theo", "position": "left", "expression": "sincero" },
+        { "id": "davi", "position": "right", "expression": "atento" }
+      ],
+      "text": "Um professor do conselho tenta fechar o corredor improvisado. Theo espera sua decisao antes de transformar charme em desafio.",
+      "choices": [
+        {
+          "label": "Deixar Theo lidar com o professor em publico.",
+          "next": "ep10_courtyard_after_theo",
+          "effects": {
+            "affinity": { "theo": 3 },
+            "flags": { "ep10_theo_public_cover": true }
+          }
+        },
+        {
+          "label": "Pedir que Davi distraia com uma transmissao do jornal.",
+          "next": "ep10_courtyard_after_davi",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 3 },
+            "flags": { "ep10_davi_broadcast_cover": true }
+          }
+        },
+        {
+          "label": "Assumir voce mesma a conversa e gastar energia para manter a calma.",
+          "next": "ep10_courtyard_after_self",
+          "effects": {
+            "ap": -2,
+            "affinity": { "lavinia": 1, "caio": 1 },
+            "flags": { "ep10_self_faced_teacher": true }
+          }
+        }
+      ]
+    },
+    "ep10_courtyard_after_theo": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "confiante",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "confiante" }],
+      "text": "Theo sorri para o professor com a exata quantidade de obediencia que irrita adultos acostumados a mandar. O corredor permanece aberto.",
+      "effects": { "flags": { "ep10_crowd_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_courtyard_after_davi": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "dramatico",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "dramatico" }],
+      "text": "Davi liga uma live do jornal: 'Boa noite, Aurora, hoje falaremos sobre lanternas, boatos e a importancia de nao bloquear saidas por pura inseguranca institucional.' Funciona melhor do que deveria.",
+      "effects": { "flags": { "ep10_crowd_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_courtyard_after_self": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "text": "Voce fala sem tremer, embora o esforco custe. O professor mede a fita azul no seu pulso, mede as pessoas ao seu redor e recua.",
+      "effects": { "flags": { "ep10_crowd_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_courtyard_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "school",
+      "text": "O Patio das Luzes ja esta pronto. As lanternas deixam um caminho discreto ate a estufa.",
+      "next": "ep10_map_round"
+    },
+    "ep10_music_01": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "intenso",
+      "background": "music-room",
+      "timeOfDay": "night",
+      "music": "band",
+      "characters": [
+        { "id": "ravi", "position": "left", "expression": "intenso" },
+        { "id": "caio", "position": "right", "expression": "analitico" }
+      ],
+      "text": "Na sala de musica, Ravi procura a frequencia escondida na demo riscada enquanto Caio cruza tempos do festival antigo. A musica e a matematica brigam por alguns minutos e, para surpresa de ambos, empatam.",
+      "next": "ep10_music_choice"
+    },
+    "ep10_music_choice": {
+      "type": "choice",
+      "speaker": "ravi",
+      "expression": "divertido",
+      "background": "music-room",
+      "timeOfDay": "night",
+      "music": "band",
+      "characters": [
+        { "id": "ravi", "position": "left", "expression": "divertido" },
+        { "id": "caio", "position": "right", "expression": "analitico" }
+      ],
+      "text": "O sinal precisa ser disparado no exato momento em que as lanternas do patio piscarem. Um erro pode alertar a Curadoria antes da passagem abrir.",
+      "choices": [
+        {
+          "label": "Confiar no ouvido de Ravi para sentir o momento certo.",
+          "next": "ep10_music_after_ravi",
+          "effects": {
+            "affinity": { "ravi": 3 },
+            "flags": { "ep10_trusted_ravi_signal": true }
+          }
+        },
+        {
+          "label": "Seguir o calculo de Caio, mesmo se parecer frio demais.",
+          "next": "ep10_music_after_caio",
+          "effects": {
+            "affinity": { "caio": 3 },
+            "flags": { "ep10_trusted_caio_timing": true }
+          }
+        },
+        {
+          "label": "Misturar os dois: Ravi dispara, Caio confirma a janela.",
+          "next": "ep10_music_after_both",
+          "effects": {
+            "ap": -1,
+            "affinity": { "ravi": 2, "caio": 2 },
+            "flags": { "ep10_combined_music_math": true }
+          }
+        }
+      ]
+    },
+    "ep10_music_after_ravi": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "raro_sorriso",
+      "background": "music-room",
+      "timeOfDay": "night",
+      "music": "band",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "intenso" }],
+      "text": "Ravi fecha os olhos e sorri sem ironia. 'Finalmente alguem usando minha impulsividade como recurso tecnico.'",
+      "effects": { "flags": { "ep10_signal_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_music_after_caio": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "music-room",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Caio ajusta o tempo em tres casas decimais. 'Frieza e apenas carinho com margem de erro menor', ele diz, fingindo que nao ficou satisfeito.",
+      "effects": { "flags": { "ep10_signal_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_music_after_both": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "music-room",
+      "timeOfDay": "night",
+      "music": "band",
+      "text": "Ravi encontra o pulso. Caio segura a contagem. Por um instante, a sala de musica parece uma maquina feita de confianca improvavel.",
+      "effects": { "flags": { "ep10_signal_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_music_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "music-room",
+      "music": "band",
+      "text": "O sinal da sala de musica esta preparado. O chiado da demo parece menos defeito e mais senha.",
+      "next": "ep10_map_round"
+    },
+    "ep10_observatory_01": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "noa", "position": "left", "expression": "tenso" },
+        { "id": "lavinia", "position": "right", "expression": "controlada" }
+      ],
+      "text": "A cupula responde a chave partida com um som antigo. Noa reconhece o codigo das luzes. Lavinia reconhece o alfinete quebrado. Nenhum dos dois gosta do que reconhece.",
+      "next": "ep10_observatory_choice"
+    },
+    "ep10_observatory_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "noa", "position": "left", "expression": "tenso" },
+        { "id": "lavinia", "position": "right", "expression": "vulneravel" }
+      ],
+      "text": "Para alinhar a cupula, alguem precisa falar a frase do Clube Aurora. Noa sabe metade. Lavinia sabe a outra metade, mas dizer em voz alta quebra o ultimo pacto dela com o conselho.",
+      "choices": [
+        {
+          "label": "Pedir que Noa comece e prometer ficar ate o fim da frase.",
+          "next": "ep10_observatory_after_noa",
+          "effects": {
+            "affinity": { "noa": 3, "lavinia": 1 },
+            "flags": { "ep10_noa_spoke_first_half": true }
+          }
+        },
+        {
+          "label": "Pedir que Lavinia diga a parte dela por escolha propria.",
+          "next": "ep10_observatory_after_lavinia",
+          "effects": {
+            "affinity": { "lavinia": 3 },
+            "flags": { "ep10_lavinia_broke_oath": true }
+          }
+        },
+        {
+          "label": "Unir as duas metades usando a fita azul como guia.",
+          "next": "ep10_observatory_after_ribbon",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 2, "lavinia": 2 },
+            "flags": { "ep10_united_cupola_phrase": true }
+          }
+        }
+      ]
+    },
+    "ep10_observatory_after_noa": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "reservado",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "noa", "position": "right", "expression": "reservado" }],
+      "text": "Noa diz a primeira metade quase sem voz: 'O que o ceu apaga...' A cupula acende em azul, esperando a resposta.",
+      "effects": { "flags": { "ep10_cupola_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_observatory_after_lavinia": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavinia fecha os olhos e termina: '...o jardim devolve.' A frase parece atravessar geracoes antes de tocar o piso.",
+      "effects": { "flags": { "ep10_cupola_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_observatory_after_ribbon": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A fita azul esquenta no seu pulso e puxa as palavras de Noa e Lavinia para a mesma orbita: 'O que o ceu apaga, o jardim devolve.'",
+      "effects": { "flags": { "ep10_cupola_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_observatory_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "music": "mystery",
+      "text": "A cupula esta alinhada. As estrelas falsas apontam para baixo.",
+      "next": "ep10_map_round"
+    },
+    "ep10_garden_01": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "determinado",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "determinado" }],
+      "text": "Na estufa, a flor de vidro esta fechada com forca. Miguel despeja o orvalho ao redor da raiz, mas nao toca as petalas. 'Ela abre por convite, nao por invasao.'",
+      "next": "ep10_garden_choice"
+    },
+    "ep10_garden_choice": {
+      "type": "choice",
+      "speaker": "miguel",
+      "expression": "acolhedor",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "garden",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "acolhedor" }],
+      "text": "A flor reage a tres coisas: ao fragmento da fita, a promessa encontrada na carta de Helena e a sua decisao de nao transformar memoria em trofeu.",
+      "choices": [
+        {
+          "label": "Colocar o fragmento da fita no centro da flor.",
+          "next": "ep10_garden_after_fragment",
+          "effects": {
+            "affinity": { "miguel": 2, "noa": 1 },
+            "flags": { "ep10_used_ribbon_fragment": true }
+          }
+        },
+        {
+          "label": "Ler a promessa de Helena em voz baixa.",
+          "next": "ep10_garden_after_promise",
+          "effects": {
+            "affinity": { "miguel": 3 },
+            "flags": { "ep10_read_helena_promise": true }
+          }
+        },
+        {
+          "label": "Pedir que todos toquem a mesa da estufa juntos.",
+          "next": "ep10_garden_after_group",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 1, "theo": 1, "ravi": 1, "caio": 1, "miguel": 1, "noa": 1, "lavinia": 1 },
+            "flags": { "ep10_group_touched_greenhouse": true }
+          }
+        }
+      ]
+    },
+    "ep10_garden_after_fragment": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "O fragmento afunda na luz da flor sem cair. A fita no seu pulso responde com um puxao pequeno, quase uma batida de coracao.",
+      "effects": { "flags": { "ep10_garden_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_garden_after_promise": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "triste",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "triste" }],
+      "text": "Miguel repete a ultima linha com voce: 'lembrar sem destruir quem ainda pode escolher diferente.' A flor abre uma petala.",
+      "effects": { "flags": { "ep10_garden_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_garden_after_group": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "garden",
+      "text": "Quando todos tocam a mesa, a flor reconhece a coisa que o bilhete temia: lacos virando chaves. Uma petala de vidro se abre sem quebrar.",
+      "effects": { "flags": { "ep10_garden_ready": true } },
+      "next": "ep10_map_round"
+    },
+    "ep10_garden_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "music": "garden",
+      "text": "A flor de vidro esta pronta. O caminho abaixo dela espera a meia-noite.",
+      "next": "ep10_map_round"
+    },
+    "ep10_gate_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Quando o festival atinge o ponto mais alto, o patio pisca, a musica encontra a frequencia, a cupula projeta estrelas para baixo e a flor de vidro abre todas as petalas.",
+      "next": "ep10_cg_garden"
+    },
+    "ep10_cg_garden": {
+      "type": "cg",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "ep10-garden-echo",
+      "title": "Memoria desbloqueada",
+      "text": "Sob a estufa, o jardim devolve o primeiro eco: uma passagem estreita, azul e viva, esperando a pessoa que a escola tentou chamar de acaso.",
+      "effects": {
+        "galleryAdd": ["ep10-garden-echo"],
+        "inventoryAdd": ["promessa-jardim"],
+        "flags": { "ep10_opened_lower_garden": true }
+      },
+      "next": "ep10_lower_01"
+    },
+    "ep10_lower_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A passagem nao leva a uma sala secreta grandiosa. Leva a um jardim pequeno, subterraneo, cheio de etiquetas sem plantas. Cada etiqueta tem um nome apagado. Nem todos sao de alunos.",
+      "next": "ep10_lower_02"
+    },
+    "ep10_lower_02": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Noa encontra uma etiqueta com a propria letra, mas nao o proprio nome. 'Eu nao lembrava de ter escrito isso', ele diz. A fita azul treme como se respondesse: esse era o ponto.",
+      "next": "ep10_lower_03"
+    },
+    "ep10_lower_03": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavinia para diante de uma caixa com o brasao da familia dela. Dentro, ha copias de juramentos do conselho e uma frase repetida no rodape: 'A memoria preservada sem controle vira rebeliao.'",
+      "next": "ep10_memory_01"
+    },
+    "ep10_memory_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A fita azul se solta do seu pulso e flutua ate a caixa. Quando toca o brasao, o jardim muda. Por um segundo, o subterraneo vira observatorio, e o observatorio vira noite de queda.",
+      "next": "ep10_cg_starfall"
+    },
+    "ep10_cg_starfall": {
+      "type": "cg",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "ep10-starfall",
+      "title": "Memoria desbloqueada",
+      "text": "A memoria mostra Helena correndo com a fita azul. Ela nao cai no inicio da cena. Ela escolhe descer para esconder o que a Curadoria queria apagar.",
+      "effects": {
+        "galleryAdd": ["ep10-starfall"],
+        "flags": { "ep10_saw_helena_partial_truth": true }
+      },
+      "next": "ep10_memory_02"
+    },
+    "ep10_memory_02": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A revelacao vem incompleta, cheia de cortes azuis: Helena descobriu que a Curadoria nao apagava apenas escandalos. Apagava escolhas. Alunos que recusavam o roteiro tinham memorias quebradas e devolvidas como obediencia.",
+      "next": "ep10_memory_03"
+    },
+    "ep10_memory_03": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Helena usou a fita para espalhar parte dessas memorias pelo jardim. Antes de terminar, alguem tentou tomar a chave. A imagem corta antes do rosto aparecer. O capitulo nao deixa ver tudo.",
+      "next": "ep10_react_01"
+    },
+    "ep10_react_01": {
+      "type": "dialogue",
+      "speaker": "ravi",
+      "expression": "ferido",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "ravi", "position": "right", "expression": "ferido" }],
+      "text": "Ravi tira o fone como se o som tivesse queimado. 'Eles nao queriam uma escola perfeita', ele diz. 'Queriam alunos editaveis.'",
+      "next": "ep10_react_02"
+    },
+    "ep10_react_02": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "preocupado",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "preocupado" }],
+      "text": "Caio aperta os documentos contra o peito. 'Se isso for verdade, as atas nao sao registros. Sao receitas.'",
+      "next": "ep10_react_03"
+    },
+    "ep10_react_03": {
+      "type": "dialogue",
+      "speaker": "miguel",
+      "expression": "triste",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "miguel", "position": "right", "expression": "triste" }],
+      "text": "Miguel toca uma etiqueta vazia. 'Entao algumas pessoas daqui ainda estao vivendo com partes faltando.'",
+      "next": "ep10_react_04"
+    },
+    "ep10_react_04": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Davi fecha o caderno. 'Eu queria muito fazer uma piada agora', ele admite. 'Mas tem horas em que a gente precisa deixar a pagina respirar.'",
+      "next": "ep10_transfer_01"
+    },
+    "ep10_transfer_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "No fundo da caixa, um registro de transferencia igual ao seu aparece com uma diferenca: ao lado do seu nome, nao esta escrito aluna. Esta escrito eco externo.",
+      "next": "ep10_impact_choice"
+    },
+    "ep10_impact_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A memoria parcial e forte o bastante para mudar a Aurora High, mas incompleta o bastante para ferir pessoas erradas. O que voce faz com ela?",
+      "choices": [
+        {
+          "label": "Expor a memoria ao festival agora e impedir que o conselho controle a primeira versao.",
+          "next": "ep10_impact_public",
+          "effects": {
+            "ap": -2,
+            "affinity": { "theo": 2, "davi": 2, "ravi": 1 },
+            "flags": { "ep10_opened_truth_public": true }
+          }
+        },
+        {
+          "label": "Proteger os nomes apagados ate entender quem ainda pode ser machucado.",
+          "next": "ep10_impact_protect",
+          "effects": {
+            "ap": -1,
+            "affinity": { "miguel": 2, "noa": 2, "lavinia": 1 },
+            "flags": { "ep10_protected_erased_names": true }
+          }
+        },
+        {
+          "label": "Salvar a memoria, pegar o mapa escondido e preparar o proximo capitulo.",
+          "next": "ep10_impact_next",
+          "effects": {
+            "ap": -1,
+            "affinity": { "caio": 2, "ravi": 1, "noa": 1 },
+            "flags": { "ep10_chose_next_map": true }
+          }
+        }
+      ]
+    },
+    "ep10_impact_public": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "theo", "position": "right", "expression": "protetor" }],
+      "text": "Theo abre caminho ate o palco. Davi liga a transmissao. A memoria nao mostra rostos suficientes para condenar, mas mostra o bastante para quebrar a mentira perfeita da escola.",
+      "next": "ep10_aftermath_01"
+    },
+    "ep10_impact_protect": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavinia parece surpresa por voce nao usar a memoria como arma. 'Helena teria odiado que a verdade virasse outra forma de controle', ela diz. Pela primeira vez, isso soa como lembranca propria.",
+      "next": "ep10_aftermath_01"
+    },
+    "ep10_impact_next": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "garden",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "Caio encontra um compartimento sob as etiquetas vazias. 'Mapa incompleto', ele avisa. 'Ou convite. Este lugar insiste em ser dramatico.'",
+      "next": "ep10_aftermath_01"
+    },
+    "ep10_aftermath_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "text": "Quando voces voltam ao patio, o festival continua, mas nada parece intacto. Algumas lanternas apagam sem vento. Alguns alunos olham para o observatorio como se tivessem acabado de lembrar um sonho antigo.",
+      "next": "ep10_aftermath_02"
+    },
+    "ep10_aftermath_02": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Lavinia recoloca o broche do conselho, mas de cabeca para baixo. 'Eu nao vou fingir que virei heroina', ela diz. 'So nao vou mais ser fechadura de ninguem.'",
+      "next": "ep10_cg_map"
+    },
+    "ep10_cg_map": {
+      "type": "cg",
+      "background": "dorm",
+      "music": "mystery",
+      "cg": "ep10-next-map",
+      "title": "Memoria desbloqueada",
+      "text": "No verso do registro de transferencia, surge um mapa incompleto para uma area da escola ainda fechada: Ala Norte, Jardim de Inverno, Sala das Chamadas.",
+      "effects": {
+        "galleryAdd": ["ep10-next-map"],
+        "inventoryAdd": ["mapa-capitulo-2"],
+        "flags": { "ep10_unlocked_chapter2_map": true }
+      },
+      "next": "ep10_reward"
+    },
+    "ep10_reward": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "De volta ao quarto, a fita azul nao parece resolvida. Parece acordada. O Capitulo 1 termina com uma verdade parcial: Helena nao caiu por acaso, a Curadoria ainda existe em alguma forma, e voce foi chamada porque algo fora da escola responde ao jardim.",
+      "effects": {
+        "completeEpisode": "episode-10",
+        "achievementAdd": ["ecos-no-jardim"],
+        "wardrobeAdd": ["conjunto-estufa"],
+        "coins": 180,
+        "gems": 5,
+        "ap": 10,
+        "flags": {
+          "episode_10_complete": true,
+          "chapter_01_complete": true
+        }
+      },
+      "next": "ep10_end"
+    },
+    "ep10_end": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "mystery",
+      "title": "Fim do Capítulo 1",
+      "text": "Esta e uma versao em desenvolvimento de Aurora High: Ecos no Jardim. O Capitulo 2 continuara a partir da Ala Norte, onde as memorias nao estao apagadas: estao esperando para escolher quem voce se torna."
+    }
+  }
+}

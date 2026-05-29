@@ -1,0 +1,588 @@
+{
+  "schema": "aurora-high.dialogue.v1",
+  "id": "episode-04",
+  "title": "A Votação Sem Nome",
+  "startNode": "ep04_intro_01",
+  "nodes": {
+    "ep04_intro_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "text": "Na manhã seguinte ao Festival de Luzes Falsas, seu celular desperta antes do alarme. A tela mostra um convite do conselho estudantil, mas o campo de remetente está vazio.",
+      "effects": {
+        "inventoryAdd": ["convite-conselho"],
+        "flags": { "ep04_received_council_invite": true }
+      },
+      "next": "ep04_intro_02"
+    },
+    "ep04_intro_02": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "mystery",
+      "text": "A fita azul, guardada no diário, se solta sozinha. Um fio se desfaz e aponta para a frase do convite: votação extraordinária sobre preservação da memória institucional.",
+      "variants": [
+        {
+          "when": { "flags": ["ep03_let_lavinia_speak"] },
+          "text": "A fita azul, guardada no diário, se solta sozinha. Lavínia falou no festival, mas o convite prova que o conselho ainda prefere votar antes de lembrar."
+        },
+        {
+          "when": { "flags": ["ep03_played_demo_publicly"] },
+          "text": "A fita azul, guardada no diário, se solta sozinha. Depois da demo tocar em público, o conselho parece ter decidido chamar silêncio de preservação."
+        }
+      ],
+      "next": "ep04_cg_ribbon"
+    },
+    "ep04_cg_ribbon": {
+      "type": "cg",
+      "background": "dorm",
+      "music": "mystery",
+      "cg": "ep04-ribbon-fray",
+      "title": "Memória desbloqueada",
+      "text": "O fio solto da fita azul não parece rasgo. Parece direção. Como se alguém antigo ainda soubesse para onde você precisa olhar.",
+      "effects": {
+        "galleryAdd": ["ep04-ribbon-fray"],
+        "flags": { "ep04_unlocked_ribbon_fray": true }
+      },
+      "next": "ep04_davi_01"
+    },
+    "ep04_davi_01": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Bom dia para quem recebeu convite fantasma antes do café. Péssimo dia para quem achou que o conselho ia fingir normalidade por pelo menos quarenta e oito horas.",
+      "next": "ep04_davi_choice"
+    },
+    "ep04_davi_choice": {
+      "type": "choice",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Davi mostra uma cópia impressa do convite. No rodapé, onde deveria haver assinatura, existe apenas o brasão antigo da Aurora High, riscado com tinta azul.",
+      "choices": [
+        {
+          "label": "Pedir para Davi investigar sem publicar nada ainda.",
+          "next": "ep04_davi_after_trust",
+          "effects": {
+            "ap": -1,
+            "affinity": { "davi": 3, "caio": 1 },
+            "flags": { "ep04_trusted_davi_silence": true }
+          }
+        },
+        {
+          "label": "Dizer que o conselho quer te assustar e que você quer entrar pela porta da frente.",
+          "next": "ep04_davi_after_front",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 2, "davi": 1 },
+            "flags": { "ep04_chose_public_approach": true }
+          }
+        },
+        {
+          "label": "Perguntar se a fita pode estar escolhendo a próxima pista.",
+          "next": "ep04_davi_after_ribbon",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 2, "davi": 1 },
+            "flags": { "ep04_followed_ribbon_instinct": true }
+          }
+        }
+      ]
+    },
+    "ep04_davi_after_trust": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "leal",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "leal" }],
+      "text": "Sem manchete, então. Odeio maturidade, mas respeito. Se alguém tentar usar seu nome como pauta, eu viro rodapé venenoso.",
+      "next": "ep04_map_intro"
+    },
+    "ep04_davi_after_front": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "dramatico",
+      "background": "corridor",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "dramatico" }],
+      "text": "Porta da frente. O método clássico de quem tem coragem e pouca preocupação com pressão social. Vou fingir que não estou orgulhoso.",
+      "next": "ep04_map_intro"
+    },
+    "ep04_davi_after_ribbon": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "corridor",
+      "music": "mystery",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "Eu prefiro objetos que não tenham agenda. Mas, considerando que esta escola tem mapa com opinião, vou aceitar a fita como fonte anônima.",
+      "next": "ep04_map_intro"
+    },
+    "ep04_map_intro": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "text": "Antes da votação, três lugares piscam no mapa do celular: o pátio onde o conselho montou a urna, o arquivo morto e a porta do observatório.",
+      "next": "ep04_map_round"
+    },
+    "ep04_map_round": {
+      "type": "map",
+      "speaker": "narrator",
+      "background": "atrium",
+      "music": "exploration",
+      "title": "Antes da votação",
+      "text": "Procure pistas para entender por que o conselho quer votar sobre memória justamente agora. Cada deslocamento consome AP.",
+      "events": [
+        {
+          "id": "ep04_courtyard",
+          "label": "Observar a urna do conselho",
+          "location": "courtyard",
+          "apCost": 2,
+          "onceFlag": "ep04_checked_council_urn",
+          "next": "ep04_courtyard_01",
+          "revisitNext": "ep04_courtyard_return"
+        },
+        {
+          "id": "ep04_archive",
+          "label": "Comparar o brasão antigo",
+          "location": "archive",
+          "apCost": 2,
+          "onceFlag": "ep04_found_erased_seal",
+          "next": "ep04_archive_01",
+          "revisitNext": "ep04_archive_return"
+        },
+        {
+          "id": "ep04_observatory",
+          "label": "Seguir a fita até a cúpula",
+          "location": "observatory",
+          "apCost": 2,
+          "onceFlag": "ep04_heard_observatory_vote",
+          "next": "ep04_observatory_01",
+          "revisitNext": "ep04_observatory_return"
+        }
+      ],
+      "doneWhenFlags": [
+        "ep04_checked_council_urn",
+        "ep04_found_erased_seal",
+        "ep04_heard_observatory_vote"
+      ],
+      "doneNext": "ep04_after_map_01"
+    },
+    "ep04_courtyard_01": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "protetor",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [
+        { "id": "theo", "position": "left", "expression": "protetor" },
+        { "id": "lavinia", "position": "right", "expression": "controlada" }
+      ],
+      "text": "Theo está diante da urna, sorrindo para alunos curiosos como se o sorriso pudesse impedir o desastre. Lavínia corrige a posição do brasão com uma precisão agressiva.",
+      "next": "ep04_courtyard_choice"
+    },
+    "ep04_courtyard_choice": {
+      "type": "choice",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [
+        { "id": "theo", "position": "left", "expression": "sincero" },
+        { "id": "lavinia", "position": "right", "expression": "cortante" }
+      ],
+      "text": "Theo murmura que a votação apareceu na agenda sem passar por ele. Lavínia escuta o suficiente para erguer uma sobrancelha.",
+      "choices": [
+        {
+          "label": "Pedir que Theo confirme em público que a agenda foi alterada.",
+          "next": "ep04_courtyard_after_public",
+          "effects": {
+            "affinity": { "theo": 3, "lavinia": -1 },
+            "flags": { "ep04_theo_public_agenda": true, "ep04_checked_council_urn": true }
+          }
+        },
+        {
+          "label": "Falar baixo com Lavínia e perguntar quem autorizou a urna.",
+          "next": "ep04_courtyard_after_lavinia",
+          "effects": {
+            "affinity": { "lavinia": 2, "theo": 1 },
+            "flags": { "ep04_questioned_lavinia_urn": true, "ep04_checked_council_urn": true }
+          }
+        },
+        {
+          "label": "Fotografar o brasão antes que alguém troque a placa.",
+          "next": "ep04_courtyard_after_photo",
+          "effects": {
+            "affinity": { "davi": 2, "caio": 1 },
+            "flags": { "ep04_saved_urn_photo": true, "ep04_checked_council_urn": true }
+          }
+        }
+      ]
+    },
+    "ep04_courtyard_after_public": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "encabulado",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "theo", "position": "right", "expression": "encabulado" }],
+      "text": "Theo respira fundo e escolhe ficar do seu lado na frente de todos. O sorriso dele treme, mas não cai.",
+      "next": "ep04_map_round"
+    },
+    "ep04_courtyard_after_lavinia": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "cortante",
+      "background": "courtyard",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "cortante" }],
+      "text": "Lavínia diz que autorização nem sempre vem de quem aparece no palco. Pela primeira vez, parece irritada com alguém que não é você.",
+      "next": "ep04_map_round"
+    },
+    "ep04_courtyard_after_photo": {
+      "type": "dialogue",
+      "speaker": "davi",
+      "expression": "atento",
+      "background": "courtyard",
+      "music": "school",
+      "characters": [{ "id": "davi", "position": "right", "expression": "atento" }],
+      "text": "A foto revela um detalhe invisível a olho nu: o brasão usado na urna não é o atual. É o símbolo do Clube Aurora antes de virar lenda.",
+      "next": "ep04_map_round"
+    },
+    "ep04_courtyard_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "music": "school",
+      "text": "A urna continua no centro do pátio. Agora parece menos democrática e mais faminta.",
+      "next": "ep04_map_round"
+    },
+    "ep04_archive_01": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "Caio já separou três pastas quando você chega. Ele não diz que estava esperando por você; só empurra a cadeira vazia com o pé.",
+      "next": "ep04_archive_choice"
+    },
+    "ep04_archive_choice": {
+      "type": "choice",
+      "speaker": "caio",
+      "expression": "impaciente",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "impaciente" }],
+      "text": "O brasão antigo aparece em atas de vinte anos atrás. Em todas, o nome de uma turma foi raspado com lâmina fina.",
+      "choices": [
+        {
+          "label": "Deixar Caio reconstruir a ordem das atas sem apressá-lo.",
+          "next": "ep04_archive_after_care",
+          "effects": {
+            "affinity": { "caio": 3 },
+            "inventoryAdd": ["selo-rasurado"],
+            "flags": { "ep04_respected_caio_archive": true, "ep04_found_erased_seal": true }
+          }
+        },
+        {
+          "label": "Comparar o selo com a foto da urna.",
+          "next": "ep04_archive_after_compare",
+          "effects": {
+            "affinity": { "caio": 2, "davi": 1 },
+            "inventoryAdd": ["selo-rasurado"],
+            "flags": { "ep04_compared_seal_photo": true, "ep04_found_erased_seal": true }
+          }
+        },
+        {
+          "label": "Perguntar se Lavínia herdou uma culpa que não começou com ela.",
+          "next": "ep04_archive_after_lavinia",
+          "effects": {
+            "affinity": { "caio": 1, "lavinia": 2 },
+            "inventoryAdd": ["selo-rasurado"],
+            "flags": { "ep04_saw_inherited_guilt": true, "ep04_found_erased_seal": true }
+          }
+        }
+      ]
+    },
+    "ep04_archive_after_care": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "suave",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "suave" }],
+      "text": "Caio não sorri exatamente. Mas a voz dele perde a lâmina quando diz que paciência também é uma forma de proteger uma prova.",
+      "next": "ep04_cg_seal"
+    },
+    "ep04_archive_after_compare": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "analitico",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "analitico" }],
+      "text": "As linhas batem. A urna não foi preparada pelo conselho atual. Alguém usou material antigo para fazer a votação parecer tradição.",
+      "next": "ep04_cg_seal"
+    },
+    "ep04_archive_after_lavinia": {
+      "type": "dialogue",
+      "speaker": "caio",
+      "expression": "preocupado",
+      "background": "archive",
+      "music": "quiet",
+      "characters": [{ "id": "caio", "position": "right", "expression": "preocupado" }],
+      "text": "Caio fecha a pasta com cuidado demais. Heranças são perigosas porque chegam embrulhadas como dever.",
+      "next": "ep04_cg_seal"
+    },
+    "ep04_cg_seal": {
+      "type": "cg",
+      "background": "archive",
+      "music": "quiet",
+      "cg": "ep04-council-seal",
+      "title": "Memória desbloqueada",
+      "text": "O brasão rasurado liga a votação sem nome a uma versão antiga da Aurora High. A escola apagou pessoas antes de apagar arquivos.",
+      "effects": {
+        "galleryAdd": ["ep04-council-seal"],
+        "flags": { "ep04_unlocked_council_seal": true }
+      },
+      "next": "ep04_map_round"
+    },
+    "ep04_archive_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "archive",
+      "music": "quiet",
+      "text": "As pastas continuam abertas na ordem que Caio deixou. Nada ali parece morto.",
+      "next": "ep04_map_round"
+    },
+    "ep04_observatory_01": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Noa está diante da porta do observatório com a mão no metal. A fita azul no seu bolso puxa como se reconhecesse a cúpula.",
+      "next": "ep04_observatory_choice"
+    },
+    "ep04_observatory_choice": {
+      "type": "choice",
+      "speaker": "noa",
+      "expression": "curioso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "Do lado de dentro, uma gravação antiga chiando repete a palavra votar. Noa parece reconhecer a cadência, mas não a voz.",
+      "choices": [
+        {
+          "label": "Ficar em silêncio para ouvir a gravação inteira com Noa.",
+          "next": "ep04_observatory_after_listen",
+          "effects": {
+            "affinity": { "noa": 3 },
+            "flags": { "ep04_listened_with_noa": true, "ep04_heard_observatory_vote": true }
+          }
+        },
+        {
+          "label": "Perguntar por que Noa sempre aparece quando a fita reage.",
+          "next": "ep04_observatory_after_ask",
+          "effects": {
+            "affinity": { "noa": 2, "davi": 1 },
+            "flags": { "ep04_asked_noa_about_ribbon": true, "ep04_heard_observatory_vote": true }
+          }
+        },
+        {
+          "label": "Gravar o áudio e prometer que ninguém vai usar isso contra ele.",
+          "next": "ep04_observatory_after_record",
+          "effects": {
+            "affinity": { "noa": 2, "ravi": 1 },
+            "flags": { "ep04_recorded_old_vote": true, "ep04_heard_observatory_vote": true }
+          }
+        }
+      ]
+    },
+    "ep04_observatory_after_listen": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "raro_sorriso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "raro_sorriso" }],
+      "text": "Noa agradece sem dizer obrigado. O silêncio entre vocês fica menos vazio e mais escolhido.",
+      "next": "ep04_map_round"
+    },
+    "ep04_observatory_after_ask": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "tenso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "tenso" }],
+      "text": "Noa diz que não sabe se aparece por coincidência ou culpa. A diferença, na Aurora High, parece pequena demais.",
+      "next": "ep04_map_round"
+    },
+    "ep04_observatory_after_record": {
+      "type": "dialogue",
+      "speaker": "noa",
+      "expression": "curioso",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "noa", "position": "right", "expression": "curioso" }],
+      "text": "Ele observa seu celular por um segundo a mais. Confiar em provas é fácil. Confiar em quem segura a prova é outro tipo de queda.",
+      "next": "ep04_map_round"
+    },
+    "ep04_observatory_return": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A porta do observatório permanece fechada, mas a gravação antiga já encontrou um caminho para fora.",
+      "next": "ep04_map_round"
+    },
+    "ep04_after_map_01": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "Quando a votação começa, os alunos recebem cédulas sem pergunta. Só duas opções: preservar ou revelar.",
+      "next": "ep04_vote_01"
+    },
+    "ep04_vote_01": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "controlada",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "controlada" }],
+      "text": "Lavínia lê o discurso oficial, mas tropeça quando chega ao brasão antigo. A fita azul esquenta no seu bolso como se discordasse de cada palavra.",
+      "next": "ep04_final_choice"
+    },
+    "ep04_final_choice": {
+      "type": "choice",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [
+        { "id": "lavinia", "position": "left", "expression": "vulneravel" },
+        { "id": "theo", "position": "right", "expression": "protetor" }
+      ],
+      "text": "Você entende a armadilha: votar sem pergunta permite ao conselho dizer que todos escolheram o silêncio. Alguém precisa nomear o que está sendo decidido.",
+      "choices": [
+        {
+          "label": "Exigir que a pergunta seja lida em voz alta.",
+          "next": "ep04_final_public",
+          "effects": {
+            "ap": -1,
+            "affinity": { "theo": 2, "davi": 1 },
+            "flags": { "ep04_forced_question_public": true }
+          }
+        },
+        {
+          "label": "Entregar o selo rasurado a Lavínia e pedir que ela escolha melhor que os antigos.",
+          "next": "ep04_final_lavinia",
+          "effects": {
+            "ap": -1,
+            "affinity": { "lavinia": 3, "miguel": 1 },
+            "flags": { "ep04_gave_lavinia_seal": true }
+          }
+        },
+        {
+          "label": "Levantar a fita azul diante da urna e deixar a escola reagir.",
+          "next": "ep04_final_ribbon",
+          "effects": {
+            "ap": -1,
+            "affinity": { "noa": 2, "ravi": 1 },
+            "flags": { "ep04_raised_blue_ribbon": true }
+          }
+        }
+      ]
+    },
+    "ep04_final_public": {
+      "type": "dialogue",
+      "speaker": "theo",
+      "expression": "sincero",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "theo", "position": "right", "expression": "sincero" }],
+      "text": "Theo repete a pergunta para todos: vocês querem apagar Helena de novo? O pátio fica tão quieto que o som parece uma resposta.",
+      "next": "ep04_cg_vote"
+    },
+    "ep04_final_lavinia": {
+      "type": "dialogue",
+      "speaker": "lavinia",
+      "expression": "vulneravel",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "characters": [{ "id": "lavinia", "position": "right", "expression": "vulneravel" }],
+      "text": "Lavínia segura o selo como se queimasse. Ela não pede desculpa. Ainda não. Mas pela primeira vez, não manda você calar.",
+      "next": "ep04_cg_vote"
+    },
+    "ep04_final_ribbon": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "text": "A fita azul vibra diante da urna. Todas as luzes do pátio piscam uma vez, e a palavra revelar aparece no mapa do celular.",
+      "next": "ep04_cg_vote"
+    },
+    "ep04_cg_vote": {
+      "type": "cg",
+      "background": "observatory",
+      "timeOfDay": "night",
+      "music": "mystery",
+      "cg": "ep04-observatory-vote",
+      "title": "Memória desbloqueada",
+      "text": "A votação sem nome não termina com resultado. Termina com uma porta antiga reconhecendo que alguém finalmente perguntou certo.",
+      "effects": {
+        "galleryAdd": ["ep04-observatory-vote"],
+        "flags": { "ep04_unlocked_observatory_vote": true }
+      },
+      "next": "ep04_reward"
+    },
+    "ep04_reward": {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "background": "courtyard",
+      "timeOfDay": "night",
+      "music": "quiet",
+      "text": "A urna é recolhida antes da contagem. Lavínia passa por você e sussurra apenas uma frase: se a pergunta saiu, alguém vai tentar apagar quem perguntou.",
+      "effects": {
+        "completeEpisode": "episode-04",
+        "achievementAdd": ["voto-sem-nome"],
+        "coins": 105,
+        "gems": 2,
+        "ap": 7,
+        "flags": { "episode_04_complete": true }
+      },
+      "next": "ep04_end"
+    },
+    "ep04_end": {
+      "type": "end",
+      "speaker": "narrator",
+      "background": "dorm",
+      "music": "room",
+      "title": "Fim do Episódio 4",
+      "text": "No seu diário, o convite do conselho muda sozinho. Onde antes dizia votação, agora aparece uma nova palavra: ensaio."
+    }
+  }
+}
